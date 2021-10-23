@@ -11,12 +11,13 @@
 		5973F5CD271E492300E10A33 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5CB271E492300E10A33 /* ListCell.swift */; };
 		5973F5CE271E492300E10A33 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5973F5CC271E492300E10A33 /* ListCell.xib */; };
 		5973F5D0271E4B2F00E10A33 /* ListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5CF271E4B2F00E10A33 /* ListEntity.swift */; };
-		5973F5D2271E4E1900E10A33 /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5D1271E4E1900E10A33 /* PublisherExtension.swift */; };
+		5973F5D2271E4E1900E10A33 /* Publisher+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5D1271E4E1900E10A33 /* Publisher+Alamofire.swift */; };
 		5973F5D5271E5AC900E10A33 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5973F5D4271E5AC900E10A33 /* Swinject */; };
 		5973F5D7271E5B3A00E10A33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5D6271E5B3A00E10A33 /* DIContainer.swift */; };
 		5973F5D9271E5C1100E10A33 /* DIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5D8271E5C1100E10A33 /* DIConfig.swift */; };
 		5973F5DB271E663E00E10A33 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5DA271E663E00E10A33 /* ListResponse.swift */; };
 		5973F5DE271E8BC200E10A33 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5973F5DD271E8BC200E10A33 /* AlamofireImage */; };
+		5973F5E3271F920400E10A33 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5E2271F920400E10A33 /* DetailView.swift */; };
 		597B1543271B958B009332D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B1542271B958B009332D5 /* AppDelegate.swift */; };
 		597B155C271B95ED009332D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597B1557271B95E7009332D5 /* Assets.xcassets */; };
 		597B155D271B95ED009332D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597B1558271B95E7009332D5 /* LaunchScreen.storyboard */; };
@@ -45,7 +46,7 @@
 		597B159D271BCEDE009332D5 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597B159B271BCEDE009332D5 /* ListViewController.xib */; };
 		597B159E271BCEDE009332D5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B159C271BCEDE009332D5 /* ListViewController.swift */; };
 		597B15A0271BCEFC009332D5 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B159F271BCEFC009332D5 /* ListViewModel.swift */; };
-		597B15A2271BCFB1009332D5 /* ListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B15A1271BCFB1009332D5 /* ListAssembly.swift */; };
+		597B15A2271BCFB1009332D5 /* ListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B15A1271BCFB1009332D5 /* ListBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,10 +54,11 @@
 		5973F5CB271E492300E10A33 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		5973F5CC271E492300E10A33 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		5973F5CF271E4B2F00E10A33 /* ListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntity.swift; sourceTree = "<group>"; };
-		5973F5D1271E4E1900E10A33 /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
+		5973F5D1271E4E1900E10A33 /* Publisher+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Alamofire.swift"; sourceTree = "<group>"; };
 		5973F5D6271E5B3A00E10A33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		5973F5D8271E5C1100E10A33 /* DIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIConfig.swift; sourceTree = "<group>"; };
 		5973F5DA271E663E00E10A33 /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
+		5973F5E2271F920400E10A33 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		597B153F271B958B009332D5 /* iOSTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597B1542271B958B009332D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		597B1550271B958F009332D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		597B159B271BCEDE009332D5 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		597B159C271BCEDE009332D5 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		597B159F271BCEFC009332D5 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		597B15A1271BCFB1009332D5 /* ListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAssembly.swift; sourceTree = "<group>"; };
+		597B15A1271BCFB1009332D5 /* ListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,14 @@
 				5973F5CC271E492300E10A33 /* ListCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5973F5E1271F91F700E10A33 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5973F5E2271F920400E10A33 /* DetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		597B1536271B958B009332D5 = {
@@ -157,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				597B1567271BA180009332D5 /* Network.swift */,
+				5973F5D1271E4E1900E10A33 /* Publisher+Alamofire.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -177,7 +188,6 @@
 				597B1585271BBF00009332D5 /* UITableViewCellExtension.swift */,
 				597B1582271BBF00009332D5 /* UIViewExtension.swift */,
 				597B1596271BC173009332D5 /* ClassIdentifiable.swift */,
-				5973F5D1271E4E1900E10A33 /* PublisherExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -205,6 +215,7 @@
 			children = (
 				597B156D271BBD91009332D5 /* Base */,
 				597B159A271BCEDE009332D5 /* List */,
+				5973F5E1271F91F700E10A33 /* Detail */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -222,7 +233,7 @@
 		597B159A271BCEDE009332D5 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				597B15A1271BCFB1009332D5 /* ListAssembly.swift */,
+				597B15A1271BCFB1009332D5 /* ListBuilder.swift */,
 				5973F5C8271E486000E10A33 /* ListInteractor.swift */,
 				597B159F271BCEFC009332D5 /* ListViewModel.swift */,
 				5973F5CA271E490B00E10A33 /* Cells */,
@@ -323,7 +334,7 @@
 				597B1593271BBF00009332D5 /* UIColorExtension.swift in Sources */,
 				597B158B271BBF00009332D5 /* DecimalExtension.swift in Sources */,
 				597B1571271BBD91009332D5 /* BaseViewController.swift in Sources */,
-				5973F5D2271E4E1900E10A33 /* PublisherExtension.swift in Sources */,
+				5973F5D2271E4E1900E10A33 /* Publisher+Alamofire.swift in Sources */,
 				597B158C271BBF00009332D5 /* CodableExtensions.swift in Sources */,
 				597B158D271BBF00009332D5 /* DoubleExtension.swift in Sources */,
 				5973F5D9271E5C1100E10A33 /* DIConfig.swift in Sources */,
@@ -335,6 +346,7 @@
 				597B1591271BBF00009332D5 /* UIImageExtension.swift in Sources */,
 				597B15A0271BCEFC009332D5 /* ListViewModel.swift in Sources */,
 				597B1597271BC173009332D5 /* ClassIdentifiable.swift in Sources */,
+				5973F5E3271F920400E10A33 /* DetailView.swift in Sources */,
 				5973F5D0271E4B2F00E10A33 /* ListEntity.swift in Sources */,
 				5973F5DB271E663E00E10A33 /* ListResponse.swift in Sources */,
 				597B1543271B958B009332D5 /* AppDelegate.swift in Sources */,
@@ -344,7 +356,7 @@
 				597B1568271BA180009332D5 /* Network.swift in Sources */,
 				597B1595271BBF00009332D5 /* StringExtension.swift in Sources */,
 				5973F5C9271E486000E10A33 /* ListInteractor.swift in Sources */,
-				597B15A2271BCFB1009332D5 /* ListAssembly.swift in Sources */,
+				597B15A2271BCFB1009332D5 /* ListBuilder.swift in Sources */,
 				597B158A271BBF00009332D5 /* DateFormatterExtension.swift in Sources */,
 				597B159E271BCEDE009332D5 /* ListViewController.swift in Sources */,
 				597B1572271BBD91009332D5 /* BaseViewModel.swift in Sources */,

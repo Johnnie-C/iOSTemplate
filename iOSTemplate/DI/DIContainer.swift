@@ -22,8 +22,8 @@ public class DIContainer {
         -> DIServiceEntry
     {
         return container.register(serviceType,
-                                   name: name,
-                                   factory: factory)
+                                  name: name,
+                                  factory: factory)
     }
 
     public func resolve<Service>(type: Service.Type) -> Service? {

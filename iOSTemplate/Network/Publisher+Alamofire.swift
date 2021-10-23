@@ -1,5 +1,5 @@
 //
-//  PublisherExtension.swift
+//  Publisher+Alamofire.swift
 //  iOSTemplate
 //
 //  Created by Johnnie Cheng on 19/10/21.

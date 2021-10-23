@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Combine
+import SwiftUI
 
 class ListViewController<VM: ListViewModelProtocol>: BaseViewController<VM>,
                                                      ClassIdentifiable,
@@ -59,6 +59,8 @@ class ListViewController<VM: ListViewModelProtocol>: BaseViewController<VM>,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = snapshot.itemIdentifiers[indexPath.row]
         // TODO: navigate
+        let hostingController = UIHostingController(rootView: DetailView())
+        navigationController?.pushViewController(hostingController, animated: true)
     }
 
 }

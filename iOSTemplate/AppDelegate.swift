@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DIContainer.default.config()
         BaseNavigationController.setupAppearance()
         
-        let vc = DIContainer.default.resolve(type: ListAssemblyProtocol.self)!
+        let vc = DIContainer.default.resolve(type: ListBuilderProtocol.self)!
             .listViewController()
         let nav = BaseNavigationController(rootViewController: vc)
 
