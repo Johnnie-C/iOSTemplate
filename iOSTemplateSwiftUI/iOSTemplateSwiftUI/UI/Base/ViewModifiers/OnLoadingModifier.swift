@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AlertToast
 import Common
 
 private struct OnLoadingModifier: ViewModifier {

@@ -11,12 +11,13 @@ import Common
 
 private struct OnErrorModifier: ViewModifier {
 
+    @State private var error: Error?
     @State private var hasError: Bool = false
     private var errorPublisher: Published<Error?>.Publisher
-    private var onError: ((Error) -> Void)?
+    private var onError: ((Error) -> ErrorMessage)?
 
     init(error: Published<Error?>.Publisher,
-         onError: ((Error) -> Void)? = nil)
+         onError: ((Error) -> ErrorMessage)? = nil)
     {
         self.errorPublisher = error
         self.onError = onError
@@ -28,21 +29,23 @@ private struct OnErrorModifier: ViewModifier {
                    duration: 2,
                    tapToDismiss: true)
         {
-            AlertToast(
-                displayMode: .hud,
-                type: .error(.red),
-                title: localizedString(withKey: "alert.generalError.title"),
-                subTitle: localizedString(withKey: "alert.generalError.message")
-            )
-        }
-        .onReceive(errorPublisher) { error in
-            if let onError = self.onError {
-                if let error = error {
-                    onError(error)
-                }
-                return
+            var title = localizedString(withKey: "alert.generalError.title")
+            var message = localizedString(withKey: "alert.generalError.message")
+            if let error = error,
+               let errorMessage = onError?(error)
+            {
+                title = errorMessage.title ?? ""
+                message = errorMessage.message ?? ""
+
             }
 
+            return  AlertToast(displayMode: .hud,
+                               type: .error(.red),
+                               title: title,
+                               subTitle: message)
+        }
+        .onReceive(errorPublisher) { error in
+            self.error = error
             self.hasError = error != nil
         }
     }
@@ -52,10 +55,17 @@ private struct OnErrorModifier: ViewModifier {
 extension View {
 
     func withErrorHandler(error: Published<Error?>.Publisher,
-                          onError: ((Error) -> Void)? = nil)
+                          onError: ((Error) -> ErrorMessage)? = nil)
         -> some View
     {
         modifier(OnErrorModifier(error: error, onError: onError))
     }
 
+}
+
+struct ErrorMessage {
+
+    let title: String?
+    let message: String?
+    
 }
