@@ -1,6 +1,5 @@
 //
 //  UIColorExtension.swift
-//  MegaBudget
 //
 //  Created by Johnnie Cheng on 29/4/21.
 //

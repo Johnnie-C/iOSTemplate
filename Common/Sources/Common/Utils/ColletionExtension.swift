@@ -1,6 +1,5 @@
 //
 //  ColletionExtension.swift
-//  MegaBudget
 //
 //  Created by Johnnie Cheng on 30/4/21.
 //

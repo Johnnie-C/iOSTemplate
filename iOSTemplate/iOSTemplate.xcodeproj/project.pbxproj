@@ -18,6 +18,8 @@
 		5973F5DB271E663E00E10A33 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5DA271E663E00E10A33 /* ListResponse.swift */; };
 		5973F5DE271E8BC200E10A33 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5973F5DD271E8BC200E10A33 /* AlamofireImage */; };
 		5973F5E3271F920400E10A33 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F5E2271F920400E10A33 /* DetailView.swift */; };
+		59764CB8272CD5F2000606B4 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CB7272CD5F2000606B4 /* NVActivityIndicatorView */; };
+		59764CBA272CD5F2000606B4 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CB9272CD5F2000606B4 /* NVActivityIndicatorViewExtended */; };
 		597B1543271B958B009332D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B1542271B958B009332D5 /* AppDelegate.swift */; };
 		597B155C271B95ED009332D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597B1557271B95E7009332D5 /* Assets.xcassets */; };
 		597B155D271B95ED009332D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597B1558271B95E7009332D5 /* LaunchScreen.storyboard */; };
@@ -26,8 +28,6 @@
 		597B1572271BBD91009332D5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B156F271BBD91009332D5 /* BaseViewModel.swift */; };
 		597B1573271BBD91009332D5 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B1570271BBD91009332D5 /* BaseNavigationController.swift */; };
 		597B1576271BBE47009332D5 /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = 597B1575271BBE47009332D5 /* Loaf */; };
-		597B1579271BBE6B009332D5 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 597B1578271BBE6B009332D5 /* NVActivityIndicatorView */; };
-		597B157B271BBE6B009332D5 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 597B157A271BBE6B009332D5 /* NVActivityIndicatorViewExtended */; };
 		597B1599271BCEB1009332D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 597B1598271BCEB1009332D5 /* Localizable.strings */; };
 		597B159D271BCEDE009332D5 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597B159B271BCEDE009332D5 /* ListViewController.xib */; };
 		597B159E271BCEDE009332D5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B159C271BCEDE009332D5 /* ListViewController.swift */; };
@@ -66,11 +66,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				597B1576271BBE47009332D5 /* Loaf in Frameworks */,
+				59764CBA272CD5F2000606B4 /* NVActivityIndicatorViewExtended in Frameworks */,
 				5973F5D5271E5AC900E10A33 /* Swinject in Frameworks */,
+				59764CB8272CD5F2000606B4 /* NVActivityIndicatorView in Frameworks */,
 				592C05872723BB1700970B6D /* Networker in Frameworks */,
-				597B157B271BBE6B009332D5 /* NVActivityIndicatorViewExtended in Frameworks */,
 				597B1566271BA0E9009332D5 /* Alamofire in Frameworks */,
-				597B1579271BBE6B009332D5 /* NVActivityIndicatorView in Frameworks */,
 				5973F5DE271E8BC200E10A33 /* AlamofireImage in Frameworks */,
 				592C05832723B6B400970B6D /* Common in Frameworks */,
 			);
@@ -146,19 +146,19 @@
 				592C057B2723AE9C00970B6D /* DI */,
 				597B1561271B9650009332D5 /* Data */,
 				597B1563271B9650009332D5 /* UI */,
-				597B1556271B95E7009332D5 /* Resouses */,
+				597B1556271B95E7009332D5 /* Resources */,
 			);
 			path = iOSTemplate;
 			sourceTree = "<group>";
 		};
-		597B1556271B95E7009332D5 /* Resouses */ = {
+		597B1556271B95E7009332D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				597B1557271B95E7009332D5 /* Assets.xcassets */,
 				597B1598271BCEB1009332D5 /* Localizable.strings */,
 				597B1558271B95E7009332D5 /* LaunchScreen.storyboard */,
 			);
-			path = Resouses;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		597B1561271B9650009332D5 /* Data */ = {
@@ -222,12 +222,12 @@
 			packageProductDependencies = (
 				597B1565271BA0E9009332D5 /* Alamofire */,
 				597B1575271BBE47009332D5 /* Loaf */,
-				597B1578271BBE6B009332D5 /* NVActivityIndicatorView */,
-				597B157A271BBE6B009332D5 /* NVActivityIndicatorViewExtended */,
 				5973F5D4271E5AC900E10A33 /* Swinject */,
 				5973F5DD271E8BC200E10A33 /* AlamofireImage */,
 				592C05822723B6B400970B6D /* Common */,
 				592C05862723BB1700970B6D /* Networker */,
+				59764CB7272CD5F2000606B4 /* NVActivityIndicatorView */,
+				59764CB9272CD5F2000606B4 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = iOSTemplate;
 			productReference = 597B153F271B958B009332D5 /* iOSTemplate.app */;
@@ -260,9 +260,9 @@
 			packageReferences = (
 				597B1564271BA0E9009332D5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				597B1574271BBE47009332D5 /* XCRemoteSwiftPackageReference "Loaf" */,
-				597B1577271BBE6B009332D5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				5973F5D3271E5AC900E10A33 /* XCRemoteSwiftPackageReference "Swinject" */,
 				5973F5DC271E8BC200E10A33 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				59764CB6272CD5F2000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 597B1540271B958B009332D5 /* Products */;
 			projectDirPath = "";
@@ -537,6 +537,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		59764CB6272CD5F2000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		597B1564271BA0E9009332D5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -551,14 +559,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.7.0;
-			};
-		};
-		597B1577271BBE6B009332D5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -582,6 +582,16 @@
 			package = 5973F5DC271E8BC200E10A33 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
 		};
+		59764CB7272CD5F2000606B4 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59764CB6272CD5F2000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		59764CB9272CD5F2000606B4 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59764CB6272CD5F2000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
 		597B1565271BA0E9009332D5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 597B1564271BA0E9009332D5 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -591,16 +601,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 597B1574271BBE47009332D5 /* XCRemoteSwiftPackageReference "Loaf" */;
 			productName = Loaf;
-		};
-		597B1578271BBE6B009332D5 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 597B1577271BBE6B009332D5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		597B157A271BBE6B009332D5 /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 597B1577271BBE6B009332D5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

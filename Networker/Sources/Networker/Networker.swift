@@ -10,8 +10,6 @@ import Alamofire
 import Combine
 import Common
 
-public let NetworkHostDIKey = "NetworkHostDIKey"
-
 public enum NetworkError: Error {
 
     case invalidURL
@@ -82,11 +80,12 @@ public extension NetworkerProtocol {
 
 }
 
-extension Networker: DependencyRegistrarProtocol {
+extension Networker {
 
-    public static func registerInstance(in container: DIContainer) {
+    public static func registerInstance(host: String,
+                                        in container: DIContainer)
+    {
         container.register(NetworkerProtocol.self) { resolver in
-            let host = resolver.resolve(String.self, name: NetworkHostDIKey)!
             return Networker(host: host)
         }
     }
