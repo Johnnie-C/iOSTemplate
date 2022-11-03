@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Common
 import NVActivityIndicatorView
 
 struct LoadingView: UIViewRepresentable {
@@ -13,10 +14,12 @@ struct LoadingView: UIViewRepresentable {
     typealias UIViewType = UIView
 
     func makeUIView(context: Context) -> UIView {
-        let loadingView = NVActivityIndicatorView(frame: .zero,
-                                              type: .ballPulseSync,
-                                              color: .primaryColor,
-                                              padding: 0)
+        let loadingView = NVActivityIndicatorView(
+            frame: .zero,
+            type: .ballPulseSync,
+            color: Colors.primaryColor.uiColor(),
+            padding: 0
+        )
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 5
         loadingView.padding = 20

@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Common
 
 struct ListView<VM: ListViewModel>: View {
+    
+    @State var a: Bool = false
 
     let viewModel: VM
 
@@ -18,7 +21,12 @@ struct ListView<VM: ListViewModel>: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Hello, world!")
+                AttributedTextView(
+                    attributedText: NSAttributedString(string: "qwe {?:here is the message} qwe"),
+                    tooltipTappedAction: { message in
+                        
+                    }
+                )
             }
             .navigationTitle("Navigation")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -27,10 +35,4 @@ struct ListView<VM: ListViewModel>: View {
         }
     }
 
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView(viewModel: ListViewModel())
-    }
 }

@@ -16,11 +16,11 @@ public class DIContainer {
     private let container = Container()
 
     @discardableResult
-    public func register<Service>(_ serviceType: Service.Type,
-                                  name: String? = nil,
-                                  factory: @escaping (Resolver) -> Service)
-        -> DIServiceEntry
-    {
+    public func register<Service>(
+        _ serviceType: Service.Type,
+        name: String? = nil,
+        factory: @escaping (Resolver) -> Service
+    )-> DIServiceEntry {
         return container.register(serviceType,
                                   name: name,
                                   factory: factory)

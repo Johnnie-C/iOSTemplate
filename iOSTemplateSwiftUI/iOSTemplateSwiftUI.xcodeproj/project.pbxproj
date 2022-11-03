@@ -29,6 +29,9 @@
 		59764CDB272F8CFA000606B4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CD8272F8CFA000606B4 /* LoadingView.swift */; };
 		59764CDF272F94C3000606B4 /* OnLoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDD272F9474000606B4 /* OnLoadingModifier.swift */; };
 		59764CE0272F94C7000606B4 /* OnErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDE272F9474000606B4 /* OnErrorModifier.swift */; };
+		9328A251290A7A0800FD9A0D /* CommonTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; };
+		9328A253290A7A0800FD9A0D /* CommonTestSupport in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		93BADD7129068AB0008B1923 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BADD7029068AB0008B1923 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,20 @@
 			remoteInfo = iOSTemplateSwiftUI;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9328A252290A7A0800FD9A0D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9328A253290A7A0800FD9A0D /* CommonTestSupport in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		592C05322723A62900970B6D /* iOSTemplateSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTemplateSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +85,7 @@
 		59764CD8272F8CFA000606B4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		59764CDD272F9474000606B4 /* OnLoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLoadingModifier.swift; sourceTree = "<group>"; };
 		59764CDE272F9474000606B4 /* OnErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnErrorModifier.swift; sourceTree = "<group>"; };
+		93BADD7029068AB0008B1923 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9328A251290A7A0800FD9A0D /* CommonTestSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +149,6 @@
 			children = (
 				592C05352723A62900970B6D /* iOSTemplateSwiftUIApp.swift */,
 				59764C91272CC68C000606B4 /* DI */,
-				59764C90272CC66E000606B4 /* Data */,
 				59764C8E272CC662000606B4 /* UI */,
 				59764C92272CC6BA000606B4 /* Resources */,
 			);
@@ -181,13 +199,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		59764C90272CC66E000606B4 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		59764C91272CC68C000606B4 /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +210,9 @@
 		59764C92272CC6BA000606B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				592C05392723A62C00970B6D /* Assets.xcassets */,
 				592C053B2723A62C00970B6D /* Preview Content */,
+				592C05392723A62C00970B6D /* Assets.xcassets */,
+				93BADD7029068AB0008B1923 /* Colors.xcassets */,
 				59764CC6272CE508000606B4 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -285,6 +297,7 @@
 				592C053E2723A62D00970B6D /* Sources */,
 				592C053F2723A62D00970B6D /* Frameworks */,
 				592C05402723A62D00970B6D /* Resources */,
+				9328A252290A7A0800FD9A0D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,6 +305,9 @@
 				592C05442723A62D00970B6D /* PBXTargetDependency */,
 			);
 			name = iOSTemplateSwiftUITests;
+			packageProductDependencies = (
+				9328A250290A7A0800FD9A0D /* CommonTestSupport */,
+			);
 			productName = iOSTemplateSwiftUITests;
 			productReference = 592C05422723A62D00970B6D /* iOSTemplateSwiftUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -370,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				592C053D2723A62C00970B6D /* Preview Assets.xcassets in Resources */,
+				93BADD7129068AB0008B1923 /* Colors.xcassets in Resources */,
 				59764CC7272CE508000606B4 /* Localizable.strings in Resources */,
 				592C053A2723A62C00970B6D /* Assets.xcassets in Resources */,
 			);
@@ -834,6 +851,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59764CC8272CEE5C000606B4 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		9328A250290A7A0800FD9A0D /* CommonTestSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CommonTestSupport;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -5,23 +5,38 @@ import PackageDescription
 
 let package = Package(
     name: "Common",
+    platforms: [.iOS("14.0")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(name: "Common", targets: ["Common"]),
+        .library(
+            name: "Common",
+            type: .dynamic,
+            targets: ["Common"]
+        ),
+        .library(
+            name: "CommonTestSupport",
+            type: .dynamic,
+            targets: ["CommonTestSupport"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/Swinject/Swinject.git", "2.8.1"..<"3.0.0"),
+        .package(name: "Swinject", url: "https://github.com/Swinject/Swinject.git", "2.8.1"..<"3.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Common",
-            dependencies: []),
+            dependencies: [
+                "Swinject"
+            ]
+        ),
+        .target(name: "CommonTestSupport"),
         .testTarget(
             name: "CommonTests",
-            dependencies: ["Common"]),
+            dependencies: ["Common"]
+        ),
     ]
 )

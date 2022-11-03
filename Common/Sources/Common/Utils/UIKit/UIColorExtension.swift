@@ -6,60 +6,6 @@
 
 import UIKit
 
-public extension UIColor {
-
-    static var primaryColor: UIColor {
-        let defaultColor = #colorLiteral(red: 0.9529411765, green: 0.7450980392, blue: 0.2784313725, alpha: 1)
-        if #available(iOS 11.0, *) {
-            return UIColor(named: "AccentColor") ?? defaultColor
-        } else {
-            return defaultColor
-        }
-    }
-
-    static var secondaryColor: UIColor { .black }
-    
-    static var titleColor: UIColor {
-        let defaultColor = #colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1)
-        if #available(iOS 11.0, *) {
-            return UIColor(named: "titleColor") ?? defaultColor
-        } else {
-            return defaultColor
-        }
-    }
-
-    static var subtitleColor: UIColor {
-        let defaultColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
-        if #available(iOS 11.0, *) {
-            return UIColor(named: "subtitleColor") ?? defaultColor
-        } else {
-            return defaultColor
-        }
-    }
-
-    static var contentColor: UIColor {
-        let defaultColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        if #available(iOS 11.0, *) {
-            return UIColor(named: "contentColor") ?? defaultColor
-        } else {
-            return defaultColor
-        }
-    }
-    
-    static var navigationBarBackgroundColor: UIColor { .primaryColor }
-    static var navigationBarTintColor: UIColor { .secondaryColor }
-
-    static var tabBarTintColor: UIColor {
-        let defaultColor = UIColor.white
-        if #available(iOS 11.0, *) {
-            return UIColor(named: "tabBarTintColor") ?? defaultColor
-        } else {
-            return defaultColor
-        }
-    }
-    
-}
-
 extension UIColor {
 
     var hexString: String {

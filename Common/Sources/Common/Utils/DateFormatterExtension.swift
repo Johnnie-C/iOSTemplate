@@ -16,14 +16,14 @@ public extension DateFormatter {
         return formatter
     }
 
-    static var monthYearOnly: DateFormatter {
+    static var MMMyyyySpaced: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
 
         return formatter
     }
 
-    static var short: DateFormatter {
+    static var yyyyMMddDashed: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
 
