@@ -10,12 +10,12 @@ import SwiftUI
 public extension Text {
     
     init(_ text: String,
-         font: Font, // TODO:
+         fontStyle: FontStyle, // TODO:
          color: Colors = .primaryLabel,
          opacity: Double = 1,
          staticSize: Bool = false
     ) {
-        self.init(text, font: font, color: color.dynamicColor(opacity))
+        self.init(text, font: fontStyle.dynamicFont, color: color.dynamicColor(opacity))
     }
     
     init(_ text: String,

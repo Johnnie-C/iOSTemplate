@@ -8,6 +8,6 @@
 import UIKit
 
 public enum Kerning: CGFloat {
-    case exoanded = 1.5
+    case expanded = 1.5
     case half = 0.5
 }

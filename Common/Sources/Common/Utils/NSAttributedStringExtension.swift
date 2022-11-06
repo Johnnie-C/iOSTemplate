@@ -36,6 +36,17 @@ public extension NSAttributedString {
         return self.mutableCopy() as! NSMutableAttributedString
     }
     
+    func font(_ fontStyle: FontStyle) -> NSAttributedString {
+        let attributedStr = mutable()
+        
+        attributedStr.addAttributes(
+            [.font: fontStyle.font],
+            range: NSRange(location: 0, length: attributedStr.length)
+        )
+        
+        return attributedStr
+    }
+    
     func font(_ font: UIFont) -> NSAttributedString {
         let attributedStr = mutable()
         
@@ -45,6 +56,10 @@ public extension NSAttributedString {
         )
         
         return attributedStr
+    }
+    
+    func color(_ color: Colors) -> NSAttributedString {
+        self.color(color.dynamicColor())
     }
     
     func color(_ color: Color) -> NSAttributedString {

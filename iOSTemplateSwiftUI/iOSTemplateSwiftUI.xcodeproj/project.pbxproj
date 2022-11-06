@@ -31,6 +31,20 @@
 		59764CE0272F94C7000606B4 /* OnErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDE272F9474000606B4 /* OnErrorModifier.swift */; };
 		9328A251290A7A0800FD9A0D /* CommonTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; };
 		9328A253290A7A0800FD9A0D /* CommonTestSupport in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		939770B0291616C900C04A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939770AF291616C900C04A1D /* AppDelegate.swift */; };
+		939770BF2916676D00C04A1D /* Stag Sans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B9291657CB00C04A1D /* Stag Sans-Book.otf */; };
+		939770C02916676D00C04A1D /* Stag Sans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B6291657CB00C04A1D /* Stag Sans-Medium.otf */; };
+		939770C12916676D00C04A1D /* Stag Sans-Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */; };
+		939770C22916676D00C04A1D /* Stag Sans-Semibold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B4291657CB00C04A1D /* Stag Sans-Semibold Italic.otf */; };
+		939770C42916676D00C04A1D /* Stag Sans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BD291657CB00C04A1D /* Stag Sans-Light.otf */; };
+		939770C52916676D00C04A1D /* Stag Sans-Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B2291657CB00C04A1D /* Stag Sans-Medium Italic.otf */; };
+		939770C62916676D00C04A1D /* Stag Sans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B5291657CB00C04A1D /* Stag Sans-Thin.otf */; };
+		939770C72916676D00C04A1D /* Stag Sans-Book Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B8291657CB00C04A1D /* Stag Sans-Book Italic.otf */; };
+		939770C82916676D00C04A1D /* Stag Sans-Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BC291657CB00C04A1D /* Stag Sans-Bold Italic.otf */; };
+		939770C92916676D00C04A1D /* Stag Sans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BA291657CB00C04A1D /* Stag Sans-Black.otf */; };
+		939770CA2916676D00C04A1D /* Stag Sans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BB291657CB00C04A1D /* Stag Sans-Semibold.otf */; };
+		939770CB2916676D00C04A1D /* Stag Sans-Thin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B3291657CB00C04A1D /* Stag Sans-Thin Italic.otf */; };
+		939770CC2916676D00C04A1D /* Stag Sans-Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B7291657CB00C04A1D /* Stag Sans-Black Italic.otf */; };
 		93BADD7129068AB0008B1923 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BADD7029068AB0008B1923 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +99,21 @@
 		59764CD8272F8CFA000606B4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		59764CDD272F9474000606B4 /* OnLoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLoadingModifier.swift; sourceTree = "<group>"; };
 		59764CDE272F9474000606B4 /* OnErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnErrorModifier.swift; sourceTree = "<group>"; };
+		939770AF291616C900C04A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light Italic.otf"; sourceTree = "<group>"; };
+		939770B2291657CB00C04A1D /* Stag Sans-Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Medium Italic.otf"; sourceTree = "<group>"; };
+		939770B3291657CB00C04A1D /* Stag Sans-Thin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Thin Italic.otf"; sourceTree = "<group>"; };
+		939770B4291657CB00C04A1D /* Stag Sans-Semibold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Semibold Italic.otf"; sourceTree = "<group>"; };
+		939770B5291657CB00C04A1D /* Stag Sans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Thin.otf"; sourceTree = "<group>"; };
+		939770B6291657CB00C04A1D /* Stag Sans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Medium.otf"; sourceTree = "<group>"; };
+		939770B7291657CB00C04A1D /* Stag Sans-Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Black Italic.otf"; sourceTree = "<group>"; };
+		939770B8291657CB00C04A1D /* Stag Sans-Book Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Book Italic.otf"; sourceTree = "<group>"; };
+		939770B9291657CB00C04A1D /* Stag Sans-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Book.otf"; sourceTree = "<group>"; };
+		939770BA291657CB00C04A1D /* Stag Sans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Black.otf"; sourceTree = "<group>"; };
+		939770BB291657CB00C04A1D /* Stag Sans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Semibold.otf"; sourceTree = "<group>"; };
+		939770BC291657CB00C04A1D /* Stag Sans-Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Bold Italic.otf"; sourceTree = "<group>"; };
+		939770BD291657CB00C04A1D /* Stag Sans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light.otf"; sourceTree = "<group>"; };
+		939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Bold.otf"; sourceTree = "<group>"; };
 		93BADD7029068AB0008B1923 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				592C05352723A62900970B6D /* iOSTemplateSwiftUIApp.swift */,
+				939770AF291616C900C04A1D /* AppDelegate.swift */,
 				59764C91272CC68C000606B4 /* DI */,
 				59764C8E272CC662000606B4 /* UI */,
 				59764C92272CC6BA000606B4 /* Resources */,
@@ -211,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				592C053B2723A62C00970B6D /* Preview Content */,
+				939770AC291614E500C04A1D /* Fonts */,
 				592C05392723A62C00970B6D /* Assets.xcassets */,
 				93BADD7029068AB0008B1923 /* Colors.xcassets */,
 				59764CC6272CE508000606B4 /* Localizable.strings */,
@@ -258,6 +289,27 @@
 				59764CDE272F9474000606B4 /* OnErrorModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		939770AC291614E500C04A1D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				939770B7291657CB00C04A1D /* Stag Sans-Black Italic.otf */,
+				939770BA291657CB00C04A1D /* Stag Sans-Black.otf */,
+				939770BC291657CB00C04A1D /* Stag Sans-Bold Italic.otf */,
+				939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */,
+				939770B8291657CB00C04A1D /* Stag Sans-Book Italic.otf */,
+				939770B9291657CB00C04A1D /* Stag Sans-Book.otf */,
+				939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */,
+				939770BD291657CB00C04A1D /* Stag Sans-Light.otf */,
+				939770B2291657CB00C04A1D /* Stag Sans-Medium Italic.otf */,
+				939770B6291657CB00C04A1D /* Stag Sans-Medium.otf */,
+				939770B4291657CB00C04A1D /* Stag Sans-Semibold Italic.otf */,
+				939770BB291657CB00C04A1D /* Stag Sans-Semibold.otf */,
+				939770B3291657CB00C04A1D /* Stag Sans-Thin Italic.otf */,
+				939770B5291657CB00C04A1D /* Stag Sans-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,10 +437,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939770C12916676D00C04A1D /* Stag Sans-Light Italic.otf in Resources */,
+				939770CC2916676D00C04A1D /* Stag Sans-Black Italic.otf in Resources */,
+				939770BF2916676D00C04A1D /* Stag Sans-Book.otf in Resources */,
+				939770C22916676D00C04A1D /* Stag Sans-Semibold Italic.otf in Resources */,
+				939770C72916676D00C04A1D /* Stag Sans-Book Italic.otf in Resources */,
+				939770C02916676D00C04A1D /* Stag Sans-Medium.otf in Resources */,
+				939770C52916676D00C04A1D /* Stag Sans-Medium Italic.otf in Resources */,
+				939770C92916676D00C04A1D /* Stag Sans-Black.otf in Resources */,
 				592C053D2723A62C00970B6D /* Preview Assets.xcassets in Resources */,
 				93BADD7129068AB0008B1923 /* Colors.xcassets in Resources */,
+				939770C82916676D00C04A1D /* Stag Sans-Bold Italic.otf in Resources */,
 				59764CC7272CE508000606B4 /* Localizable.strings in Resources */,
 				592C053A2723A62C00970B6D /* Assets.xcassets in Resources */,
+				939770C62916676D00C04A1D /* Stag Sans-Thin.otf in Resources */,
+				939770CB2916676D00C04A1D /* Stag Sans-Thin Italic.otf in Resources */,
+				939770CA2916676D00C04A1D /* Stag Sans-Semibold.otf in Resources */,
+				939770C42916676D00C04A1D /* Stag Sans-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +481,7 @@
 				59764CA9272CCDD6000606B4 /* ListView.swift in Sources */,
 				59764CAD272CCE23000606B4 /* BaseViewModel.swift in Sources */,
 				59764CDB272F8CFA000606B4 /* LoadingView.swift in Sources */,
+				939770B0291616C900C04A1D /* AppDelegate.swift in Sources */,
 				59764C94272CC6DC000606B4 /* DIConfig.swift in Sources */,
 				59764CAB272CCDE1000606B4 /* ListViewModel.swift in Sources */,
 				592C05362723A62900970B6D /* iOSTemplateSwiftUIApp.swift in Sources */,

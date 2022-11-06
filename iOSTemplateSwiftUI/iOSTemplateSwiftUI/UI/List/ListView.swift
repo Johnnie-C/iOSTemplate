@@ -9,8 +9,6 @@ import SwiftUI
 import Common
 
 struct ListView<VM: ListViewModel>: View {
-    
-    @State var a: Bool = false
 
     let viewModel: VM
 
@@ -21,8 +19,13 @@ struct ListView<VM: ListViewModel>: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("test").font(FontStyle.body.dynamicFont)
+                Text("test bold").font(Font(UIFont.preferredFont(forTextStyle: .title1)).bold())
+                Text("test book bold")
+//                    .font(FontStyle.title1.dynamicFont.bold())
+                    .font(.custom("StagSans-Book", size: 40).italic())
                 AttributedTextView(
-                    attributedText: NSAttributedString(string: "qwe {?:here is the message} qwe"),
+                    attributedText: "qwe {?:here is the message} qwe".attributed(),
                     tooltipTappedAction: { message in
                         
                     }

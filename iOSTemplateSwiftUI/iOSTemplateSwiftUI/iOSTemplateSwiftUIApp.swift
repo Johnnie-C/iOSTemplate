@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct iOSTemplateSwiftUIApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ListView(viewModel: ListViewModel())
