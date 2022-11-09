@@ -24,7 +24,7 @@ public extension Font {
 
 public enum FontStyle {
     
-    fileprivate static var customMaxSizeEnabled = true
+    fileprivate static var limitedMaxSizeEnabled = true
     fileprivate static var fontProvider: FontProvider = DefaultFontProvider()
     
     // default font style:
@@ -155,8 +155,8 @@ public extension FontStyle {
         FontStyle.fontProvider = provider
     }
     
-    static func enableMaxCustomSize(enabled: Bool) {
-        FontStyle.customMaxSizeEnabled = enabled
+    static func limitMaxSize(enabled: Bool) {
+        FontStyle.limitedMaxSizeEnabled = enabled
     }
     
 }
@@ -170,7 +170,7 @@ extension FontStyle {
             maxSize
         )
         
-        return font.withSize(FontStyle.customMaxSizeEnabled ? sizeScaled : systemSize)
+        return font.withSize(FontStyle.limitedMaxSizeEnabled ? sizeScaled : systemSize)
     }
 
     public var staticUIFont: UIFont { font.withSize(size) }
