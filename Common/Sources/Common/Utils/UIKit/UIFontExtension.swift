@@ -20,19 +20,19 @@ public extension UIFont {
             .forEach { CTFontManagerRegisterGraphicsFont($0, nil) }
     }
     
-    static func italicSystemFont(
-        size: CGFloat,
-        weight: UIFont.Weight = .regular
-    )-> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: weight)
-        switch weight {
-        case .ultraLight, .light, .thin, .regular:
-            return font.withTraits(.traitItalic, ofSize: size)
-        case .medium, .semibold, .bold, .heavy, .black:
-            return font.withTraits(.traitBold, .traitItalic, ofSize: size)
-        default:
-            return UIFont.italicSystemFont(ofSize: size)
+    func italic(_ isItalic: Bool = true) -> UIFont {
+        if isItalic {
+            return withTraits(.traitItalic, ofSize: pointSize)
+        } else {
+            return withoutTraits(.traitItalic)
         }
+    }
+    
+    func weight(_ weight: UIFont.Weight) -> UIFont {
+        let newDescriptor = fontDescriptor.addingAttributes(
+            [ .traits: [UIFontDescriptor.TraitKey.weight: weight] ]
+        )
+        return UIFont(descriptor: newDescriptor, size: pointSize)
     }
     
     func withTraits(

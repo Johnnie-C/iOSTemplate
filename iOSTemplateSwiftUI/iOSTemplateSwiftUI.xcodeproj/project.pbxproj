@@ -31,6 +31,8 @@
 		59764CE0272F94C7000606B4 /* OnErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDE272F9474000606B4 /* OnErrorModifier.swift */; };
 		9328A251290A7A0800FD9A0D /* CommonTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; };
 		9328A253290A7A0800FD9A0D /* CommonTestSupport in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */; };
+		937E6A13291BABB400B526F2 /* Stag Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */; };
 		939770B0291616C900C04A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939770AF291616C900C04A1D /* AppDelegate.swift */; };
 		939770BF2916676D00C04A1D /* Stag Sans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B9291657CB00C04A1D /* Stag Sans-Book.otf */; };
 		939770C02916676D00C04A1D /* Stag Sans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B6291657CB00C04A1D /* Stag Sans-Medium.otf */; };
@@ -99,6 +101,7 @@
 		59764CD8272F8CFA000606B4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		59764CDD272F9474000606B4 /* OnLoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLoadingModifier.swift; sourceTree = "<group>"; };
 		59764CDE272F9474000606B4 /* OnErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnErrorModifier.swift; sourceTree = "<group>"; };
+		937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontProvider.swift; sourceTree = "<group>"; };
 		939770AF291616C900C04A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light Italic.otf"; sourceTree = "<group>"; };
 		939770B2291657CB00C04A1D /* Stag Sans-Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Medium Italic.otf"; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 			children = (
 				592C05352723A62900970B6D /* iOSTemplateSwiftUIApp.swift */,
 				939770AF291616C900C04A1D /* AppDelegate.swift */,
+				937E6A10291BAB4400B526F2 /* Config */,
 				59764C91272CC68C000606B4 /* DI */,
 				59764C8E272CC662000606B4 /* UI */,
 				59764C92272CC6BA000606B4 /* Resources */,
@@ -289,6 +293,14 @@
 				59764CDE272F9474000606B4 /* OnErrorModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		937E6A10291BAB4400B526F2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		939770AC291614E500C04A1D /* Fonts */ = {
@@ -454,6 +466,7 @@
 				939770CB2916676D00C04A1D /* Stag Sans-Thin Italic.otf in Resources */,
 				939770CA2916676D00C04A1D /* Stag Sans-Semibold.otf in Resources */,
 				939770C42916676D00C04A1D /* Stag Sans-Light.otf in Resources */,
+				937E6A13291BABB400B526F2 /* Stag Sans-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +495,7 @@
 				59764CAD272CCE23000606B4 /* BaseViewModel.swift in Sources */,
 				59764CDB272F8CFA000606B4 /* LoadingView.swift in Sources */,
 				939770B0291616C900C04A1D /* AppDelegate.swift in Sources */,
+				937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */,
 				59764C94272CC6DC000606B4 /* DIConfig.swift in Sources */,
 				59764CAB272CCDE1000606B4 /* ListViewModel.swift in Sources */,
 				592C05362723A62900970B6D /* iOSTemplateSwiftUIApp.swift in Sources */,
