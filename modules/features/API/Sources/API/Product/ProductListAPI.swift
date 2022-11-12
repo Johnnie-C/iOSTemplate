@@ -8,12 +8,13 @@
 import Foundation
 import Networker
 import Common
+import Alamofire
 
-protocol ProductListAPI {
-    func productList() async throws -> [ProductDTO]
+public protocol ProductListAPI {
+    func productList() async throws -> ProductListDTO
 }
 
-class DefaultProductListAPI: ProductListAPI {
+public class DefaultProductListAPI: ProductListAPI {
     
     enum EndPoint: String {
         case productList = "product"
@@ -21,14 +22,17 @@ class DefaultProductListAPI: ProductListAPI {
     
     private let networker: NetworkerProtocol
     
-    init(
+    public init(
         networker: NetworkerProtocol = DIContainer.default.resolve(type: NetworkerProtocol.self)
     ) {
         self.networker = networker
     }
     
-    func productList() async throws -> [ProductDTO] {
-        try await networker.performRequest(forEndpoint: EndPoint.productList.rawValue)
+    public func productList() async throws -> ProductListDTO {
+        try await networker.performRequest(
+            forEndpoint: EndPoint.productList.rawValue,
+            decoder: .dateFormattedDecoder(.fullWithSSS)
+        )
     }
 
 }

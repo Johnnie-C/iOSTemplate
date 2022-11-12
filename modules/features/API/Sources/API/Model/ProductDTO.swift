@@ -7,6 +7,11 @@
 
 import Foundation
 
-struct ProductDTO: Decodable {
+public struct ProductDTO: Decodable {
+    
+    let id: String
+    let createdAt: Date
+    let name: String
+    let avatar: String?
 
 }

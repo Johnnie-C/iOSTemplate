@@ -42,7 +42,6 @@ extension DataResponsePublisher {
                     else {
                         promise(.failure(DataResponsePublisherError.unknown))
                     }
-
             })
         }
     }

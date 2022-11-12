@@ -10,20 +10,24 @@ import Common
 
 class AppFontProvider: FontProvider {
     
-    let black = UIFont(name: "StagSans-Black", size: 1)!
-    let blackItalic = UIFont(name: "StagSans-BlackItalic", size: 1)!
-    let bold = UIFont(name: "StagSans-Bold", size: 1)!
-    let boldItalic = UIFont(name: "StagSans-BoldItalic", size: 1)!
-    let semibold = UIFont(name: "StagSans-Semibold", size: 1)!
-    let semiboldItalic = UIFont(name: "StagSans-SemiboldItalic", size: 1)!
-    let medium = UIFont(name: "StagSans-Medium", size: 1)!
-    let mediumItalic = UIFont(name: "StagSans-MediumItalic", size: 1)!
-    let book = UIFont(name: "StagSans-Book", size: 1)!
-    let bookItalic = UIFont(name: "StagSans-BookItalic", size: 1)!
-    let light = UIFont(name: "StagSans-Light", size: 1)!
-    let lightItalic = UIFont(name: "StagSans-LightItalic", size: 1)!
-    let thin = UIFont(name: "StagSans-Thin", size: 1)!
-    let thinItalic = UIFont(name: "StagSans-ThinItalic", size: 1)!
+    lazy var black = UIFont(name: "StagSans-Black", size: 1)!
+    lazy var blackItalic = UIFont(name: "StagSans-BlackItalic", size: 1)!
+    lazy var bold = UIFont(name: "StagSans-Bold", size: 1)!
+    lazy var boldItalic = UIFont(name: "StagSans-BoldItalic", size: 1)!
+    lazy var semibold = UIFont(name: "StagSans-Semibold", size: 1)!
+    lazy var semiboldItalic = UIFont(name: "StagSans-SemiboldItalic", size: 1)!
+    lazy var medium = UIFont(name: "StagSans-Medium", size: 1)!
+    lazy var mediumItalic = UIFont(name: "StagSans-MediumItalic", size: 1)!
+    lazy var book = UIFont(name: "StagSans-Book", size: 1)!
+    lazy var bookItalic = UIFont(name: "StagSans-BookItalic", size: 1)!
+    lazy var light = UIFont(name: "StagSans-Light", size: 1)!
+    lazy var lightItalic = UIFont(name: "StagSans-LightItalic", size: 1)!
+    lazy var thin = UIFont(name: "StagSans-Thin", size: 1)!
+    lazy var thinItalic = UIFont(name: "StagSans-ThinItalic", size: 1)!
+    
+    init() {
+        UIFont.registerFont()
+    }
     
     func font(forStyle style: FontStyle) -> UIFont {
         switch style.weight {

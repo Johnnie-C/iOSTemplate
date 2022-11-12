@@ -151,7 +151,6 @@ public enum FontStyle {
 public extension FontStyle {
     
     static func setFontProvider(_ provider: FontProvider) {
-        UIFont.registerFont()
         FontStyle.fontProvider = provider
     }
     
