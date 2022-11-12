@@ -14,9 +14,10 @@ private struct OnLoadingModifier: ViewModifier {
     private var isLoadingPublisher: Published<Bool>.Publisher
     private var onLoading: ((Bool) -> Void)?
 
-    init(isLoading: Published<Bool>.Publisher,
-         onLoading: ((Bool) -> Void)? = nil)
-    {
+    init(
+        isLoading: Published<Bool>.Publisher,
+        onLoading: ((Bool) -> Void)? = nil
+    ) {
         self.isLoadingPublisher = isLoading
         self.onLoading = onLoading
     }
@@ -44,15 +45,16 @@ private struct OnLoadingModifier: ViewModifier {
 
 extension View {
 
-    func withLoadingHandler(isLoading: Published<Bool>.Publisher,
-                            onLoading: ((Bool) -> Void)? = nil)
-        -> some View
-    {
+    func withLoadingHandler(
+        isLoading: Published<Bool>.Publisher,
+        onLoading: ((Bool) -> Void)? = nil
+    ) -> some View {
         modifier(
-            OnLoadingModifier(isLoading: isLoading,
-                              onLoading: onLoading)
+            OnLoadingModifier(
+                isLoading: isLoading,
+                onLoading: onLoading
+            )
         )
     }
 
 }
-

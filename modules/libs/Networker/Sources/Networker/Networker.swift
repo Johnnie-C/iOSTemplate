@@ -19,7 +19,7 @@ public enum NetworkError: Error {
 public protocol NetworkerProtocol {
 
     func performRequest<Response: Decodable>(
-        for endpoint: String,
+        forEndpoint endpoint: String,
         method: HTTPMethod,
         parameters: [String: Any]?,
         headers: HTTPHeaders?,
@@ -27,7 +27,7 @@ public protocol NetworkerProtocol {
     ) -> Future<Response?, Error>
     
     func performRequest<Response: Decodable>(
-        for endpoint: String,
+        forEndpoint endpoint: String,
         method: HTTPMethod,
         parameters: [String: Any]?,
         headers: HTTPHeaders?,
@@ -42,17 +42,18 @@ public class Networker: NetworkerProtocol {
     private let session: Session
     private let host: String
 
-    init(
+    public init(
         host: String,
-        configuration: URLSessionConfiguration = .default
+        configuration: URLSessionConfiguration = .default,
+        cachePolicy: NSURLRequest.CachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     ) {
         self.host = host
-        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        configuration.requestCachePolicy = cachePolicy
         session = Session(configuration: configuration)
     }
 
     public func performRequest<Response: Decodable>(
-        for endpoint: String,
+        forEndpoint endpoint: String,
         method: HTTPMethod,
         parameters: [String: Any]?,
         headers: HTTPHeaders?,
@@ -69,7 +70,7 @@ public class Networker: NetworkerProtocol {
     }
     
     public func performRequest<Response: Decodable>(
-        for endpoint: String,
+        forEndpoint endpoint: String,
         method: HTTPMethod,
         parameters: [String: Any]?,
         headers: HTTPHeaders?,
@@ -99,14 +100,14 @@ public extension NetworkerProtocol {
     /// heck extension to allow using protocol func with default parameter value
     /// this extension will call the actual [performRequest] func in implementation class
     func performRequest<Response: Decodable>(
-        for endpoint: String,
+        forEndpoint endpoint: String,
         method: HTTPMethod = .get,
         parameters: [String: Any]? = nil,
         headers: HTTPHeaders? = nil,
         decodeAs: Response.Type = Response.self
     ) -> Future<Response?, Error> {
         performRequest(
-            for: endpoint,
+            forEndpoint: endpoint,
             method: method,
             parameters: parameters,
             headers: headers,
@@ -115,14 +116,14 @@ public extension NetworkerProtocol {
     }
     
     func performRequest<Response: Decodable>(
-        for endpoint: String,
-        method: HTTPMethod,
-        parameters: [String: Any]?,
-        headers: HTTPHeaders?,
-        decodeAs: Response.Type
+        forEndpoint endpoint: String,
+        method: HTTPMethod = .get,
+        parameters: [String: Any]? = nil,
+        headers: HTTPHeaders? = nil,
+        decodeAs: Response.Type = Response.self
     ) async throws -> Response {
         return try await performRequest(
-            for: endpoint,
+            forEndpoint: endpoint,
             method: method,
             parameters: parameters,
             headers: headers,
@@ -140,6 +141,15 @@ extension Networker {
     ) {
         container.register(NetworkerProtocol.self) { resolver in
             return Networker(host: host)
+        }
+    }
+    
+    public static func registerInstance(
+        networker: Networker,
+        in container: DIContainer
+    ) {
+        container.register(NetworkerProtocol.self) { resolver in
+            return networker
         }
     }
 

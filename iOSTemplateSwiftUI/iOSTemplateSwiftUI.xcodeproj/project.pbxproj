@@ -29,6 +29,8 @@
 		59764CDB272F8CFA000606B4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CD8272F8CFA000606B4 /* LoadingView.swift */; };
 		59764CDF272F94C3000606B4 /* OnLoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDD272F9474000606B4 /* OnLoadingModifier.swift */; };
 		59764CE0272F94C7000606B4 /* OnErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CDE272F9474000606B4 /* OnErrorModifier.swift */; };
+		931B5AA3291F362B00CAA679 /* Product in Frameworks */ = {isa = PBXBuildFile; productRef = 931B5AA2291F362B00CAA679 /* Product */; };
+		931B5AA5291F362B00CAA679 /* Product in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 931B5AA2291F362B00CAA679 /* Product */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9328A251290A7A0800FD9A0D /* CommonTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; };
 		9328A253290A7A0800FD9A0D /* CommonTestSupport in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9328A250290A7A0800FD9A0D /* CommonTestSupport */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */; };
@@ -68,6 +70,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		931B5AA4291F362B00CAA679 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				931B5AA5291F362B00CAA679 /* Product in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9328A252290A7A0800FD9A0D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,8 +105,6 @@
 		592C05502723A62D00970B6D /* iOSTemplateSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTemplateSwiftUIUITests.swift; sourceTree = "<group>"; };
 		592C05522723A62D00970B6D /* iOSTemplateSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTemplateSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		59764C93272CC6DC000606B4 /* DIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIConfig.swift; sourceTree = "<group>"; };
-		59764CA1272CC99C000606B4 /* Common */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Common; path = ../Common; sourceTree = "<group>"; };
-		59764CA2272CC9A4000606B4 /* Networker */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Networker; path = ../Networker; sourceTree = "<group>"; };
 		59764CA8272CCDD6000606B4 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		59764CAA272CCDE1000606B4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		59764CAC272CCE23000606B4 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +112,10 @@
 		59764CD8272F8CFA000606B4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		59764CDD272F9474000606B4 /* OnLoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLoadingModifier.swift; sourceTree = "<group>"; };
 		59764CDE272F9474000606B4 /* OnErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnErrorModifier.swift; sourceTree = "<group>"; };
+		930DBE22291F2B560016BC74 /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Common; path = ../modules/libs/Common; sourceTree = "<group>"; };
+		930DBE23291F2B670016BC74 /* Networker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networker; path = ../modules/libs/Networker; sourceTree = "<group>"; };
+		930DBE24291F2B7C0016BC74 /* API */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = API; path = ../modules/features/API; sourceTree = "<group>"; };
+		931B5AA1291F35C400CAA679 /* Product */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Product; path = ../modules/features/Product; sourceTree = "<group>"; };
 		937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontProvider.swift; sourceTree = "<group>"; };
 		939770AF291616C900C04A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light Italic.otf"; sourceTree = "<group>"; };
@@ -125,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931B5AA3291F362B00CAA679 /* Product in Frameworks */,
 				59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */,
 				59764CA6272CC9D0000606B4 /* Networker in Frameworks */,
 				59764CC0272CD947000606B4 /* NVActivityIndicatorView in Frameworks */,
@@ -256,8 +272,10 @@
 		59764C95272CC71B000606B4 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				59764CA1272CC99C000606B4 /* Common */,
-				59764CA2272CC9A4000606B4 /* Networker */,
+				930DBE22291F2B560016BC74 /* Common */,
+				930DBE23291F2B670016BC74 /* Networker */,
+				930DBE24291F2B7C0016BC74 /* API */,
+				931B5AA1291F35C400CAA679 /* Product */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -334,6 +352,7 @@
 				592C052E2723A62900970B6D /* Sources */,
 				592C052F2723A62900970B6D /* Frameworks */,
 				592C05302723A62900970B6D /* Resources */,
+				931B5AA4291F362B00CAA679 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +368,7 @@
 				59764CBF272CD947000606B4 /* NVActivityIndicatorView */,
 				59764CC1272CD947000606B4 /* NVActivityIndicatorViewExtended */,
 				59764CC9272CEE5C000606B4 /* AlertToast */,
+				931B5AA2291F362B00CAA679 /* Product */,
 			);
 			productName = iOSTemplateSwiftUI;
 			productReference = 592C05322723A62900970B6D /* iOSTemplateSwiftUI.app */;
@@ -931,6 +951,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59764CC8272CEE5C000606B4 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		931B5AA2291F362B00CAA679 /* Product */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Product;
 		};
 		9328A250290A7A0800FD9A0D /* CommonTestSupport */ = {
 			isa = XCSwiftPackageProductDependency;

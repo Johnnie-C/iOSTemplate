@@ -20,18 +20,20 @@ public class DIContainer {
         _ serviceType: Service.Type,
         name: String? = nil,
         factory: @escaping (Resolver) -> Service
-    )-> DIServiceEntry {
-        return container.register(serviceType,
-                                  name: name,
-                                  factory: factory)
+    ) -> DIServiceEntry {
+        return container.register(
+            serviceType,
+            name: name,
+            factory: factory
+        )
     }
 
-    public func resolve<Service>(type: Service.Type) -> Service? {
-        return container.synchronize().resolve(type, name: nil)
+    public func resolve<Service>(type: Service.Type) -> Service {
+        return container.synchronize().resolve(type, name: nil)!
     }
 
-    public func resolve<Service>(type: Service.Type, named: String) -> Service? {
-        return container.synchronize().resolve(type, name: named)
+    public func resolve<Service>(type: Service.Type, named: String) -> Service {
+        return container.synchronize().resolve(type, name: named)!
     }
 
 }

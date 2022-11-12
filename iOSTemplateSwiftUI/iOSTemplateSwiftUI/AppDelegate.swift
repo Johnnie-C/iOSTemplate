@@ -14,6 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
+        DIContainer.default.config()
         FontStyle.setFontProvider(AppFontProvider())
         return true
     }

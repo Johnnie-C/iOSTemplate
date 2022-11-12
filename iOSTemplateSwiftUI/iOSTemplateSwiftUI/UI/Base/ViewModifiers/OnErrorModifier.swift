@@ -24,11 +24,11 @@ private struct OnErrorModifier: ViewModifier {
     }
 
     func body(content: Content) -> some View {
-        content
-            .toast(isPresenting: $hasError,
-                   duration: 2,
-                   tapToDismiss: true)
-        {
+        content.toast(
+            isPresenting: $hasError,
+            duration: 2,
+            tapToDismiss: true
+        ) {
             var title = localizedString(withKey: "alert.generalError.title")
             var message = localizedString(withKey: "alert.generalError.message")
             if let error = error,
@@ -54,10 +54,10 @@ private struct OnErrorModifier: ViewModifier {
 
 extension View {
 
-    func withErrorHandler(error: Published<Error?>.Publisher,
-                          onError: ((Error) -> ErrorMessage)? = nil)
-        -> some View
-    {
+    func withErrorHandler(
+        error: Published<Error?>.Publisher,
+        onError: ((Error) -> ErrorMessage)? = nil
+    ) -> some View {
         modifier(OnErrorModifier(error: error, onError: onError))
     }
 

@@ -29,7 +29,7 @@ struct ListView<VM: ListViewModel>: View {
                     }
                 )
             }
-            .navigationTitle("Navigation")
+            .navigationTitle("List")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .withErrorHandler(error: viewModel.$error)
             .withLoadingHandler(isLoading: viewModel.$isLoading)
