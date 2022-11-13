@@ -8,11 +8,11 @@
 import SwiftUI
 import Common
 
-struct ListView<VM: ListViewModel>: View {
+struct ListView<VM: ListViewModelProtocol>: View {
 
-    let viewModel: VM
+    @ObservedObject var viewModel: VM
 
-    init(viewModel: VM) {
+    init(viewModel: VM = ListViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -31,8 +31,9 @@ struct ListView<VM: ListViewModel>: View {
             }
             .navigationTitle("List")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .withErrorHandler(error: viewModel.$error)
-            .withLoadingHandler(isLoading: viewModel.$isLoading)
+            .alertMessage(alertMessage: $viewModel.alertMessage)
+            .withLoadingHandler(isLoading: $viewModel.isLoading)
+            .onAppear { viewModel.onAppear() }
         }
     }
 

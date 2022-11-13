@@ -160,18 +160,20 @@ public extension Networker {
     
     static func registerInstance(
         host: String,
+        name: String? = nil,
         in container: DIContainer
     ) {
-        container.register(NetworkerProtocol.self) { resolver in
+        container.register(NetworkerProtocol.self, name: name) { resolver in
             return Networker(host: host)
         }
     }
     
     static func registerInstance(
         networker: Networker,
+        name: String? = nil,
         in container: DIContainer
     ) {
-        container.register(NetworkerProtocol.self) { resolver in
+        container.register(NetworkerProtocol.self, name: name) { resolver in
             return networker
         }
     }

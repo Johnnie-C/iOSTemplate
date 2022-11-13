@@ -22,7 +22,7 @@ public func localizedString(
     return str
 }
 
-extension String {
+public extension String {
     
     var localized: String {
         localizedString(withKey: self)

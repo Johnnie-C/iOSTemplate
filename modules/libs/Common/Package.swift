@@ -22,7 +22,21 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(name: "Swinject", url: "https://github.com/Swinject/Swinject.git", "2.8.1"..<"3.0.0"),
+        .package(
+            name: "Swinject",
+            url: "https://github.com/Swinject/Swinject.git",
+            "2.8.1"..<"3.0.0"
+        ),
+        .package(
+            name: "AlertToast",
+            url: "https://github.com/elai950/AlertToast.git",
+            "1.0.0"..<"2.0.0"
+        ),
+        .package(
+            name: "NVActivityIndicatorView",
+            url: "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+            "5.1.1"..<"6.0.0"
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -30,7 +44,9 @@ let package = Package(
         .target(
             name: "Common",
             dependencies: [
-                "Swinject"
+                "Swinject",
+                "AlertToast",
+                "NVActivityIndicatorView"
             ]
         ),
         .target(name: "CommonTestSupport"),

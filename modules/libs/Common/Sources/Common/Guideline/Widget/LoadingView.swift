@@ -5,15 +5,15 @@
 //  Created by Johnnie Cheng on 30/10/21.
 //
 
+import UIKit
 import SwiftUI
-import Common
 import NVActivityIndicatorView
 
-struct LoadingView: UIViewRepresentable {
+public struct LoadingView: UIViewRepresentable {
 
-    typealias UIViewType = UIView
+    public typealias UIViewType = UIView
 
-    func makeUIView(context: Context) -> UIView {
+    public func makeUIView(context: Context) -> UIView {
         let loadingView = NVActivityIndicatorView(
             frame: .zero,
             type: .ballPulseSync,
@@ -32,7 +32,7 @@ struct LoadingView: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_ uiView: UIView, context: Context) {
+    public func updateUIView(_ uiView: UIView, context: Context) {
 
     }
 
