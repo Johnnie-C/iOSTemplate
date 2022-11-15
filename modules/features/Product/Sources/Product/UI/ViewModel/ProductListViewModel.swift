@@ -1,15 +1,14 @@
 //
-//  ListViewModel.swift
-//  iOSTemplateSwiftUI
+//  ProductListViewModel.swift
+//  
 //
-//  Created by Johnnie Cheng on 30/10/21.
+//  Created by Johnnie Cheng on 13/11/22.
 //
 
 import Foundation
 import Common
-import Product
 
-protocol ListViewModelProtocol: ObservableObject {
+protocol ProductListViewModelProtocol: ObservableObject {
     
     var isLoading: Bool { get set }
     var alertMessage: AlertMessage? { get set }
@@ -17,20 +16,27 @@ protocol ListViewModelProtocol: ObservableObject {
 
 }
 
-class ListViewModel: ListViewModelProtocol {
+class ProductListViewModel: ProductListViewModelProtocol {
     
     @Published var isLoading = false
     @Published var alertMessage: AlertMessage? = nil
+    @Published var productList: ProductList?
     
-    init() {
-        
+    private let productProvider: ProductsProvider
+    
+    init(productProvider: ProductsProvider = DefaultProductsProvider()) {
+        self.productProvider = productProvider
     }
     
     func onAppear() {
         Task {
             do {
                 await setLoading(true)
-                try await DefaultProductsProvider().productList()
+                productList = try await productProvider.productList()
+                await setLoading(false)
+            }
+            catch {
+                print(error)
                 await setLoading(false)
                 await setAlertMessage(.init(
                     title: "alert.generalError.title".localized,
@@ -38,10 +44,7 @@ class ListViewModel: ListViewModelProtocol {
                     alertMode: .hud,
                     alertStyle: .error(.red)
                 ))
-            }
-            catch {
-                print(error)
-                await setLoading(false)
+
             }
         }
     }

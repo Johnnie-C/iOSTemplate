@@ -10,12 +10,6 @@ import Alamofire
 import Combine
 import Common
 
-public enum NetworkError: Error {
-    
-    case invalidURL
-    
-}
-
 public protocol NetworkerProtocol {
     
     func performRequest<Response: Decodable>(
@@ -37,7 +31,6 @@ public protocol NetworkerProtocol {
     ) async throws -> Response
     
 }
-
 
 public class Networker: NetworkerProtocol {
     
@@ -117,7 +110,7 @@ public class Networker: NetworkerProtocol {
 public extension NetworkerProtocol {
     
     /// heck extension to allow using protocol func with default parameter value
-    /// this extension will call the actual [performRequest] func in implementation class
+    /// this extension will call the actual [performRequest] func in concrete class
     func performRequest<Response: Decodable>(
         forEndpoint endpoint: String,
         method: NetworkMethod = .get,
@@ -136,6 +129,8 @@ public extension NetworkerProtocol {
         )
     }
     
+    /// heck extension to allow using protocol func with default parameter value
+    /// this extension will call the actual [performRequest] func in concrete class
     func performRequest<Response: Decodable>(
         forEndpoint endpoint: String,
         method: NetworkMethod = .get,
@@ -155,6 +150,7 @@ public extension NetworkerProtocol {
     }
     
 }
+
 
 public extension Networker {
     

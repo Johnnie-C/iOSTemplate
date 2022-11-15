@@ -9,9 +9,9 @@ import Foundation
 
 public struct ProductDTO: Decodable {
     
-    let id: String
-    let createdAt: Date
-    let name: String
-    let avatar: String?
+    public let id: String
+    public let createdAt: Date
+    public let name: String
+    public let avatar: String?
 
 }

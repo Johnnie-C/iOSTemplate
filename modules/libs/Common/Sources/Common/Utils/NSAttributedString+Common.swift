@@ -1,5 +1,5 @@
 //
-//  NSAttributedStringExtension.swift
+//  NSAttributedString+Common.swift
 //  
 //
 //  Created by Johnnie Cheng on 20/10/22.

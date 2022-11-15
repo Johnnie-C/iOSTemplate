@@ -8,7 +8,9 @@
 import API
 
 public protocol ProductsProvider {
-    func productList() async throws -> ProductListDTO
+    
+    func productList() async throws -> ProductList
+    
 }
 
 public class DefaultProductsProvider: ProductsProvider {
@@ -19,9 +21,9 @@ public class DefaultProductsProvider: ProductsProvider {
         self.productListAPI = productListAPI
     }
     
-    public func productList() async throws -> ProductListDTO {
-        let products = try await productListAPI.productList()
-        return products
+    public func productList() async throws -> ProductList {
+        let dto = try await productListAPI.productList()
+        return .from(dto: dto)
     }
 
 }

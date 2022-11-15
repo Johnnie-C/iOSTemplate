@@ -9,7 +9,7 @@ import Foundation
 
 public struct ProductListDTO: Decodable {
     
-    let products: [ProductDTO]?
+    public let products: [ProductDTO]?
 
 }
 

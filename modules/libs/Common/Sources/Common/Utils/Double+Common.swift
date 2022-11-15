@@ -1,5 +1,5 @@
 //
-//  DoubleExtension.swift
+//  Double+Common.swift
 //
 //  Created by Johnnie Cheng on 29/4/21.
 //

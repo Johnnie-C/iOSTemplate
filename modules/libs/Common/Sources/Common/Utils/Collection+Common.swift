@@ -1,5 +1,5 @@
 //
-//  ColletionExtension.swift
+//  Collection+Common.swift
 //
 //  Created by Johnnie Cheng on 30/4/21.
 //
