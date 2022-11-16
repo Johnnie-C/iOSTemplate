@@ -26,7 +26,7 @@ class AppFontProvider: FontProvider {
     lazy var thinItalic = UIFont(name: "StagSans-ThinItalic", size: 1)!
     
     init() {
-        UIFont.registerFont()
+        UIFont.registerCustomFonts()
     }
     
     func font(forStyle style: FontStyle) -> UIFont {

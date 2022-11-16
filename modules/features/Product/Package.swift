@@ -18,7 +18,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(name: "Common", path: "../libs/Common"),
-        .package(name: "API", path: "../API"),
+        .package(name: "API", path: "../libs/API"),
         .package(name: "Networker", path: "../libs/Networker")
     ],
     targets: [
@@ -30,7 +30,8 @@ let package = Package(
                 "Common",
                 "API",
                 "Networker"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
     ]
 )

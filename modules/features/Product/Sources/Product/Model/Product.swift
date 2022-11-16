@@ -8,9 +8,9 @@
 import Foundation
 import API
 
-public struct Product {
+public struct Product: Identifiable {
     
-    let id: String
+    public let id: String
     let createdAt: Date
     let name: String
     let avatar: String?

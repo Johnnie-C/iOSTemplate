@@ -18,9 +18,6 @@
 		59764C9A272CC861000606B4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 59764C99272CC861000606B4 /* Swinject */; };
 		59764CA4272CC9D0000606B4 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CA3272CC9D0000606B4 /* Common */; };
 		59764CA6272CC9D0000606B4 /* Networker in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CA5272CC9D0000606B4 /* Networker */; };
-		59764CA9272CCDD6000606B4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CA8272CCDD6000606B4 /* ListView.swift */; };
-		59764CAB272CCDE1000606B4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CAA272CCDE1000606B4 /* ListViewModel.swift */; };
-		59764CAD272CCE23000606B4 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59764CAC272CCE23000606B4 /* BaseViewModel.swift */; };
 		59764CC0272CD947000606B4 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CBF272CD947000606B4 /* NVActivityIndicatorView */; };
 		59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CC1272CD947000606B4 /* NVActivityIndicatorViewExtended */; };
 		59764CC7272CE508000606B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59764CC6272CE508000606B4 /* Localizable.strings */; };
@@ -108,13 +105,9 @@
 		592C05502723A62D00970B6D /* iOSTemplateSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTemplateSwiftUIUITests.swift; sourceTree = "<group>"; };
 		592C05522723A62D00970B6D /* iOSTemplateSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTemplateSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		59764C93272CC6DC000606B4 /* DIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIConfig.swift; sourceTree = "<group>"; };
-		59764CA8272CCDD6000606B4 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		59764CAA272CCDE1000606B4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		59764CAC272CCE23000606B4 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		59764CC6272CE508000606B4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		930DBE22291F2B560016BC74 /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Common; path = ../modules/libs/Common; sourceTree = "<group>"; };
 		930DBE23291F2B670016BC74 /* Networker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networker; path = ../modules/libs/Networker; sourceTree = "<group>"; };
-		930DBE24291F2B7C0016BC74 /* API */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = API; path = ../modules/features/API; sourceTree = "<group>"; };
 		931B5AA1291F35C400CAA679 /* Product */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Product; path = ../modules/features/Product; sourceTree = "<group>"; };
 		937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontProvider.swift; sourceTree = "<group>"; };
 		939770AF291616C900C04A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +126,7 @@
 		939770BD291657CB00C04A1D /* Stag Sans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light.otf"; sourceTree = "<group>"; };
 		939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Bold.otf"; sourceTree = "<group>"; };
 		93BADD7029068AB0008B1923 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		93FBE70E2924D0EE00C03ED2 /* API */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = API; path = ../modules/libs/API; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,20 +227,8 @@
 		59764C8E272CC662000606B4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				59764C8F272CC662000606B4 /* Base */,
-				59764CA7272CCDD6000606B4 /* List */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		59764C8F272CC662000606B4 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				59764CAC272CCE23000606B4 /* BaseViewModel.swift */,
-				59764CDC272F9474000606B4 /* ViewModifiers */,
-				59764CD7272F8CFA000606B4 /* Widgets */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		59764C91272CC68C000606B4 /* DI */ = {
@@ -272,10 +254,8 @@
 		59764C95272CC71B000606B4 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				930DBE22291F2B560016BC74 /* Common */,
-				930DBE23291F2B670016BC74 /* Networker */,
-				930DBE24291F2B7C0016BC74 /* API */,
-				931B5AA1291F35C400CAA679 /* Product */,
+				93FBE70C2924D05500C03ED2 /* libs */,
+				93FBE70D2924D07F00C03ED2 /* modules */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -285,29 +265,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		59764CA7272CCDD6000606B4 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				59764CA8272CCDD6000606B4 /* ListView.swift */,
-				59764CAA272CCDE1000606B4 /* ListViewModel.swift */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		59764CD7272F8CFA000606B4 /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
-		59764CDC272F9474000606B4 /* ViewModifiers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		937E6A10291BAB4400B526F2 /* Config */ = {
@@ -337,6 +294,24 @@
 				939770B5291657CB00C04A1D /* Stag Sans-Thin.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		93FBE70C2924D05500C03ED2 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				93FBE70E2924D0EE00C03ED2 /* API */,
+				930DBE22291F2B560016BC74 /* Common */,
+				930DBE23291F2B670016BC74 /* Networker */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		93FBE70D2924D07F00C03ED2 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				931B5AA1291F35C400CAA679 /* Product */,
+			);
+			name = modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,12 +482,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59764CA9272CCDD6000606B4 /* ListView.swift in Sources */,
-				59764CAD272CCE23000606B4 /* BaseViewModel.swift in Sources */,
 				939770B0291616C900C04A1D /* AppDelegate.swift in Sources */,
 				937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */,
 				59764C94272CC6DC000606B4 /* DIConfig.swift in Sources */,
-				59764CAB272CCDE1000606B4 /* ListViewModel.swift in Sources */,
 				592C05362723A62900970B6D /* iOSTemplateSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

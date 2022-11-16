@@ -38,4 +38,8 @@ public extension Date {
         Calendar.current.date(byAdding: .month, value: 1, to: self)
     }
 
+    func string(withFormatter formatter: DateFormatter) -> String {
+        formatter.string(from: self)
+    }
+    
 }

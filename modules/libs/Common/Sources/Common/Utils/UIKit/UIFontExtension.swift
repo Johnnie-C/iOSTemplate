@@ -9,15 +9,25 @@ import UIKit
 
 public extension UIFont {
     
-    static func registerFont(
+    static func registerCustomFonts(
+        fromBundle bundle: Bundle = .main,
         forFontFileExt fileExtensions: [String] = ["otf", "ttf"]
     ) {
         fileExtensions
-            .compactMap { Bundle.main.urls(forResourcesWithExtension: $0, subdirectory: nil) }
+            .compactMap { bundle.urls(forResourcesWithExtension: $0, subdirectory: nil) }
             .flatMap { $0 }
-            .compactMap { CGDataProvider(url: $0 as CFURL) }
-            .compactMap { CGFont($0) }
-            .forEach { CTFontManagerRegisterGraphicsFont($0, nil) }
+            .forEach { registerFont(url: $0) }
+    }
+    
+    static func registerFont(url: URL) {
+        guard
+            let provider = CGDataProvider(url: url as CFURL),
+            let font = CGFont(provider)
+        else {
+            return
+        }
+        
+        CTFontManagerRegisterGraphicsFont(font, nil)
     }
     
     func italic(_ isItalic: Bool = true) -> UIFont {

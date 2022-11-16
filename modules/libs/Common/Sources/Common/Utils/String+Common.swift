@@ -11,14 +11,14 @@ public func localizedString(
     tableName: String? = nil,
     bundle: Bundle = Bundle.main,
     comment: String = "",
-    _ arguments: CVarArg...
+    _ arguments: [CVarArg] = []
 ) -> String {
     var str = NSLocalizedString(key, tableName: tableName, bundle: bundle, value: "", comment: comment)
-    
+
     if !arguments.isEmpty {
         str = String(format: str, locale: .current, arguments: arguments)
     }
-    
+
     return str
 }
 
@@ -33,6 +33,7 @@ public extension String {
     }
     
 }
+
 public extension StringProtocol {
     
     func index<S: StringProtocol>(

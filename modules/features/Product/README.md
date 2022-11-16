@@ -1,3 +1,3 @@
 # Products
 
-A description of this package.
+A demo feature module with api requests

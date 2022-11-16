@@ -5,7 +5,7 @@
 //  Created by Johnnie Cheng on 27/10/22.
 //
 
-import UIKit
+import Foundation
 
 public extension Bundle {
     

@@ -7,5 +7,3 @@
 */
 
 
-alert.generalError.title = "An error has occurred";
-alert.generalError.message = "Sorry! Please try again later";

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Product
 
 @main
 struct iOSTemplateSwiftUIApp: App {
@@ -14,7 +15,7 @@ struct iOSTemplateSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ListView(viewModel: ListViewModel())
+            DefaultProductAssembly().assembleProductListView()
         }
     }
 }

@@ -20,6 +20,7 @@ public enum Colors: String {
     
     case backgroundColor = "common-backgroundColor"
     case shadow = "common-shadow"
+    case divider = "common-divider"
     
     case infoBlue = "common-info-blue"
     

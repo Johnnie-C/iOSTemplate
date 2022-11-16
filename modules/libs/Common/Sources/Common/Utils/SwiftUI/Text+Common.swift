@@ -1,5 +1,5 @@
 //
-//  TextExtension.swift
+//  Text+Common.swift
 //  
 //
 //  Created by Johnnie Cheng on 27/10/22.
@@ -10,12 +10,16 @@ import SwiftUI
 public extension Text {
     
     init(_ text: String,
-         fontStyle: FontStyle, // TODO:
+         fontStyle: FontStyle,
          color: Colors = .primaryLabel,
          opacity: Double = 1,
          staticSize: Bool = false
     ) {
-        self.init(text, font: fontStyle.dynamicFont, color: color.dynamicColor(opacity))
+        self.init(
+            text,
+            font: fontStyle.dynamicFont,
+            color: color.dynamicColor(opacity)
+        )
     }
     
     init(_ text: String,

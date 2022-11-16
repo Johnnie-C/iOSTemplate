@@ -47,7 +47,8 @@ let package = Package(
                 "Swinject",
                 "AlertToast",
                 "NVActivityIndicatorView"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .target(name: "CommonTestSupport"),
         .testTarget(

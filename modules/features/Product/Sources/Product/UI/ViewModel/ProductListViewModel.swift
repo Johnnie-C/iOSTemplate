@@ -8,39 +8,46 @@
 import Foundation
 import Common
 
-protocol ProductListViewModelProtocol: ObservableObject {
+public protocol ProductListViewModel: ObservableObject {
     
     var isLoading: Bool { get set }
     var alertMessage: AlertMessage? { get set }
+    var productList: ProductList? { get }
     func onAppear()
 
 }
 
-class ProductListViewModel: ProductListViewModelProtocol {
+public class DefaultProductListViewModel: ProductListViewModel {
     
-    @Published var isLoading = false
-    @Published var alertMessage: AlertMessage? = nil
-    @Published var productList: ProductList?
+    @Published public var isLoading = false
+    @Published public var alertMessage: AlertMessage? = nil
+    @Published public var productList: ProductList?
     
     private let productProvider: ProductsProvider
+    private let productAssembly: ProductAssembly
     
-    init(productProvider: ProductsProvider = DefaultProductsProvider()) {
+    public init(
+        productProvider: ProductsProvider = DefaultProductsProvider(),
+        productAssembly: ProductAssembly = DefaultProductAssembly()
+    ) {
         self.productProvider = productProvider
+        self.productAssembly = productAssembly
     }
     
-    func onAppear() {
+    public func onAppear() {
         Task {
             do {
                 await setLoading(true)
-                productList = try await productProvider.productList()
+                let productList = try await productProvider.productList()
+                await didLoadProductList(productList)
                 await setLoading(false)
             }
             catch {
                 print(error)
                 await setLoading(false)
                 await setAlertMessage(.init(
-                    title: "alert.generalError.title".localized,
-                    message: "alert.generalError.message".localized,
+                    title: "Alert.generalError.Title".localized,
+                    message: "Alert.generalError.Message".localized,
                     alertMode: .hud,
                     alertStyle: .error(.red)
                 ))
@@ -57,6 +64,11 @@ class ProductListViewModel: ProductListViewModelProtocol {
     @MainActor
     private func setAlertMessage(_ alertMessage: AlertMessage) {
         self.alertMessage = alertMessage
+    }
+    
+    @MainActor
+    private func didLoadProductList(_ productList: ProductList) {
+        self.productList = productList
     }
 
 }
