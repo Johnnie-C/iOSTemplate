@@ -9,6 +9,9 @@ import SwiftUI
 
 public protocol ProductAssembly {
     
+    func assembleProductListView(productProvider: ProductsProvider) -> AnyView
+    func assembleProductDetailView(product: Product) -> AnyView
+    
 }
 
 public class DefaultProductAssembly: ProductAssembly {
@@ -16,12 +19,33 @@ public class DefaultProductAssembly: ProductAssembly {
     public init() { }
     
     @ViewBuilder
-    public func assembleProductListView() -> some View {
+    public func assembleProductListView(
+        productProvider: ProductsProvider = DefaultProductsProvider()
+    ) -> AnyView {
         let viewModel = DefaultProductListViewModel(
-            productAssembly: self
+            productProvider: productProvider
         )
         
-        ProductListView(viewModel: viewModel)
+        AnyView(
+            ProductListView(
+                viewModel: viewModel,
+                productAssembly: self
+            )
+        )
+    }
+    
+    @ViewBuilder
+    public func assembleProductDetailView(product: Product) -> AnyView {
+        let viewModel = DefaultProductDetailViewModel(
+            product: product
+        )
+        
+        AnyView(
+            ProductDetailView(
+                viewModel: viewModel,
+                productAssembly: self
+            )
+        )
     }
 
 }

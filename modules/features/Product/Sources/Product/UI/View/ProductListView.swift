@@ -11,9 +11,17 @@ import Common
 public struct ProductListView<VM: ProductListViewModel>: View {
 
     @ObservedObject var viewModel: VM
+    @State private var showDetail = false
+    @State private var selectedProduct: Product?
+    
+    private let productAssembly: ProductAssembly
 
-    public init(viewModel: VM = DefaultProductListViewModel()) {
+    public init(
+        viewModel: VM = DefaultProductListViewModel(),
+        productAssembly: ProductAssembly = DefaultProductAssembly()
+    ) {
         self.viewModel = viewModel
+        self.productAssembly = productAssembly
     }
 
     public var body: some View {
@@ -36,6 +44,10 @@ public struct ProductListView<VM: ProductListViewModel>: View {
                                 ProductListItemView(product: product)
                                     .fillWidth()
                                     .paddingVertical(.xSmall)
+                                    .onTapGesture {
+                                        self.selectedProduct = product
+                                        self.showDetail = true
+                                    }
                                 if product.id != products.last?.id {
                                     CommonDivider()
                                 }
@@ -51,6 +63,20 @@ public struct ProductListView<VM: ProductListViewModel>: View {
             .alertMessage(alertMessage: $viewModel.alertMessage)
             .withLoadingHandler(isLoading: $viewModel.isLoading)
             .onAppear { viewModel.onAppear() }
+            .navigate(to: productDetailView, when: $showDetail)
+        }
+    }
+    
+    @ViewBuilder
+    private var productDetailView: some View {
+        Group {
+            if let product = selectedProduct {
+                productAssembly.assembleProductDetailView(
+                    product: product
+                )
+            } else {
+                EmptyView()
+            }
         }
     }
 

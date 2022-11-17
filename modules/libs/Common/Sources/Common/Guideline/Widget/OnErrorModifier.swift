@@ -24,7 +24,6 @@ private struct AlertModifier: ViewModifier {
     @State private var isPresenting = false
     
     func body(content: Content) -> some View {
-        
         content.toast(
             isPresenting: $isPresenting,
             duration: 2,

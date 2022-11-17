@@ -24,17 +24,20 @@ public class DefaultProductListViewModel: ProductListViewModel {
     @Published public var productList: ProductList?
     
     private let productProvider: ProductsProvider
-    private let productAssembly: ProductAssembly
     
     public init(
-        productProvider: ProductsProvider = DefaultProductsProvider(),
-        productAssembly: ProductAssembly = DefaultProductAssembly()
+        productProvider: ProductsProvider = DefaultProductsProvider()
     ) {
         self.productProvider = productProvider
-        self.productAssembly = productAssembly
     }
     
     public func onAppear() {
+        loadProductsInNeeded()
+    }
+    
+    private func loadProductsInNeeded() {
+        if productList?.products?.isEmpty == false { return }
+        
         Task {
             do {
                 await setLoading(true)
