@@ -30,23 +30,24 @@ class AppFontProvider: FontProvider {
     }
     
     func font(forStyle style: FontStyle) -> UIFont {
+        let italic = style.italic
         switch style.weight {
         case .ultraLight, .thin:
-            return style.italic ? thinItalic : thin
+            return italic ? thinItalic : thin
         case .light:
-            return style.italic ? lightItalic : light
+            return italic ? lightItalic : light
         case .regular:
-            return style.italic ? bookItalic : book
+            return italic ? bookItalic : book
         case .medium:
-            return style.italic ? mediumItalic : medium
+            return italic ? mediumItalic : medium
         case .semibold:
-            return style.italic ? semiboldItalic : semibold
+            return italic ? semiboldItalic : semibold
         case .bold, .heavy:
-            return style.italic ? boldItalic : bold
+            return italic ? boldItalic : bold
         case .black:
-            return style.italic ? blackItalic : black
+            return italic ? blackItalic : black
         default:
-            return style.italic ? bookItalic : book
+            return italic ? bookItalic : book
         }
     }
     
