@@ -22,6 +22,29 @@ public func localizedString(
     return str
 }
 
+///
+/// An extension for loading localized string from main bundle
+/// If you want to use it in module without passing bundle every time, copy following code into your module
+///
+/// extension String { // do NOT make this public
+///
+///     var localized: String {
+///         localizedString(withKey: self, bundle: .moduleBundle)
+///     }
+///
+///     func localizedWithFormat(_ arguments: CVarArg...) -> String {
+///         localizedString(withKey: self, bundle: .moduleBundle, arguments)
+///     }
+///
+/// }
+///
+/// public extension Bundle {
+///
+///     static var moduleBundle: Bundle {
+///         Bundle.module
+///     }
+///
+/// }
 public extension String {
     
     var localized: String {

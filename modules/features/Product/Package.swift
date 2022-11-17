@@ -19,7 +19,12 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(name: "Common", path: "../libs/Common"),
         .package(name: "API", path: "../libs/API"),
-        .package(name: "Networker", path: "../libs/Networker")
+        .package(name: "Networker", path: "../libs/Networker"),
+        .package(
+            name: "SDWebImageSwiftUI",
+            url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+            "2.2.1"..<"3.0.0"
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -29,7 +34,8 @@ let package = Package(
             dependencies: [
                 "Common",
                 "API",
-                "Networker"
+                "Networker",
+                "SDWebImageSwiftUI"
             ],
             resources: [.process("Resources")]
         ),

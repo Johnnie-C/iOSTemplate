@@ -23,6 +23,7 @@ public enum Colors: String {
     case divider = "common-divider"
     
     case infoBlue = "common-info-blue"
+    case errorRed = "common-errorRed"
     
     /// get dynamic color depends on the light/dark mode
     /// - Parameters:

@@ -88,7 +88,7 @@ public struct BottomSheetView<Content: View>: View {
                 .edgesIgnoringSafeArea(.all)
         }
         .zIndex(1)
-        .cornerRadius(12, corners: [.topLeft, .topRight])
+        .roundedCorner(12, corners: [.topLeft, .topRight])
         .transition(.move(edge: .bottom))
         .frame(maxWidth: .infinity)
         .offset(y: max(-negativeOffset, 0))

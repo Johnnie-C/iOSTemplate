@@ -20,5 +20,16 @@ public extension Decimal {
         let decimalOnlyStr = String(currencyString().filter{decimals.contains($0)})
         return Decimal(string: decimalOnlyStr) ?? self
     }
+    
+    func percentString(for locale: Locale = .NZ) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.negativePrefix = "-"
+        formatter.locale = locale
+        
+        return formatter.string(for: self / 100) ?? "\(self / 100)%"
+    }
 
 }

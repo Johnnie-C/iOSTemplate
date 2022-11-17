@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Common
+import SDWebImageSwiftUI
 
 struct ProductListItemView: View {
     
@@ -14,15 +15,29 @@ struct ProductListItemView: View {
     
     var body: some View {
         HStack(commonSpacing: .medium) {
-            Image(icon: .info).setSize(.large)
+            WebImage(url: product.thumbnailURL)
+                .resizable()
+                .placeholder(.imagePlaceholder)
+                .indicator(.activity)
+                .frame(size: .xxxLarge)
+                .roundedCorner(5)
+            
             VStack(alignment: .leading, commonSpacing: .xSmall) {
-                Text(product.name, fontStyle: .title3())
-                
-                let createdDateStr = product.createdAt.string(withFormatter: .ddMMyyyySpaced)
-                Text(
-                    "ProductListItem.CreatedAt".localizedWithFormat(createdDateStr),
-                    fontStyle: .footnote(italic: true)
-                )
+                Text(product.title, fontStyle: .title3())
+                HStack(commonSpacing: .xSmall) {
+                    Text(
+                        product.price.decimalValue.currencyString(),
+                        fontStyle: .body()
+                    )
+                    
+                    if let discount = product.discountPercentage?.decimalValue.percentString() {
+                        Text(
+                            "ProductListItem.DiscountPercentage".localizedWithFormat(discount),
+                            fontStyle: .body(italic: true),
+                            color: .errorRed
+                        )
+                    }
+                }
             }
             Spacer()
         }

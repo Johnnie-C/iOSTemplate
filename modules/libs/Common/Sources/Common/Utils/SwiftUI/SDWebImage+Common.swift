@@ -1,16 +1,17 @@
 //
-//  Image+Common.swift
+//  SDWebImage+Common.swift
 //  
 //
-//  Created by Johnnie Cheng on 24/10/22.
+//  Created by Johnnie Cheng on 17/11/22.
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
-public extension Image {
+public extension WebImage {
     
-    init(icon: Icons) {
-        self.init(uiImage: icon.uiImage())
+    func placeholder(_ icon: Icons) -> WebImage {
+        placeholder(Image(uiImage: icon.uiImage()))
     }
     
     func setSize(_ size: CommonSize) -> some View {

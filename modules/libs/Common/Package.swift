@@ -37,6 +37,11 @@ let package = Package(
             url: "https://github.com/ninjaprox/NVActivityIndicatorView.git",
             "5.1.1"..<"6.0.0"
         ),
+        .package(
+            name: "SDWebImageSwiftUI",
+            url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+            "2.2.1"..<"3.0.0"
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -46,7 +51,8 @@ let package = Package(
             dependencies: [
                 "Swinject",
                 "AlertToast",
-                "NVActivityIndicatorView"
+                "NVActivityIndicatorView",
+                "SDWebImageSwiftUI"
             ],
             resources: [.process("Resources")]
         ),

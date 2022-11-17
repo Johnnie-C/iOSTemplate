@@ -11,20 +11,21 @@ import UIKit
 public enum Icons: String {
     
     case info = "icon-info"
+    case imagePlaceholder = "imagePlaceholder"
     
-    public func uiImage(_ color: Colors? = nil) -> UIImage? {
-        var image = UIImage(named: rawValue, in: .module, with: nil)
+    public func uiImage(_ color: Colors? = nil) -> UIImage {
+        var image = UIImage(named: rawValue, in: .commonBundle, with: nil) ?? UIImage()
         if let color = color?.uiColor() {
-            image = image?.withRenderingMode(.alwaysTemplate)
+            image = image.withRenderingMode(.alwaysTemplate)
                 .withTintColor(color)
         }
         else {
-            image = image?.withRenderingMode(.alwaysOriginal)
+            image = image.withRenderingMode(.alwaysOriginal)
         }
         
         return image
     }
-
+    
 }
 
 extension UIImage {

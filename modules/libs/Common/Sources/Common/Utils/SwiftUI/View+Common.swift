@@ -61,6 +61,10 @@ public extension View {
         frame(height: CommonSize.standardHeight.rawValue)
     }
     
+    func frame(size: CommonSize, alignment: Alignment = .center) -> some View {
+        frame(width: size.rawValue, height: size.rawValue, alignment: alignment)
+    }
+    
     func frame(size: CGFloat, alignment: Alignment = .center) -> some View {
         frame(width: size, height: size, alignment: alignment)
     }
@@ -88,7 +92,7 @@ public extension View {
 public extension View {
     
     @ViewBuilder
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+    func roundedCorner(_ radius: CGFloat, corners: UIRectCorner = .allCorners) -> some View {
         if #available(iOS 15, *) {
             clipShape(RoundedCorner(radius: radius, corners: corners))
         } else {
