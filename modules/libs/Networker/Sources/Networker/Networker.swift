@@ -19,7 +19,7 @@ public protocol NetworkerProtocol {
         headers: NetworkHeaders,
         decoder: JSONDecoder,
         decodeAs: Response.Type
-    ) -> Future<Response?, Error>
+    ) -> AnyPublisher<Response, Error>
     
     func performRequest<Response: Decodable>(
         forEndpoint endpoint: String,
@@ -57,7 +57,7 @@ public class Networker: NetworkerProtocol {
         headers: NetworkHeaders,
         decoder: JSONDecoder = JSONDecoder(),
         decodeAs: Response.Type
-    ) -> Future<Response?, Error> {
+    ) -> AnyPublisher<Response, Error> {
         return session
             .request(
                 "\(host)\(endpoint)",
@@ -66,8 +66,10 @@ public class Networker: NetworkerProtocol {
                 headers: allHeaders(with: headers)
             )
             .validate()
-            .publishDecodable(decoder: decoder)
-            .asFuture()
+            .publishDecodable(type: Response.self, decoder: decoder)
+            .value()
+            .mapError{ NetworkerError(afError: $0) }
+            .eraseToAnyPublisher()
     }
     
     public func performRequest<Response: Decodable>(
@@ -93,7 +95,7 @@ public class Networker: NetworkerProtocol {
         case .success(let value):
             return value
         case .failure(let error):
-            throw error
+            throw NetworkerError(afError: error)
         }
     }
     
@@ -118,7 +120,7 @@ public extension NetworkerProtocol {
         headers: NetworkHeaders = [:],
         decoder: JSONDecoder = JSONDecoder(),
         decodeAs: Response.Type = Response.self
-    ) -> Future<Response?, Error> {
+    ) -> AnyPublisher<Response, Error> {
         performRequest(
             forEndpoint: endpoint,
             method: method,

@@ -16,6 +16,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         DIContainer.default.config()
         FontStyle.setFontProvider(AppFontProvider())
+        UITabBar.configTabBar(
+            backgroundColor: .red,
+            tintColor: .green
+        )
         return true
     }
     

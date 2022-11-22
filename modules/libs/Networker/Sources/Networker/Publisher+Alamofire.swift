@@ -8,12 +8,6 @@
 import Combine
 import Alamofire
 
-enum DataResponsePublisherError: Error {
-
-    case unknown
-    
-}
-
 extension DataResponsePublisher {
 
     func asFuture() -> Future<Value, Error> {
@@ -40,7 +34,7 @@ extension DataResponsePublisher {
                         promise(.failure(error))
                     }
                     else {
-                        promise(.failure(DataResponsePublisherError.unknown))
+                        promise(.failure(NetworkerError.unknown))
                     }
             })
         }

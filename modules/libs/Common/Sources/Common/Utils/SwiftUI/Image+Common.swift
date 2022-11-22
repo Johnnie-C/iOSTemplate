@@ -9,8 +9,12 @@ import SwiftUI
 
 public extension Image {
     
+    init(templateIcon icon: Icons) {
+        self.init(uiImage: icon.templateImage())
+    }
+    
     init(icon: Icons) {
-        self.init(uiImage: icon.uiImage())
+        self.init(uiImage: icon.image())
     }
     
     func setSize(_ size: CommonSize) -> some View {

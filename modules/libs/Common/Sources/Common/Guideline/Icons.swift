@@ -13,7 +13,7 @@ public enum Icons: String {
     case info = "icon-info"
     case imagePlaceholder = "imagePlaceholder"
     
-    public func uiImage(_ color: Colors? = nil) -> UIImage {
+    public func image(_ color: Colors? = nil) -> UIImage {
         var image = UIImage(named: rawValue, in: .commonBundle, with: nil) ?? UIImage()
         if let color = color?.uiColor() {
             image = image.withRenderingMode(.alwaysTemplate)
@@ -26,6 +26,13 @@ public enum Icons: String {
         return image
     }
     
+    public func templateImage() -> UIImage {
+        var image = UIImage(named: rawValue, in: .commonBundle, with: nil) ?? UIImage()
+        image = image.withRenderingMode(.alwaysTemplate)
+        
+        return image
+    }
+    
 }
 
 extension UIImage {
@@ -34,7 +41,7 @@ extension UIImage {
         icon: Icons,
         color: Colors? = nil
     ) -> UIImage? {
-        icon.uiImage(color)
+        icon.image(color)
     }
     
 }

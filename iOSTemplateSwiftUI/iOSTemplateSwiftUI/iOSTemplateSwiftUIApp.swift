@@ -15,7 +15,7 @@ struct iOSTemplateSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DefaultProductAssembly().assembleProductListView()
+            AppTabView()
         }
     }
 }
