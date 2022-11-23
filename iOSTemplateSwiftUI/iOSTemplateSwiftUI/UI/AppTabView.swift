@@ -13,15 +13,16 @@ struct AppTabView: View {
     var body: some View {
         TabView {
             DefaultProductAssembly().assembleProductListView()
+                .ignoresSafeArea()
                 .tabItem {
-//                    Label("Product Demo", systemImage: "flame.circle") // TODO
-                    Label(
-                        title: {
-                            Text("Product Demo")
-                        }, icon: {
-                            Image(templateIcon: .info)
-                        }
-                    )
+                    Label("Product Demo", systemImage: "homekit") // TODO
+//                    Label(
+//                        title: {
+//                            Text("Product Demo")
+//                        }, icon: {
+//                            Image(templateIcon: .info)
+//                        }
+//                    )
                 }
             Text("PlaceHolder")
                 .tabItem {

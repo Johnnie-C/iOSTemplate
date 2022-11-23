@@ -59,7 +59,7 @@ public struct ProductListView<VM: ProductListViewModel>: View {
                 .fillParent()
             }
             .navigationTitle("List")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .fillParent()
             .alertMessage(alertMessage: $viewModel.alertMessage)
             .withLoadingHandler(isLoading: $viewModel.isLoading)
             .onAppear { viewModel.onAppear() }

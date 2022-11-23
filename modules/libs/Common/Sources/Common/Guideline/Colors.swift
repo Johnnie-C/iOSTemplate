@@ -58,7 +58,7 @@ public enum Colors: String {
 
 }
 
-extension UIColor {
+public extension UIColor {
     
     static func from(
         color: Colors,

@@ -15,11 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
         DIContainer.default.config()
-        FontStyle.setFontProvider(AppFontProvider())
-        UITabBar.configTabBar(
-            backgroundColor: .red,
-            tintColor: .green
-        )
+        AppStyleConfig.config()
         return true
     }
     
