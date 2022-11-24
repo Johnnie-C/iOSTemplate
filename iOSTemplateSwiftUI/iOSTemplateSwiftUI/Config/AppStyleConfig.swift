@@ -13,6 +13,7 @@ class AppStyleConfig {
     static func config() {
         configFont()
         configTabbar()
+        configNavigationBar()
     }
     
     private static func configFont() {
@@ -34,6 +35,35 @@ class AppStyleConfig {
                 font: FontStyle.caption2(weight: .light).staticUIFont,
                 badgeColor: Colors.errorRed.uiColor()
             )
+        )
+    }
+    
+    private static func configNavigationBar() {
+        let tintColor = Colors.secondaryColor.uiColor()
+        let buttonAttributes = UINavigationBar.TitleTextAttributes(
+            font: FontStyle.body().staticUIFont,
+            color: tintColor
+        )
+        let doneButtonAttributes = UINavigationBar.TitleTextAttributes(
+            font: FontStyle.body(weight: .semibold).staticUIFont,
+            color: tintColor
+        )
+        
+        UINavigationBar.configTabBar(
+            backgroundColor: Colors.primaryColor.uiColor(),
+            tintColor: tintColor,
+            titleAttributes: .init(
+                font: FontStyle.title3().staticUIFont,
+                color: tintColor
+            ),
+            largeTitleAttributes: .init(
+                font: FontStyle.largeTitle(weight: .semibold).staticUIFont,
+                color: tintColor
+            ),
+            plainButtonAttributes: buttonAttributes,
+            doneButtonAttributes: doneButtonAttributes,
+            backButtonAttributes: buttonAttributes,
+            shadowColor: Colors.primaryColor.uiColor()
         )
     }
 

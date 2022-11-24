@@ -93,10 +93,10 @@ public extension UITabBar {
         if let textColor = unselectedItemStyle.textColor {
             unselectedTitleTextAttributes[.foregroundColor] = textColor
         }
-        if let font = unselectedItemStyle.font ?? selectedItemStyle.font {
+        if let font = unselectedItemStyle.font {
             unselectedTitleTextAttributes[.font] = font
         }
-        if let badgeColor = unselectedItemStyle.badgeColor ?? selectedItemStyle.badgeColor {
+        if let badgeColor = unselectedItemStyle.badgeColor {
             tabBarItemAppearance.normal.badgeBackgroundColor = badgeColor
         }
         
