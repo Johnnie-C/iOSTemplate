@@ -52,6 +52,10 @@ public extension View {
         padding([.leading, .trailing], spacing.rawValue)
     }
     
+    func padding(_ edges: Edge.Set = .all, _ spacing: CommonSpacing) -> some View {
+        padding(edges, spacing.rawValue)
+    }
+    
 }
 
 // MARK: - frame

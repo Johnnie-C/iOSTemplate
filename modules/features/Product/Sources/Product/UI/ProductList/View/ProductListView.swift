@@ -37,6 +37,11 @@ public struct ProductListView<VM: ProductListViewModel>: View {
 //
 //                    }
 //                )
+                
+//                ImageButton("test", fontStyle: .body(), icon: .info, color: .errorRed) {
+//                    print("tapped")
+//                }
+                
                 ScrollView {
                     VStack(alignment: .leading) {
                         if let products = viewModel.productList?.products {
