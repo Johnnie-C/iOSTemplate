@@ -35,7 +35,6 @@ public extension UINavigationBar {
         
     }
     
-    
     /// config navigation bar style
     /// - Parameters:
     ///   - backgroundColor: backgroundColor

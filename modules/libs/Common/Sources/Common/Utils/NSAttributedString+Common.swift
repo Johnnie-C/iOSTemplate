@@ -22,10 +22,10 @@ public extension String {
     }
     
     func styled(
-        font: UIFont,
+        font: FontStyle = .body(),
         color: Colors = .primaryLabel
     ) -> NSAttributedString {
-        styled(font: font, color: color.dynamicColor())
+        styled(font: font.dynamicUIFont, color: color.dynamicColor())
     }
     
 }

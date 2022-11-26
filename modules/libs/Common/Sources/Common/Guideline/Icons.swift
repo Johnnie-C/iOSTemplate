@@ -8,13 +8,49 @@
 import SwiftUI
 import UIKit
 
-public enum Icons: String {
+public enum Icons {
     
-    case info = "icon-info"
-    case imagePlaceholder = "imagePlaceholder"
+    case info
+    case imagePlaceholder
+    
+    /// an example for using custom icon in module
+    ///
+    /// define icons for convenience use
+    ///
+    ///     extension Icons {
+    ///         static var myIconInModule: Icons {
+    ///             .custom(name: "icon name", bundle: .myModuleBundle)
+    ///         }
+    ///     }
+    ///
+    /// use icon
+    ///
+    ///     Image(icon: .myIconInModule)
+    ///
+    case custom(name: String, bundle: Bundle = .main)
+    
+    private var name: String {
+        switch self {
+        case .info:
+            return "icon-info"
+        case .imagePlaceholder:
+            return "imagePlaceholder"
+        case .custom(let name, _):
+            return name
+        }
+    }
+    
+    private var bundle: Bundle {
+        switch self {
+        case .custom(_, let bundle):
+            return bundle
+        default:
+            return .commonBundle
+        }
+    }
     
     public func image(_ color: Colors? = nil) -> UIImage {
-        var image = UIImage(named: rawValue, in: .commonBundle, with: nil) ?? UIImage()
+        var image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
         if let color = color?.uiColor() {
             image = image.withRenderingMode(.alwaysTemplate)
                 .withTintColor(color)
@@ -27,7 +63,7 @@ public enum Icons: String {
     }
     
     public func templateImage() -> UIImage {
-        var image = UIImage(named: rawValue, in: .commonBundle, with: nil) ?? UIImage()
+        var image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
         image = image.withRenderingMode(.alwaysTemplate)
         
         return image
