@@ -137,6 +137,12 @@ public extension UINavigationBar {
         var backButtonTextAttributes = [NSAttributedString.Key : Any]()
         if let color = backButtonAttributes.color {
             backButtonTextAttributes[.foregroundColor] = color
+            if let image = UIImage(systemName: "chevron.backward") {
+                let backButtonIcon = image
+                    .resize(height: 22) // defualt back button icon height
+                    .withTintColor(color, renderingMode: .alwaysOriginal)
+                navigationBarAppearance.setBackIndicatorImage(backButtonIcon, transitionMaskImage: backButtonIcon)
+            }
         }
         if let font = backButtonAttributes.font {
             backButtonTextAttributes[.font] = font
