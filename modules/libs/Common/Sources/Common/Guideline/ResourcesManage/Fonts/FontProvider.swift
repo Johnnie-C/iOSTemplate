@@ -16,9 +16,14 @@ public protocol FontProvider {
 class DefaultFontProvider: FontProvider {
     
     func font(forStyle style: FontStyle) -> UIFont {
-        UIFont.preferredFont(forTextStyle: style.systemStyle)
-            .weight(style.weight)
-            .italic(style.italic)
+        if case .custom(let font) = style {
+            return font
+        }
+        else {
+            return UIFont.preferredFont(forTextStyle: style.systemStyle)
+                .weight(style.weight)
+                .italic(style.italic)
+        }
     }
     
 }

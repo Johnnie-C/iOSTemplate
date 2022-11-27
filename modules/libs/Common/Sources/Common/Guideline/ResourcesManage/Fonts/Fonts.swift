@@ -41,8 +41,9 @@ public enum FontStyle {
     case footnote(weight: UIFont.Weight = .regular, italic:  Bool = false)
     case caption1(weight: UIFont.Weight = .regular, italic:  Bool = false)
     case caption2(weight: UIFont.Weight = .regular, italic:  Bool = false)
+    case custom(_ font: UIFont)
     
-    var systemStyle: UIFont.TextStyle{
+    var systemStyle: UIFont.TextStyle {
         switch self {
         case .largeTitle: return .largeTitle
         case .title1: return .title1
@@ -55,6 +56,7 @@ public enum FontStyle {
         case .footnote: return .footnote
         case .caption1: return .caption1
         case .caption2: return .caption2
+        case .custom: return .body
         }
     }
     
@@ -71,6 +73,7 @@ public enum FontStyle {
         case .footnote: return 13
         case .caption1: return 12
         case .caption2: return 11
+        case .custom(let font): return font.pointSize
         }
     }
     
@@ -87,6 +90,7 @@ public enum FontStyle {
         case .footnote: return 20
         case .caption1: return 16
         case .caption2: return 15
+        case .custom(let font): return font.pointSize
         }
     }
     
@@ -114,6 +118,7 @@ public enum FontStyle {
             return weight
         case .caption2(let weight, _):
             return weight
+        case .custom(let font): return font.weight
         }
     }
     
@@ -141,6 +146,7 @@ public enum FontStyle {
             return italic
         case .caption2(_, let italic):
             return italic
+        case .custom(let font): return font.isItalic
         }
     }
     
@@ -163,6 +169,10 @@ public extension FontStyle {
 extension FontStyle {
 
     public var dynamicUIFont: UIFont {
+        if case .custom(let font) = self {
+            return font
+        }
+        
         let systemSize = UIFontMetrics(forTextStyle: systemStyle).scaledValue(for: size)
         let sizeScaled = min(
             systemSize,

@@ -9,57 +9,62 @@ import SwiftUI
 
 public struct ImageButton: View {
     
-    private let text: String
-    private let fontStyle: FontStyle
+    private let title: String?
+    private let font: FontStyle
     private let icon: UIImage?
-    private let iconPadding: EdgeInsets
+    private let padding: EdgeInsets
+    private let iconPadding: CommonSpacing
     private let color: Color
     private let staticSize: Bool
     private let action: () -> Void
     @State private var height: CGFloat = 0
     
     public init(
-        _ text: String,
-        fontStyle: FontStyle,
+        title: String? = nil,
+        font: FontStyle = .body(),
         icon: Icons? = nil,
-        iconPadding: EdgeInsets = .defaultIconPadding,
         color: Colors = .primaryLabel,
+        padding: EdgeInsets = .defaultImageButtonPadding,
+        iconPadding: CommonSpacing = .small,
         staticSize: Bool = false,
         action: @escaping () -> Void
     ) {
         self.init(
-            text,
-            fontStyle: fontStyle,
+            title: title,
+            font: font,
             icon: icon?.image(),
-            iconPadding: iconPadding,
             color: color.dynamicColor(),
+            padding: padding,
+            iconPadding: iconPadding,
             staticSize: staticSize,
             action: action
         )
     }
     
     public init(
-        _ text: String,
-        fontStyle: FontStyle,
+        title: String?,
+        font: FontStyle = .body(),
         icon: UIImage? = nil,
-        iconPadding: EdgeInsets = .defaultIconPadding,
         color: Color = Colors.primaryLabel.dynamicColor(),
+        padding: EdgeInsets = .defaultImageButtonPadding,
+        iconPadding: CommonSpacing = .small,
         staticSize: Bool = false,
         action: @escaping () -> Void
     ) {
-        self.text = text
-        self.fontStyle = fontStyle
+        self.title = title
+        self.font = font
         self.icon = icon
-        self.iconPadding = iconPadding
         self.color = color
+        self.padding = padding
+        self.iconPadding = iconPadding
         self.staticSize = staticSize
         self.action = action
     }
     
     private var iconSize: CGSize {
         CGSize(
-            width: max(height - iconPadding.top - iconPadding.bottom, 0),
-            height: max(height - iconPadding.top - iconPadding.bottom, 0)
+            width: max(height - padding.top - padding.bottom, 0),
+            height: max(height - padding.top - padding.bottom, 0)
         )
     }
     
@@ -71,19 +76,21 @@ public struct ImageButton: View {
                         .resizable()
                         .setColor(color)
                         .frame(size: iconSize)
-                        .padding(iconPadding)
+                        .padding(.trailing, iconPadding)
                 }
                 
-                Text(
-                    text,
-                    font: fontStyle.dynamicFont,
-                    color: color,
-                    staticSize: staticSize
-                )
+                if let title = title {
+                    Text(
+                        title,
+                        font: font.dynamicFont,
+                        color: color,
+                        staticSize: staticSize
+                    )
+                }
             }
         }
         .standardHeight()
-        .paddingHorizontal(.small)
+        .padding(padding)
         .observeFrame(in: .local) { frame in
             DispatchQueue.main.async {
                 height = frame.size.height
@@ -95,9 +102,9 @@ public struct ImageButton: View {
 
 public extension EdgeInsets {
     
-    static let defaultIconPadding = EdgeInsets(
+    static let defaultImageButtonPadding = EdgeInsets(
         top: .xSmall,
-        leading: .zero,
+        leading: .small,
         bottom: .xSmall,
         trailing: .small
     )

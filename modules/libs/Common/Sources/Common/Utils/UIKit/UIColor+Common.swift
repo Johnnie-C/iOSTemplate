@@ -1,5 +1,5 @@
 //
-//  UIColorExtension.swift
+//  UIColor+Common.swift
 //
 //  Created by Johnnie Cheng on 29/4/21.
 //
@@ -49,4 +49,12 @@ extension UIColor {
         return floatValue
     }
 
+}
+
+extension UIColor {
+    
+    static let systemTintColor: UIColor = {
+        UIView().tintColor
+    }()
+    
 }

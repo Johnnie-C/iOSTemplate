@@ -48,9 +48,9 @@ class AppStyleConfig {
             font: FontStyle.body(weight: .semibold).staticUIFont,
             color: tintColor
         )
-        
+        let backgroundColor = Colors.primaryColor.uiColor()
         UINavigationBar.configTabBar(
-            backgroundColor: Colors.primaryColor.uiColor(),
+            backgroundColor: backgroundColor,
             tintColor: tintColor,
             titleAttributes: .init(
                 font: FontStyle.title3().staticUIFont,
@@ -63,7 +63,7 @@ class AppStyleConfig {
             plainButtonAttributes: buttonAttributes,
             doneButtonAttributes: doneButtonAttributes,
             backButtonAttributes: buttonAttributes,
-            shadowColor: Colors.primaryColor.uiColor()
+            shadowColor: backgroundColor
         )
     }
 

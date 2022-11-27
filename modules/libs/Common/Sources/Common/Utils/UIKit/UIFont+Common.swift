@@ -1,5 +1,5 @@
 //
-//  UIFontExtension.swift
+//  UIFont+Common.swift
 //  
 //
 //  Created by Johnnie Cheng on 31/10/22.
@@ -30,6 +30,10 @@ public extension UIFont {
         CTFontManagerRegisterGraphicsFont(font, nil)
     }
     
+    var isItalic: Bool {
+        fontDescriptor.symbolicTraits.contains(.traitItalic)
+    }
+    
     func italic(_ isItalic: Bool = true) -> UIFont {
         if isItalic {
             return withTraits(.traitItalic, ofSize: pointSize)
@@ -38,11 +42,24 @@ public extension UIFont {
         }
     }
     
+    var weight: UIFont.Weight {
+        guard let weightNumber = traits[.weight] as? NSNumber else { return .regular }
+        
+        let weightRawValue = CGFloat(weightNumber.doubleValue)
+        let weight = UIFont.Weight(rawValue: weightRawValue)
+        return weight
+    }
+    
     func weight(_ weight: UIFont.Weight) -> UIFont {
         let newDescriptor = fontDescriptor.addingAttributes(
             [ .traits: [UIFontDescriptor.TraitKey.weight: weight] ]
         )
         return UIFont(descriptor: newDescriptor, size: pointSize)
+    }
+    
+    var traits: [UIFontDescriptor.TraitKey: Any] {
+        return fontDescriptor.object(forKey: .traits) as? [UIFontDescriptor.TraitKey: Any]
+        ?? [:]
     }
     
     func withTraits(

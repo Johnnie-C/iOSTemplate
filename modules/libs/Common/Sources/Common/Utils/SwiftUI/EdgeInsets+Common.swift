@@ -22,5 +22,14 @@ public extension EdgeInsets {
             trailing: trailing.rawValue
         )
     }
+    
+    static let zero: EdgeInsets = {
+        .init(
+            top: CommonSpacing.zero,
+            leading: CommonSpacing.zero,
+            bottom: CommonSpacing.zero,
+            trailing: CommonSpacing.zero
+        )
+    }()
 
 }
