@@ -13,7 +13,7 @@ public extension Image {
         self.init(uiImage: icon.templateImage())
     }
     
-    init(icon: Icons) {
+    init(_ icon: Icons) {
         self.init(uiImage: icon.image())
     }
     

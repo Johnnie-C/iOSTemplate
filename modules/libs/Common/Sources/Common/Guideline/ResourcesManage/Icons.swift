@@ -19,7 +19,7 @@ public enum Icons {
     ///
     ///     extension Icons {
     ///         static var myIconInModule: Icons {
-    ///             .custom(name: "icon name", bundle: .myModuleBundle)
+    ///             .named(name: "icon name", bundle: .myModuleBundle)
     ///         }
     ///     }
     ///
@@ -27,7 +27,11 @@ public enum Icons {
     ///
     ///     Image(icon: .myIconInModule)
     ///
-    case custom(name: String, bundle: Bundle = .main)
+    case named(name: String, bundle: Bundle = .main)
+    
+    case system(_ name: String)
+    
+    case custom(_ image: UIImage)
     
     private var name: String {
         switch self {
@@ -35,14 +39,18 @@ public enum Icons {
             return "icon-info"
         case .imagePlaceholder:
             return "imagePlaceholder"
-        case .custom(let name, _):
+        case .named(let name, _):
             return name
+        case .system(let name):
+            return name
+        case .custom(_):
+            return ""
         }
     }
     
     private var bundle: Bundle {
         switch self {
-        case .custom(_, let bundle):
+        case .named(_, let bundle):
             return bundle
         default:
             return .commonBundle
@@ -50,7 +58,17 @@ public enum Icons {
     }
     
     public func image(_ color: Colors? = nil) -> UIImage {
-        var image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
+        var image: UIImage
+        
+        switch self {
+        case .system(let name):
+            image = UIImage.init(systemName: name) ?? UIImage()
+        case .custom(let customImage):
+            image = customImage
+        default:
+            image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
+        }
+        
         if let color = color?.uiColor() {
             image = image.withRenderingMode(.alwaysTemplate)
                 .withTintColor(color)

@@ -31,7 +31,7 @@ public enum Colors {
     ///
     ///     extension Colors {
     ///         static var myColorInModule: Colors {
-    ///             .custom(name: "myColor", bundle: .myModuleBundle)
+    ///             .named(name: "myColor", bundle: .myModuleBundle)
     ///         }
     ///     }
     ///
@@ -39,7 +39,9 @@ public enum Colors {
     ///
     ///     "text".styled(font: .body(), color: .myColorInModule)
     ///
-    case custom(name: String, bundle: Bundle = .main)
+    case named(name: String, bundle: Bundle = .main)
+    
+    case custom(_ color: UIColor)
     
     private var name: String {
         switch self {
@@ -63,14 +65,16 @@ public enum Colors {
             return "common-info-blue"
         case .errorRed:
             return "common-errorRed"
-        case .custom(let name, _):
+        case .named(let name, _):
             return name
+        case .custom(_):
+            return ""
         }
     }
     
     private var bundle: Bundle? {
         switch self {
-        case .custom(_, let bundle):
+        case .named(_, let bundle):
             return bundle
         default:
             return nil
@@ -78,7 +82,7 @@ public enum Colors {
     }
     
     /// get dynamic color depends on the light/dark mode
-    /// f type is .custom, color will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
+    /// if type is .named, color will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
     /// - Parameters:
     ///   - opacity: opacity from 0.0-1.0
     ///
@@ -87,19 +91,24 @@ public enum Colors {
         _ opacity: Double = 1
     ) -> Color {
         var color: Color
-        if let bundle = bundle {
+        switch self {
+        case .named(let name, let bundle):
             color = Color(name, bundle: bundle)
-        } else if let uicolor = UIColor(named: name, in: .main, compatibleWith: nil) {
-            color = Color(uicolor)
-        } else {
-            color = Color(name, bundle: .commonBundle)
+        case .custom(let customColor):
+            color = Color(customColor)
+        default:
+            if let uicolor = UIColor(named: name, in: .main, compatibleWith: nil) {
+                color = Color(uicolor)
+            } else {
+                color = Color(name, bundle: .commonBundle)
+            }
         }
         
         return color.opacity(opacity)
     }
     
     /// get dynamic color depends on the light/dark mode
-    /// f type is .custom, color will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
+    /// f type is .named, c321olor will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
     /// - Parameters:
     ///   - opacity: opacity from 0.0-1.0
     ///

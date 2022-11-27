@@ -139,7 +139,7 @@ public extension UINavigationBar {
             if let image = UIImage(systemName: "chevron.backward") {
                 let backButtonIcon = image
                     .resize(height: 22) // defualt back button icon height
-                    .withTintColor(color, renderingMode: .alwaysOriginal)
+                    .withTintColor(color, renderingMode: .alwaysOriginal) // has to be .alwaysOriginal, a bug?
                 navigationBarAppearance.setBackIndicatorImage(backButtonIcon, transitionMaskImage: backButtonIcon)
             }
         }

@@ -195,7 +195,7 @@ public struct TooltipIcon {
     public let padding: CGFloat
     
     public static var `default`: TooltipIcon {
-        .init(icon: .from(icon: .info, color: .infoBlue), padding: 0.0)
+        .init(icon: Icons.info.image(.infoBlue), padding: 0.0)
     }
     
 }

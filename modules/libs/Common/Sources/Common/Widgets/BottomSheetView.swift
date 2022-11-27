@@ -69,7 +69,7 @@ public struct BottomSheetView<Content: View>: View {
     
     @ViewBuilder
     private var bottomSheet: some View {
-        VStack(spacing: 0) {
+        VStack(commonSpacing: .zero) {
             ZStack {
                 Colors.backgroundColor.dynamicColor()
                     .frame(maxWidth: .infinity)
