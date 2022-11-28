@@ -53,8 +53,6 @@ extension UIColor {
 
 extension UIColor {
     
-    static let systemTintColor: UIColor = {
-        UIView().tintColor
-    }()
+    static let systemTintColor: UIColor = UIView().tintColor
     
 }

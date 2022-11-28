@@ -14,7 +14,12 @@ public extension Image {
     }
     
     init(_ icon: Icons) {
-        self.init(uiImage: icon.image())
+        switch icon {
+        case .system(let name):
+            self.init(systemName: name)
+        default:
+            self.init(uiImage: icon.image())
+        }
     }
     
     func setSize(_ size: CommonSize) -> some View {

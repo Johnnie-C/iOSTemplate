@@ -10,6 +10,8 @@ import Foundation
 public enum CommonSpacing: CGFloat {
     /// 0
     case zero = 0
+    /// 2
+    case xxxSmall = 2
     /// 4
     case xxSmall = 4
     /// 8
@@ -28,5 +30,4 @@ public enum CommonSpacing: CGFloat {
     case xxxLarge = 72
     /// 108
     case xxxxLarge = 108
-    
 }

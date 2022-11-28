@@ -11,7 +11,7 @@ public struct ImageButton: View {
     
     private let title: String?
     private let font: FontStyle
-    private let icon: UIImage?
+    private let icon: Icons?
     private let padding: EdgeInsets
     private let iconPadding: CommonSpacing
     private let color: Color
@@ -32,7 +32,7 @@ public struct ImageButton: View {
         self.init(
             title: title,
             font: font,
-            icon: icon?.image(),
+            icon: icon,
             color: color.dynamicColor(),
             padding: padding,
             iconPadding: iconPadding,
@@ -44,7 +44,7 @@ public struct ImageButton: View {
     public init(
         title: String?,
         font: FontStyle = .body(),
-        icon: UIImage? = nil,
+        icon: Icons? = nil,
         color: Color = Colors.primaryLabel.dynamicColor(),
         padding: EdgeInsets = .defaultImageButtonPadding,
         iconPadding: CommonSpacing = .small,
@@ -62,19 +62,25 @@ public struct ImageButton: View {
     }
     
     private var iconSize: CGSize {
-        CGSize(
-            width: max(height - padding.top - padding.bottom, 0),
-            height: max(height - padding.top - padding.bottom, 0)
-        )
+        guard let icon = icon?.image() else { return .zero }
+        
+        let ratio = icon.size.height / icon.size.width
+        let fontSize = font.dynamicUIFont.pointSize
+        let height = fontSize + CommonSize.xxxSmall.rawValue * 2
+        let maxHeight = min(height, self.height - padding.top - padding.bottom)
+        let width = maxHeight / ratio
+        
+        return CGSize(width: width, height: maxHeight)
     }
     
     public var body: some View {
         Button(action: action) {
             HStack(alignment: .center, commonSpacing: .zero) {
                 if let icon = icon {
-                    Image(uiImage: icon)
+                    Image(icon)
                         .resizable()
                         .setColor(color)
+                        .scaledToFit()
                         .frame(size: iconSize)
                         .padding(.trailing, iconPadding)
                 }

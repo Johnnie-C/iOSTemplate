@@ -18,8 +18,7 @@ class DefaultFontProvider: FontProvider {
     func font(forStyle style: FontStyle) -> UIFont {
         if case .custom(let font) = style {
             return font
-        }
-        else {
+        } else {
             return UIFont.preferredFont(forTextStyle: style.systemStyle)
                 .weight(style.weight)
                 .italic(style.italic)

@@ -10,6 +10,8 @@ import Foundation
 public enum CommonSize: CGFloat {
     /// 0
     case zero = 0
+    /// 2
+    case xxxSmall = 2
     /// 4
     case xxSmall = 4
     /// 8

@@ -69,16 +69,6 @@ public struct ProductListView<VM: ProductListViewModel>: View {
             .withLoadingHandler(isLoading: $viewModel.isLoading)
             .onAppear { viewModel.onAppear() }
             .navigate(to: productDetailView, when: $showDetail)
-//            .toolbar {
-//                ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                    Button("Help") {
-//                        print("Help tapped!")
-//                    }
-//                    Button("Help") {
-//                        print("Help tapped!")
-//                    }
-//                }
-//            }
 //            .rightItem(item: .init(title: "title", icon: nil) {
 //                print("item tapped")
 //            })
@@ -87,7 +77,7 @@ public struct ProductListView<VM: ProductListViewModel>: View {
                     .init(title: "title", icon: nil) {
                         print("item tapped")
                     },
-                    .init(title: "done", icon: nil, style: .done) {
+                    .init(title: "Done", icon: .system("square.and.pencil"), style: .done) {
                         print("done tapped")
                     }
                 ]

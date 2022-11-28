@@ -9,37 +9,53 @@ import SwiftUI
 
 public extension View {
     
-    func leftItem(item: NavigationBarItem) -> some View {
+    func leftItem(item: NavigationBarItem?) -> some View {
         self.toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                barItem(for: item)
-            }
-        }
-    }
-    
-    func rightItem(item: NavigationBarItem) -> some View {
-        self.toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                barItem(for: item)
-            }
-        }
-    }
-    
-    func leftItems(items: [NavigationBarItem]) -> some View {
-        self.toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                ForEach(items) {
-                    barItem(for: $0)
+                if let item = item {
+                    barItem(for: item)
+                } else {
+                    EmptyView()
                 }
             }
         }
     }
     
-    func rightItems(items: [NavigationBarItem]) -> some View {
+    func rightItem(item: NavigationBarItem?) -> some View {
+        self.toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if let item = item {
+                    barItem(for: item)
+                } else {
+                    EmptyView()
+                }
+            }
+        }
+    }
+    
+    func leftItems(items: [NavigationBarItem]?) -> some View {
+        self.toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                if let items = items {
+                    ForEach(items) {
+                        barItem(for: $0)
+                    }
+                } else {
+                    EmptyView()
+                }
+            }
+        }
+    }
+    
+    func rightItems(items: [NavigationBarItem]?) -> some View {
         self.toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ForEach(items) {
-                    barItem(for: $0)
+                if let items = items {
+                    ForEach(items) {
+                        barItem(for: $0)
+                    }
+                } else {
+                    EmptyView()
                 }
             }
         }
@@ -66,6 +82,7 @@ public extension View {
             icon: item.icon,
             color: item.tintColor ?? color,
             padding: .zero,
+            iconPadding: .xxSmall,
             action: item.action
         )
     }
