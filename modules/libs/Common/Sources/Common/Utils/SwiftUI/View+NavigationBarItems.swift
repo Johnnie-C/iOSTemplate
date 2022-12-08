@@ -78,11 +78,13 @@ public extension View {
         
         return ImageButton(
             title: item.title,
-            font: font,
             icon: item.icon,
-            color: item.tintColor ?? color,
-            padding: .zero,
-            iconPadding: .xxSmall,
+            config: .init(
+                font: font,
+                tintColor: item.tintColor ?? color,
+                padding: .zero,
+                iconPadding: .xxSmall
+            ),
             action: item.action
         )
     }

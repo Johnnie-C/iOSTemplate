@@ -9,109 +9,239 @@ import SwiftUI
 
 public struct ImageButton: View {
     
+    public enum Style {
+        case `default`
+        case fillWidth
+        case sized(_ size: CGSize)
+    }
+    
+    public enum Status {
+        case normal
+        case loading
+        case success(onComplete: (() -> Void)? = nil)
+        case disabled
+    }
+    
     private let title: String?
-    private let font: FontStyle
     private let icon: Icons?
-    private let padding: EdgeInsets
-    private let iconPadding: CommonSpacing
-    private let color: Color
-    private let staticSize: Bool
+    private let status: Status
+    private let config: Config
     private let action: () -> Void
-    @State private var height: CGFloat = 0
+    @State private var size = CGSize.zero
     
     public init(
         title: String? = nil,
-        font: FontStyle = .body(),
         icon: Icons? = nil,
-        color: Colors = .primaryLabel,
-        padding: EdgeInsets = .defaultImageButtonPadding,
-        iconPadding: CommonSpacing = .small,
-        staticSize: Bool = false,
-        action: @escaping () -> Void
-    ) {
-        self.init(
-            title: title,
-            font: font,
-            icon: icon,
-            color: color.dynamicColor(),
-            padding: padding,
-            iconPadding: iconPadding,
-            staticSize: staticSize,
-            action: action
-        )
-    }
-    
-    public init(
-        title: String?,
-        font: FontStyle = .body(),
-        icon: Icons? = nil,
-        color: Color = Colors.primaryLabel.dynamicColor(),
-        padding: EdgeInsets = .defaultImageButtonPadding,
-        iconPadding: CommonSpacing = .small,
-        staticSize: Bool = false,
+        status: Status = .normal,
+        config: Config = .init(),
         action: @escaping () -> Void
     ) {
         self.title = title
-        self.font = font
         self.icon = icon
-        self.color = color
-        self.padding = padding
-        self.iconPadding = iconPadding
-        self.staticSize = staticSize
+        self.status = status
+        self.config = config
         self.action = action
     }
     
     private var iconSize: CGSize {
-        guard let icon = icon?.image() else { return .zero }
+        let fontSize = config.font.dynamicUIFont.pointSize
+        let height = fontSize + CommonSize.xxxSmall.rawValue * 2 - config.padding.top - config.padding.bottom
         
-        let ratio = icon.size.height / icon.size.width
-        let fontSize = font.dynamicUIFont.pointSize
-        let height = fontSize + CommonSize.xxxSmall.rawValue * 2
-        let maxHeight = min(height, self.height - padding.top - padding.bottom)
-        let width = maxHeight / ratio
-        
-        return CGSize(width: width, height: maxHeight)
+        return CGSize(
+            width: max(height, fontSize),
+            height: max(height, fontSize)
+        )
+    }
+    
+    private var buttonTintColor: Color {
+        if case .disabled = status {
+            return Colors.disabledTextColor.dynamicColor()
+        } else {
+            return config.tintColor.dynamicColor()
+        }
+    }
+    
+    private var buttonDisabled: Bool {
+        if case .normal = status { return false }
+        return true
     }
     
     public var body: some View {
-        Button(action: action) {
-            HStack(alignment: .center, commonSpacing: .zero) {
-                if let icon = icon {
-                    Image(icon)
-                        .resizable()
-                        .setColor(color)
-                        .scaledToFit()
-                        .frame(size: iconSize)
-                        .padding(.trailing, iconPadding)
+        Button {
+            guard case .normal = status else { return }
+            action()
+        } label: {
+            VStack {
+                switch status {
+                case .normal, .disabled:
+                    buttonView
+                case .loading:
+                    loadingView
+                case .success:
+                    successTickView
                 }
-                
-                if let title = title {
-                    Text(
-                        title,
-                        font: font.dynamicFont,
-                        color: color,
-                        staticSize: staticSize
-                    )
+            }
+            
+        }
+        .observeFrame(in: .global) { frame in
+            DispatchQueue.main.async {
+                switch self.status {
+                case .normal, .disabled:
+                    size = frame.size
+                default:
+                    break
                 }
             }
         }
-        .standardHeight()
-        .padding(padding)
-        .observeFrame(in: .local) { frame in
-            DispatchQueue.main.async {
-                height = frame.size.height
+        .disabled(buttonDisabled)
+        .background(backgroundView())
+    }
+    
+    private var buttonView: some View {
+        HStack(alignment: .center, commonSpacing: .zero) {
+            if let icon = icon {
+                Image(icon)
+                    .resizable()
+                    .setColor(buttonTintColor)
+                    .frame(size: iconSize)
+                    .scaledToFit()
+                    .padding(.trailing, config.iconPadding)
             }
+
+            if let title = title {
+                Text(
+                    title,
+                    font: config.font.dynamicFont,
+                    color: buttonTintColor,
+                    staticSize: config.staticSize
+                )
+            }
+        }
+        .padding(config.padding)
+        .frame(maxWidth: maxWidth, maxHeight: maxHeight)
+        .frame(minHeight: minHeight)
+    }
+    
+    private var loadingView: some View {
+        VStack {
+            let fontSize = config.font.dynamicUIFont.pointSize
+            let height = fontSize + CommonSize.small.rawValue + 1
+            
+            LoadingView(tintColor: config.tintColor)
+                .frame(width: height, height: height)
+        }
+        .frame(width: size.width, height: size.height)
+    }
+    
+    private var successTickView: some View {
+        VStack {
+            let fontSize = config.font.dynamicUIFont.pointSize
+            let height = fontSize + CommonSize.small.rawValue
+            var completionBlock: (() -> Void)? = nil
+            if case .success(let block) = status {
+                completionBlock = block
+            }
+            
+            return AnimatedCheckmarkView(
+                size: .init(
+                    width: height,
+                    height: height
+                ),
+                fromColor: config.tintColor,
+                onAnimationFinish: completionBlock
+            )
+            .frame(width: size.width, height: size.height)
+        }
+       
+    }
+    
+    private func backgroundView() -> some View {
+        ZStack {
+            if let color = config.color?.dynamicColor() {
+                color
+                if case .disabled = status {
+                    Colors.custom(.white).dynamicColor(0.65)
+                }
+            }
+        }
+    }
+    
+    private var maxWidth: CGFloat? {
+        switch config.style {
+        case .default:
+            return nil
+        case .fillWidth:
+            return .infinity
+        case .sized(let size):
+            return size.width
+        }
+    }
+    
+    private var maxHeight: CGFloat? {
+        let fontSize = config.font.dynamicUIFont.pointSize
+        let height = fontSize + config.padding.top + config.padding.bottom //CommonSpacing.xSmall.rawValue * 2
+        switch config.style {
+        case .default:
+            return height
+        case .fillWidth:
+            return height
+        case .sized(let size):
+            return size.height
+        }
+    }
+    
+    private var minHeight: CGFloat? {
+        let standardHeight = CommonSize.standardHeight.rawValue
+        switch config.style {
+        case .default:
+            return standardHeight
+        case .fillWidth:
+            return standardHeight
+        case .sized(let size):
+            return size.height
         }
     }
 
 }
 
+public extension ImageButton {
+    
+    struct Config {
+        let style: Style
+        let font: FontStyle
+        let color: Colors?
+        let tintColor: Colors
+        let padding: EdgeInsets
+        let iconPadding: CommonSpacing
+        let staticSize: Bool
+        
+        public init(
+            style: Style = .default,
+            font: FontStyle = .body(),
+            color: Colors? = nil,
+            tintColor: Colors = .primaryLabel,
+            padding: EdgeInsets = .defaultImageButtonPadding,
+            iconPadding: CommonSpacing = .small,
+            staticSize: Bool = false
+        ) {
+            self.style = style
+            self.font = font
+            self.color = color
+            self.tintColor = tintColor
+            self.padding = padding
+            self.iconPadding = iconPadding
+            self.staticSize = staticSize
+        }
+    }
+    
+}
+
 public extension EdgeInsets {
     
     static let defaultImageButtonPadding = EdgeInsets(
-        top: .xSmall,
+        top: .xxSmall,
         leading: .small,
-        bottom: .xSmall,
+        bottom: .xxSmall,
         trailing: .small
     )
         

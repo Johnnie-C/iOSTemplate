@@ -29,8 +29,8 @@ private struct OnLoadingModifier: ViewModifier {
             content
             if isLoading {
                 LoadingView()
-                    .frame(width: 75, height: 75, alignment: .center)
-                    .padding(.bottom, 60)
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .padding(.bottom, 40)
             }
         }
     }

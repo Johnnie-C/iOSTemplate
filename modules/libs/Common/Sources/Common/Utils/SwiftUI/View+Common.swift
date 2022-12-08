@@ -56,10 +56,22 @@ public extension View {
         padding(edges, spacing.rawValue)
     }
     
+    func padding(_ spacing: CommonSpacing) -> some View {
+        padding(.all, spacing.rawValue)
+    }
+    
 }
 
 // MARK: - frame
 public extension View {
+    
+    func height(size: CommonSize) -> some View {
+        frame(height: size.rawValue)
+    }
+    
+    func width(size: CommonSize) -> some View {
+        frame(width: size.rawValue)
+    }
     
     func standardHeight() -> some View {
         frame(height: CommonSize.standardHeight.rawValue)
