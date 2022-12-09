@@ -1,9 +1,6 @@
-//
-//  View+NavigationBarItems.swift
-//  
-//
-//  Created by Xiaojun Cheng on 27/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import SwiftUI
 

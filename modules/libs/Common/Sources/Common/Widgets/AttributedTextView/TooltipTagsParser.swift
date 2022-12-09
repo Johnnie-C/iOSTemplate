@@ -1,9 +1,6 @@
-//
-//  TooltipTagsParser.swift
-//  
-//
-//  Created by Johnnie Cheng on 24/10/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import UIKit
 

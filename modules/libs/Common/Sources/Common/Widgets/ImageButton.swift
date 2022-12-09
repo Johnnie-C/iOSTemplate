@@ -1,9 +1,6 @@
-//
-//  ImageButton.swift
-//  
-//
-//  Created by Xiaojun Cheng on 25/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import SwiftUI
 

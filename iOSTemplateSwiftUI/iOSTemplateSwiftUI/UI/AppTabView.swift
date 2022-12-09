@@ -1,9 +1,6 @@
-//
-//  AppTabView.swift
-//  iOSTemplateSwiftUI
-//
-//  Created by Johnnie Cheng on 18/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import SwiftUI
 import Product

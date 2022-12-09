@@ -1,9 +1,6 @@
-//
-//  DIConfig.swift
-//  iOSTemplateSwiftUI
-//
-//  Created by Johnnie Cheng on 30/10/21.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Common
 import Networker

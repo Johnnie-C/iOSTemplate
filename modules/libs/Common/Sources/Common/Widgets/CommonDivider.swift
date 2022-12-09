@@ -1,9 +1,6 @@
-//
-//  CommonDivider.swift
-//  
-//
-//  Created by Johnnie Cheng on 16/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import SwiftUI
 

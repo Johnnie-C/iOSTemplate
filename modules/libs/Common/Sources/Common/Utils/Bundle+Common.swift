@@ -1,9 +1,6 @@
-//
-//  Bundle+Common.swift
-//  
-//
-//  Created by Johnnie Cheng on 27/10/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 

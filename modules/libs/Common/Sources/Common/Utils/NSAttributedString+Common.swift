@@ -1,9 +1,6 @@
-//
-//  NSAttributedString+Common.swift
-//  
-//
-//  Created by Johnnie Cheng on 20/10/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import UIKit
 import SwiftUI

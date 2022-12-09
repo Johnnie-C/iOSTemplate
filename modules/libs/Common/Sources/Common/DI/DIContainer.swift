@@ -1,9 +1,6 @@
-//
-//  DIContainer.swift
-//  iOSTemplate
-//
-//  Created by Johnnie Cheng on 19/10/21.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 import Swinject

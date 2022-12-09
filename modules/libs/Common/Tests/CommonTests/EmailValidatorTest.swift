@@ -1,3 +1,7 @@
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
+
 import XCTest
 @testable import Common
 

@@ -1,9 +1,6 @@
-//
-//  ProductListViewModel.swift
-//  
-//
-//  Created by Johnnie Cheng on 13/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 import Common

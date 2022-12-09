@@ -1,9 +1,5 @@
-/* 
-  Localizable.strings
-  iOSTemplate
-
-  Created by Johnnie Cheng on 17/10/21.
-  
-*/
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 alert.generalError.message = "An error has occurred\nSorry! Please try again later";

@@ -1,9 +1,6 @@
-//
-//  BasePresenter.swift
-//  MegaBudget
-//
-//  Created by Johnnie Cheng on 29/4/21.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 import Combine

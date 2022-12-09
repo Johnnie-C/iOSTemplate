@@ -1,9 +1,6 @@
-//
-//  ClassIdentifiable.swift
-//  iOSTemplate
-//
-//  Created by Johnnie Cheng on 17/10/21.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 

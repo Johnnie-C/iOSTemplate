@@ -1,9 +1,6 @@
-//
-//  AppDelegate.swift
-//  iOSTemplateSwiftUI
-//
-//  Created by Johnnie Cheng on 5/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import UIKit
 import Common

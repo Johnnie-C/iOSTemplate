@@ -1,9 +1,6 @@
-//
-//  NetworkHeaders.swift
-//  
-//
-//  Created by Johnnie Cheng on 12/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Alamofire
 

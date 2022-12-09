@@ -1,9 +1,6 @@
-//
-//  FontProvider.swift
-//  
-//
-//  Created by Johnnie Cheng on 9/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import UIKit
 

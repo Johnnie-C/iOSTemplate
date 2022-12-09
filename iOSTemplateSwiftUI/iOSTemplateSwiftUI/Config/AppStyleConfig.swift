@@ -1,9 +1,6 @@
-//
-//  AppStyleConfig.swift
-//  iOSTemplateSwiftUI
-//
-//  Created by Xiaojun Cheng on 23/11/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import UIKit
 import Common

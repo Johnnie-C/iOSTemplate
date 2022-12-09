@@ -1,15 +1,12 @@
-//
-//  CameraManager.swift
-//  
-//
-//  Created by Johnnie Cheng on 21/10/22.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import Foundation
 import AVFoundation
 import SwiftUI
 
-protocol CameraManagerProtocal {
+protocol CameraManagerProtocol {
     
     func cameraAuthorization(
         allows: Binding<Bool>,
@@ -19,7 +16,7 @@ protocol CameraManagerProtocal {
 }
 
 // TODO: refactor to Publisher
-class CameraManager: CameraManagerProtocal {
+class CameraManager: CameraManagerProtocol {
     
     static let shared = CameraManager()
     

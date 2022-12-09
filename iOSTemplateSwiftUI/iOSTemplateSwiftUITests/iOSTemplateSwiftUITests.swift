@@ -1,9 +1,6 @@
-//
-//  iOSTemplateSwiftUITests.swift
-//  iOSTemplateSwiftUITests
-//
-//  Created by Johnnie Cheng on 23/10/21.
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import XCTest
 @testable import iOSTemplateSwiftUI

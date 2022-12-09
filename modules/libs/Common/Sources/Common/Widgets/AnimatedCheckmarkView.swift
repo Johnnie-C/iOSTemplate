@@ -1,10 +1,6 @@
-//
-//  AnimatedCheckmarkView.swift
-//  AnimatedCheckmarkView
-//
-//  Created by Gabriel Theodoropoulos.
-//  https://serialcoder.dev
-//
+// **********************************************************
+//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+// **********************************************************
 
 import SwiftUI
 
@@ -36,8 +32,10 @@ public struct AnimatedCheckmarkView: View {
             Checkmark()
                 .trim(from: 0, to: innerTrimEnd)
                 .stroke(strokeColor.dynamicColor(), style: strokeStyle)
-                .frame(width: size.width * innerShapeSizeRatio,
-                       height: size.height * innerShapeSizeRatio)
+                .frame(
+                    width: size.width * innerShapeSizeRatio,
+                    height: size.height * innerShapeSizeRatio
+                )
         }
         .frame(width: size.width, height: size.height)
         .scaleEffect(scale)
@@ -56,10 +54,11 @@ public struct AnimatedCheckmarkView: View {
         }
     }
     
-    
     func animate() {
         if shouldScale {
-            withAnimation(.linear(duration: 0.4 * animationDuration)) {
+            withAnimation(
+                .linear(duration: 0.4 * animationDuration)
+            ) {
                 outerTrimEnd = 1.0
             }
             
@@ -85,7 +84,9 @@ public struct AnimatedCheckmarkView: View {
                 scale = 1
             }
         } else {
-            withAnimation(.linear(duration: 0.5 * animationDuration)) {
+            withAnimation(
+                .linear(duration: 0.5 * animationDuration)
+            ) {
                 outerTrimEnd = 1.0
             }
             withAnimation(
@@ -110,7 +111,6 @@ public struct AnimatedCheckmarkView: View {
     
 }
 
-
 struct Checkmark: Shape {
     
     func path(in rect: CGRect) -> Path {
@@ -126,7 +126,6 @@ struct Checkmark: Shape {
     }
     
 }
-
 
 public struct AnyShape: Shape {
     
