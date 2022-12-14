@@ -7,10 +7,10 @@ import SwiftUI
 public extension EdgeInsets {
     
     init(
-        top: CommonSpacing,
-        leading: CommonSpacing,
-        bottom: CommonSpacing,
-        trailing: CommonSpacing
+        top: CommonSpacing = .zero,
+        leading: CommonSpacing = .zero,
+        bottom: CommonSpacing = .zero,
+        trailing: CommonSpacing = .zero
     ) {
         self.init(
             top: top.rawValue,

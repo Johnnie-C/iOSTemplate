@@ -46,6 +46,9 @@
 		939770CB2916676D00C04A1D /* Stag Sans-Thin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B3291657CB00C04A1D /* Stag Sans-Thin Italic.otf */; };
 		939770CC2916676D00C04A1D /* Stag Sans-Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B7291657CB00C04A1D /* Stag Sans-Black Italic.otf */; };
 		93BADD7129068AB0008B1923 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BADD7029068AB0008B1923 /* Colors.xcassets */; };
+		D958022829486DE700B8E57B /* FeatureDemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958022729486DE700B8E57B /* FeatureDemoListView.swift */; };
+		D958022C294959EC00B8E57B /* WidgetDemo in Frameworks */ = {isa = PBXBuildFile; productRef = D958022B294959EC00B8E57B /* WidgetDemo */; };
+		D958022D294959EC00B8E57B /* WidgetDemo in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D958022B294959EC00B8E57B /* WidgetDemo */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D95C997B292DAD4B0030E5E1 /* API in Frameworks */ = {isa = PBXBuildFile; productRef = D95C997A292DAD4B0030E5E1 /* API */; };
 		D95C997C292DAD4B0030E5E1 /* API in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D95C997A292DAD4B0030E5E1 /* API */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D95C997E292E15FC0030E5E1 /* AppStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C997D292E15FC0030E5E1 /* AppStyleConfig.swift */; };
@@ -76,6 +79,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				932724BC291F4514001534B7 /* Product in Embed Frameworks */,
+				D958022D294959EC00B8E57B /* WidgetDemo in Embed Frameworks */,
 				D95C997C292DAD4B0030E5E1 /* API in Embed Frameworks */,
 				932724BB291F4512001534B7 /* Networker in Embed Frameworks */,
 				932724BA291F4511001534B7 /* Common in Embed Frameworks */,
@@ -129,6 +133,8 @@
 		939770BD291657CB00C04A1D /* Stag Sans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light.otf"; sourceTree = "<group>"; };
 		939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Bold.otf"; sourceTree = "<group>"; };
 		93BADD7029068AB0008B1923 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		D958022729486DE700B8E57B /* FeatureDemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDemoListView.swift; sourceTree = "<group>"; };
+		D958022A294959B800B8E57B /* WidgetDemo */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WidgetDemo; sourceTree = "<group>"; };
 		D95C9978292DAC0B0030E5E1 /* API */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = API; path = ../modules/libs/API; sourceTree = "<group>"; };
 		D95C997D292E15FC0030E5E1 /* AppStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyleConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95C997B292DAD4B0030E5E1 /* API in Frameworks */,
+				D958022C294959EC00B8E57B /* WidgetDemo in Frameworks */,
 				935FEF3F291F436C002470B8 /* Product in Frameworks */,
 				59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */,
 				59764CA6272CC9D0000606B4 /* Networker in Frameworks */,
@@ -232,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				934051752927024600524AE0 /* AppTabView.swift */,
+				D958022729486DE700B8E57B /* FeatureDemoListView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -260,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				93FBE70C2924D05500C03ED2 /* libs */,
-				93FBE70D2924D07F00C03ED2 /* modules */,
+				93FBE70D2924D07F00C03ED2 /* features */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -312,12 +320,13 @@
 			name = libs;
 			sourceTree = "<group>";
 		};
-		93FBE70D2924D07F00C03ED2 /* modules */ = {
+		93FBE70D2924D07F00C03ED2 /* features */ = {
 			isa = PBXGroup;
 			children = (
 				931B5AA1291F35C400CAA679 /* Product */,
+				D958022A294959B800B8E57B /* WidgetDemo */,
 			);
-			name = modules;
+			name = features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +356,7 @@
 				59764CC9272CEE5C000606B4 /* AlertToast */,
 				935FEF3E291F436C002470B8 /* Product */,
 				D95C997A292DAD4B0030E5E1 /* API */,
+				D958022B294959EC00B8E57B /* WidgetDemo */,
 			);
 			productName = iOSTemplateSwiftUI;
 			productReference = 592C05322723A62900970B6D /* iOSTemplateSwiftUI.app */;
@@ -493,6 +503,7 @@
 				937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */,
 				59764C94272CC6DC000606B4 /* DIConfig.swift in Sources */,
 				592C05362723A62900970B6D /* iOSTemplateSwiftUIApp.swift in Sources */,
+				D958022829486DE700B8E57B /* FeatureDemoListView.swift in Sources */,
 				934051762927024600524AE0 /* AppTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -919,6 +930,10 @@
 		935FEF3E291F436C002470B8 /* Product */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Product;
+		};
+		D958022B294959EC00B8E57B /* WidgetDemo */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WidgetDemo;
 		};
 		D95C997A292DAD4B0030E5E1 /* API */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -4,15 +4,15 @@
 
 import SwiftUI
 import Product
+import WidgetDemo
 
 struct AppTabView: View {
     
     var body: some View {
         TabView {
-            DefaultProductAssembly().assembleProductListView()
-                .ignoresSafeArea()
+            FeatureDemoListView()
                 .tabItem {
-                    Label("Product Demo", systemImage: "homekit") // TODO
+                    Label("Feature Demo", systemImage: "list.star")
 //                    Label(
 //                        title: {
 //                            Text("Product Demo")
@@ -21,9 +21,9 @@ struct AppTabView: View {
 //                        }
 //                    )
                 }
-            Text("PlaceHolder")
+            WidgetDemoListView()
                 .tabItem {
-                    Label("Guideline Demo", systemImage: "ant") // TODO
+                    Label("Widget Demo", systemImage: "paintbrush.pointed.fill")
                 }
         }
         .onAppear {
