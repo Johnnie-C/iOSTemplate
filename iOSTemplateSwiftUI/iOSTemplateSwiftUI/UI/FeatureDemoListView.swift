@@ -14,6 +14,9 @@ struct FeatureDemoListView: View {
                     NavigationLink(destination: DefaultProductAssembly().assembleProductListView()) {
                         Text("Product list/detail")
                     }
+                    NavigationLink(destination: Text("TODO")) {
+                        Text("Location manager")
+                    }
                 }
                 .standardHeight()
             }
