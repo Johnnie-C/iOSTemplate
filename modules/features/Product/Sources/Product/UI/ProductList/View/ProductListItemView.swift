@@ -17,6 +17,7 @@ struct ProductListItemView: View {
                 .placeholder(.imagePlaceholder)
                 .indicator(.activity)
                 .frame(size: .xxxLarge)
+                .scaledToFill()
                 .roundedCorner(5)
             
             VStack(alignment: .leading, commonSpacing: .xSmall) {

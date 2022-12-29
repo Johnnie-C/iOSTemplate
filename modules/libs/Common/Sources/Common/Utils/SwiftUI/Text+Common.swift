@@ -30,3 +30,11 @@ public extension Text {
     }
     
 }
+
+public extension Text {
+    
+    func commonLineSpacing(_ lineSpacing: LineSpacing) -> some View {
+        self.lineSpacing(lineSpacing.rawValue)
+    }
+    
+}

@@ -59,7 +59,10 @@ public struct ProductListView<VM: ProductListViewModel>: View {
             }
             .fillParent()
         }
-        .navigationTitle("List")
+        .navigationTitle(
+            title: "List",
+            hideBackButtonTitleOnNextView: true
+        )
         .fillParent()
         .alertMessage(alertMessage: $viewModel.alertMessage)
         .withLoadingHandler(isLoading: $viewModel.isLoading)

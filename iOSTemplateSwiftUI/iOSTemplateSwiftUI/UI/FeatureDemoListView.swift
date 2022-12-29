@@ -17,6 +17,9 @@ struct FeatureDemoListView: View {
                     NavigationLink(destination: Text("TODO")) {
                         Text("Location manager")
                     }
+                    NavigationLink(destination: Text("TODO")) {
+                        Text("Email validator")
+                    }
                 }
                 .standardHeight()
             }

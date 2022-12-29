@@ -86,16 +86,16 @@ public extension View {
         frame(width: size.width, height: size.height, alignment: alignment)
     }
     
-    func fillParent() -> some View {
-        frame(maxWidth: .infinity, maxHeight: .infinity)
+    func fillParent(alignment: Alignment = .center) -> some View {
+        frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
     }
     
-    func fillWidth() -> some View {
-        frame(maxWidth: .infinity)
+    func fillWidth(alignment: Alignment = .center) -> some View {
+        frame(maxWidth: .infinity, alignment: alignment)
     }
     
-    func fillHeight() -> some View {
-        frame(maxHeight: .infinity)
+    func fillHeight(alignment: Alignment = .center) -> some View {
+        frame(maxHeight: .infinity, alignment: alignment)
     }
     
 }

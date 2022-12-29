@@ -36,7 +36,7 @@ public struct WidgetDemoListView: View {
                         Text("Frame observer")
                     }
                     NavigationLink(destination: Text("TODO")) {
-                        Text("Email validator")
+                        Text("Carousel")
                     }
                 }
                 .standardHeight()

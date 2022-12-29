@@ -20,7 +20,7 @@ public class DefaultProductListAPI: ProductListAPI {
     private let networker: NetworkerProtocol
     
     public init(
-        networker: NetworkerProtocol = DIContainer.default.resolve(type: NetworkerProtocol.self)
+        networker: NetworkerProtocol = Networker.productNetworker
     ) {
         self.networker = networker
     }
@@ -32,4 +32,12 @@ public class DefaultProductListAPI: ProductListAPI {
         )
     }
 
+}
+
+public extension Networker {
+    
+    static var productNetworker: Networker {
+        Networker(host: "https://61136f5ccba40600170c1a3f.mockapi.io/api/v1/")
+    }
+    
 }
