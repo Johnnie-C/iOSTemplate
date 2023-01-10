@@ -12,7 +12,7 @@ struct ProductListItemView: View {
     
     var body: some View {
         HStack(commonSpacing: .medium) {
-            WebImage(url: product.thumbnailURL)
+            WebImage(url: product.thumbnailURL?.url)
                 .resizable()
                 .placeholder(.imagePlaceholder)
                 .indicator(.activity)

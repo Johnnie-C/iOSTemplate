@@ -10,7 +10,7 @@ public struct ProductDetailView<VM: ProductDetailViewModel>: View {
     
     @ObservedObject var viewModel: VM
     private let productAssembly: ProductAssembly
-
+    
     public init(
         viewModel: VM,
         productAssembly: ProductAssembly = DefaultProductAssembly()
@@ -19,22 +19,20 @@ public struct ProductDetailView<VM: ProductDetailViewModel>: View {
         self.productAssembly = productAssembly
     }
     
+    @State var index: Int = 0
+    
     public var body: some View {
         ScrollView {
             VStack {
-                if let image = viewModel.product.images?.first,
-                   let url = URL(string: image) {
-                    WebImage(url: url)
-                        .resizable()
-                        .placeholder(.imagePlaceholder)
-                        .indicator(.activity)
-                        .scaledToFit()
-                        .frame(height: 250)
-                } else {
-                    Image(.imagePlaceholder)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 250)
+                if let images = viewModel.product.imageUrls {
+                    CarouselView(items: images, index: $index) { imageUrl in
+                        WebImage(url: imageUrl.url)
+                            .resizable()
+                            .placeholder(.imagePlaceholder)
+                            .indicator(.activity)
+                            .scaledToFit()
+                    }
+                    .frame(height: 250)
                 }
                 
                 VStack(alignment: .leading, commonSpacing: .xSmall) {
@@ -44,7 +42,7 @@ public struct ProductDetailView<VM: ProductDetailViewModel>: View {
                             viewModel.product.price.decimalValue.currencyString(),
                             fontStyle: .body()
                         )
-
+                        
                         if let discount = viewModel.product.discountPercentage?.decimalValue.percentString() {
                             Text(
                                 "ProductListItem.DiscountPercentage".localizedWithFormat(discount),

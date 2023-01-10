@@ -16,8 +16,8 @@ public struct Product: Identifiable {
     public let stock: Int
     public let brand: String
     public let category: String
-    public let thumbnail: String?
-    public let images: [String]?
+    private let thumbnail: String?
+    private let images: [String]?
     
 }
 
@@ -39,10 +39,23 @@ extension Product {
         )
     }
     
-    var thumbnailURL: URL? {
+    var thumbnailURL: ImageURL? {
         guard let thumbnail = thumbnail else { return nil }
         
-        return URL(string: thumbnail)
+        return ImageURL(url: URL(string: thumbnail))
     }
+    
+    public var imageUrls: [ImageURL]? {
+        guard let images = images else { return nil }
+        
+        return images.compactMap { ImageURL(url: URL(string: $0)) }
+    }
+    
+}
+
+public struct ImageURL: Identifiable {
+    
+    public var id = UUID()
+    public let url: URL?
     
 }
