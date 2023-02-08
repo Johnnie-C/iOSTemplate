@@ -6,46 +6,21 @@ import Foundation
 import AVFoundation
 import SwiftUI
 
-protocol CameraManagerProtocol {
+
+protocol CameraManagerProtocol: ObservableObject {
     
-    func cameraAuthorization(
-        allows: Binding<Bool>,
-        hasCamera: Binding<Bool>?
-    )
+    var hasCamera: Bool { get }
+    var hasPermission: Bool { get }
+    
+    func requestPermission(state: Binding<AVAuthorizationStatus>)
     
 }
 
-// TODO: refactor to Publisher
 class CameraManager: CameraManagerProtocol {
     
     static let shared = CameraManager()
     
-    func cameraAuthorization(
-        allows: Binding<Bool>,
-        hasCamera: Binding<Bool>? = nil
-    ) {
-        if deviceHasCamera() {
-            hasCamera?.wrappedValue = true
-        } else {
-            return
-        }
-        
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case.authorized:
-            allows.wrappedValue = true
-        case.notDetermined:
-            AVCaptureDevice.requestAccess(for:.video) { granted in
-                allows.wrappedValue = granted
-            }
-        case .denied, .restricted:
-            return
-        @unknown default:
-            return
-        }
-        
-    }
-    
-    func deviceHasCamera() -> Bool {
+    public var hasCamera: Bool {
         let frontCamera = AVCaptureDevice.default(
             .builtInWideAngleCamera,
             for: .video,
@@ -58,6 +33,25 @@ class CameraManager: CameraManagerProtocol {
         )
         
         return frontCamera != nil || backCamera != nil
+    }
+    
+    var hasPermission: Bool {
+        AVCaptureDevice.authorizationStatus(for: .video) == .authorized
+    }
+    
+    func requestPermission(state: Binding<AVAuthorizationStatus>) {
+        let currentState = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        switch currentState {
+        case .notDetermined:
+            Task {
+                let granted = await AVCaptureDevice.requestAccess(for: .video)
+                state.wrappedValue = granted ? .authorized : .denied
+            }
+        default:
+            state.wrappedValue = currentState
+        }
+        
     }
     
 }

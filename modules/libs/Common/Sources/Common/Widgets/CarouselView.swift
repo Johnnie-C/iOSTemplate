@@ -22,6 +22,7 @@ public struct CarouselView<Content: View, Item: Identifiable>: View {
     ) {
         self.items = items
         self._index = index
+        self.showPageIndicator = showPageIndicator
         self.content = content
     }
     
