@@ -12,7 +12,7 @@ protocol CameraManagerProtocol: ObservableObject {
     var hasCamera: Bool { get }
     var hasPermission: Bool { get }
     
-    func requestPermission(state: Binding<AVAuthorizationStatus>)
+    func requestPermission() async -> AVAuthorizationStatus
     
 }
 
@@ -39,19 +39,16 @@ class CameraManager: CameraManagerProtocol {
         AVCaptureDevice.authorizationStatus(for: .video) == .authorized
     }
     
-    func requestPermission(state: Binding<AVAuthorizationStatus>) {
+    func requestPermission() async -> AVAuthorizationStatus {
         let currentState = AVCaptureDevice.authorizationStatus(for: .video)
         
         switch currentState {
         case .notDetermined:
-            Task {
-                let granted = await AVCaptureDevice.requestAccess(for: .video)
-                state.wrappedValue = granted ? .authorized : .denied
-            }
+            let granted = await AVCaptureDevice.requestAccess(for: .video)
+            return granted ? .authorized : .denied
         default:
-            state.wrappedValue = currentState
+            return currentState
         }
-        
     }
     
 }
