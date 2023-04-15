@@ -6,7 +6,7 @@ import SwiftUI
 
 public extension View {
     
-    func leftItem(item: NavigationBarItem?) -> some View {
+    func leftItem(_ item: NavigationBarItem?) -> some View {
         self.toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 if let item = item {
@@ -18,7 +18,7 @@ public extension View {
         }
     }
     
-    func rightItem(item: NavigationBarItem?) -> some View {
+    func rightItem(_ item: NavigationBarItem?) -> some View {
         self.toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if let item = item {

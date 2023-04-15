@@ -2,7 +2,6 @@
 //    Copyright © 2022 Johnnie Cheng. All rights reserved.
 // **********************************************************
 
-
 import SwiftUI
 import Common
 
@@ -37,6 +36,9 @@ public struct WidgetDemoListView: View {
                     }
                     NavigationLink(destination: Text("TODO")) {
                         Text("Carousel")
+                    }
+                    NavigationLink(destination: SortableListView()) {
+                        Text("Sortable list")
                     }
                 }
                 .standardHeight()
