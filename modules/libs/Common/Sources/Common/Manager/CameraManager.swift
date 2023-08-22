@@ -7,7 +7,7 @@ import AVFoundation
 import SwiftUI
 
 
-protocol CameraManagerProtocol: ObservableObject {
+public protocol CameraManagerProtocol: ObservableObject {
     
     var hasCamera: Bool { get }
     var hasPermission: Bool { get }
@@ -20,7 +20,7 @@ class CameraManager: CameraManagerProtocol {
     
     static let shared = CameraManager()
     
-    public var hasCamera: Bool {
+    var hasCamera: Bool {
         let frontCamera = AVCaptureDevice.default(
             .builtInWideAngleCamera,
             for: .video,

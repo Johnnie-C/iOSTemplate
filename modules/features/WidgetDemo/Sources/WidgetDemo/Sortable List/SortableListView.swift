@@ -130,9 +130,6 @@ struct SortableListView: View {
                let toIndex = colors.firstIndex(of: destinationItem),
                fromIndex != toIndex {
                 
-                print("draggedItem: \(draggedItem.description)")
-                print("destinationItem: \(destinationItem.description)")
-                
                 withAnimation {
                     self.colors.move(
                         fromOffsets: IndexSet(integer: fromIndex),

@@ -22,7 +22,9 @@ public struct FrameModifier: ViewModifier {
     
     public func body(content: Content) -> some View {
         content.background(GeometryReader { geometry -> Color in
-            onChange(geometry.frame(in: space))
+            DispatchQueue.main.async {
+                onChange(geometry.frame(in: space))
+            }
             return Color.clear
         })
     }

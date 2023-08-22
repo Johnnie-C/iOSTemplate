@@ -40,7 +40,7 @@ public class DefaultTooltipTagsParser: TooltipTagsParser {
             options: []
         ) {
             var reversedMessages: [String] = []
-            // Need to reverse the matchs, bacause if replace the first range then the next will be different position
+            // Need to reverse the matches, because if replace the first range then the next will be different position
             let matches = regex.matches(
                 in: str,
                 range: NSRange(
