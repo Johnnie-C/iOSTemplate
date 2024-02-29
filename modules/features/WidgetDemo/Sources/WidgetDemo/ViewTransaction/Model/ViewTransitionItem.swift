@@ -4,10 +4,14 @@
 
 import Foundation
 
-struct ViewTransitionItem: Identifiable {
+struct ViewTransitionItem: Identifiable, Equatable {
     
     let id = UUID()
     let imageUrl: URL
     let title: String
+    
+    static func == (lhs: ViewTransitionItem, rhs: ViewTransitionItem) -> Bool {
+        return lhs.id == rhs.id
+    }
 
 }
