@@ -47,8 +47,7 @@ public struct WidgetDemoListView: View {
                 }
                 .standardHeight()
                 
-                NavigationStackDemoItem
-                
+                NavigationStackDemoItem  
             }
             .listStyle(PlainListStyle())
             .background(.backgroundColor)

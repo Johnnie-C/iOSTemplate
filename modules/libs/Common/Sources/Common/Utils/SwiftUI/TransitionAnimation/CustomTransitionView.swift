@@ -4,14 +4,6 @@
 
 import SwiftUI
 
-public protocol ViewTransitionProtocol {
-    
-    func transition(
-        operation: UINavigationController.Operation
-    ) -> UIViewControllerAnimatedTransitioning?
-    
-}
-
 public struct CustomTransitionView<Content: View>: UIViewControllerRepresentable {
     
     let content: () -> Content
@@ -40,5 +32,5 @@ public struct CustomTransitionView<Content: View>: UIViewControllerRepresentable
     ) {
         uiViewController.transitionProvider = transitionProvider
     }
+    
 }
-

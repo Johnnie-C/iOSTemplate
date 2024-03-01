@@ -3,9 +3,8 @@
 // **********************************************************
 
 import UIKit
-import Common
 
-class ImageExpandToTopTransition: ViewTransitionProtocol {
+public class ImageExpandToTopTransition: ViewTransitionProtocol {
     
     private let fromFrame: CGRect
     private let toFrame: CGRect
@@ -16,7 +15,7 @@ class ImageExpandToTopTransition: ViewTransitionProtocol {
     
     private var transition: BaseImageExpandToTopPushTransition?
     
-    init(
+    public init(
         fromFrame: CGRect = .zero,
         toFrame: CGRect = .zero,
         duration: Double = 0.4,
@@ -32,7 +31,7 @@ class ImageExpandToTopTransition: ViewTransitionProtocol {
         self.onTransitionComplete = onTransitionComplete
     }
     
-    func transition(
+    public func transition(
         operation: UINavigationController.Operation
     ) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
@@ -195,4 +194,3 @@ fileprivate class ImageExpandToTopPopTransition: BaseImageExpandToTopPushTransit
     }
     
 }
-
