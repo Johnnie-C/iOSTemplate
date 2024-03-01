@@ -8,29 +8,15 @@ import Common
 
 struct ViewTransitionListView: View {
     
-    @State var transitionProvider: ViewTransitionProtocol?
-    
-    var body: some View {
-        CustomTransitionView(transitionProvider: transitionProvider) {
-            ViewTransitionListContentView(
-                transitionProvider: $transitionProvider
-            )
-        }
-    }
-    
-}
-
-fileprivate struct ViewTransitionListContentView: View {
-    
     @State var selectedItem: ViewTransitionItem?
     @State var selectedItemImageFrame: CGRect = .zero
     @State var selectedItemImage: UIImage?
     @State var showDetail: Bool = false
     @State var hideSelectedItemImage: Bool = false
     @State var hideImageOnDetailView: Bool = false
-    @Binding var transitionProvider: ViewTransitionProtocol?
+    @State var transitionProvider: ViewTransitionProtocol?
     
-    private let items = ViewTransitionListContentView.createItems()
+    private let items = ViewTransitionListView.createItems()
     
     var body: some View {
         ZStack {
@@ -57,6 +43,7 @@ fileprivate struct ViewTransitionListContentView: View {
         .navigationBarTitle("View Transaction")
         .background(.backgroundColor)
         .navigate(to: detailView, when: $showDetail)
+        .transitionAnimation(transitionProvider: $transitionProvider)
     }
     
     @ViewBuilder
@@ -100,7 +87,7 @@ fileprivate struct ViewTransitionListContentView: View {
     
 }
 
-fileprivate extension ViewTransitionListContentView {
+fileprivate extension ViewTransitionListView {
     
     struct ItemView: View {
         
@@ -142,7 +129,7 @@ fileprivate extension ViewTransitionListContentView {
     
 }
 
-fileprivate extension ViewTransitionListContentView {
+fileprivate extension ViewTransitionListView {
     
     static func createItems() -> [ViewTransitionItem] {
         return [

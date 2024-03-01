@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-protocol ViewTransitionProtocol {
+public protocol ViewTransitionProtocol {
     
     func transition(
         operation: UINavigationController.Operation
@@ -12,7 +12,7 @@ protocol ViewTransitionProtocol {
     
 }
 
-struct CustomTransitionView<Content: View>: UIViewControllerRepresentable {
+public struct CustomTransitionView<Content: View>: UIViewControllerRepresentable {
     
     let content: () -> Content
     let transitionProvider: ViewTransitionProtocol?
@@ -25,7 +25,7 @@ struct CustomTransitionView<Content: View>: UIViewControllerRepresentable {
         self.content = content
     }
     
-    func makeUIViewController(context: Context) -> CustomTransitionHostingController<Content> {
+    public func makeUIViewController(context: Context) -> CustomTransitionHostingController<Content> {
         let vc = CustomTransitionHostingController<Content>(
             transitionProvider: transitionProvider,
             rootView: content()
@@ -34,7 +34,7 @@ struct CustomTransitionView<Content: View>: UIViewControllerRepresentable {
         return vc
     }
     
-    func updateUIViewController(
+    public func updateUIViewController(
         _ uiViewController: CustomTransitionHostingController<Content>,
         context: Context
     ) {

@@ -5,7 +5,7 @@
 import UIKit
 import SwiftUI
 
-class CustomTransitionHostingController<Content: View>: UIHostingController<Content>, UINavigationControllerDelegate  {
+public class CustomTransitionHostingController<Content: View>: UIHostingController<Content>, UINavigationControllerDelegate  {
     
     var transitionProvider: ViewTransitionProtocol?
     private var operation: UINavigationController.Operation? = nil
@@ -18,7 +18,7 @@ class CustomTransitionHostingController<Content: View>: UIHostingController<Cont
         super.init(rootView: rootView)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.delegate = self
     }
@@ -27,7 +27,7 @@ class CustomTransitionHostingController<Content: View>: UIHostingController<Cont
         fatalError("init(coder:) has not been implemented")
     }
     
-    func navigationController(
+    public func navigationController(
         _ navigationController: UINavigationController,
         animationControllerFor operation: UINavigationController.Operation,
         from fromVC: UIViewController,

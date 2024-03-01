@@ -12,6 +12,7 @@ struct ViewTransitionDetailView: View {
     
     @State var showLandingAnimationStep1 = false
     @State var showLandingAnimationStep2 = false
+    @State var hideTabbar = true
     
     let item: ViewTransitionItem
     let hideImage: Bool
@@ -68,6 +69,7 @@ struct ViewTransitionDetailView: View {
             VStack {
                 Spacer()
                 Button {
+                    hideTabbar = false
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "xmark")
@@ -83,6 +85,7 @@ struct ViewTransitionDetailView: View {
         }
         .ignoresSafeArea(edges: .top)
         .navigationBarHidden(true)
+        .toolbar(hideTabbar ? .hidden : .visible, for: .tabBar)
     }
     
     private var descriptionText: some View {
