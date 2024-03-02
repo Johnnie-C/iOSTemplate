@@ -63,13 +63,13 @@ public extension View {
         var color: Colors
         switch item.style {
         case .plain:
-            font = .navigationBarPlainButtonTextColor
+            font = .navigationBarPlainButtonTextFont
             color = .navigationBarPlainButtonTextColor
         case .done:
-            font = .navigationBarDoneButtonTextColor
+            font = .navigationBarDoneButtonTextFont
             color = .navigationBarDoneButtonTextColor
         case .back:
-            font = .navigationBarBackButtonTextColor
+            font = .navigationBarBackButtonTextFont
             color = .backgroundColor
         }
         

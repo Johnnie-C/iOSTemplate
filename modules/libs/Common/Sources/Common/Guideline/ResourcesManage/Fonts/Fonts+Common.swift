@@ -6,7 +6,7 @@ import UIKit
 
 extension FontStyle {
     
-    static var navigationBarPlainButtonTextColor: FontStyle {
+    static var navigationBarPlainButtonTextFont: FontStyle {
         guard
             let font = UINavigationBar.appearance()
                 .standardAppearance
@@ -20,7 +20,7 @@ extension FontStyle {
         return .custom(font)
     }
 
-    static var navigationBarBackButtonTextColor: FontStyle {
+    static var navigationBarBackButtonTextFont: FontStyle {
         guard
             let font = UINavigationBar.appearance()
                 .standardAppearance
@@ -34,7 +34,7 @@ extension FontStyle {
         return .custom(font)
     }
     
-    static var navigationBarDoneButtonTextColor: FontStyle {
+    static var navigationBarDoneButtonTextFont: FontStyle {
         guard
             let font = UINavigationBar.appearance()
                 .standardAppearance
