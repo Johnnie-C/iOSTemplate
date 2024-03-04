@@ -7,12 +7,18 @@ import CoreLocation
 
 public extension CLLocation {
     
-    var countryCode: String? {
+    var placemark: CLPlacemark? {
         get async {
             try? await CLGeocoder()
                 .reverseGeocodeLocation(self)
-                .first?
-                .isoCountryCode
+                .first
+        }
+    }
+    
+    var address: String? {
+        get async {
+            let placemark = await placemark
+            return placemark?.address ?? ""
         }
     }
     

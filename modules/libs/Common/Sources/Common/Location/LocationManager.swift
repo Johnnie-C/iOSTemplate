@@ -10,21 +10,41 @@ public protocol LocationManagerProtocol {
     
     var locationPermissionStatusPublisher: AnyPublisher<LocationPermissionStatusChange, Never> { get }
     var locationPublisher: AnyPublisher<CLLocation?, Never> { get }
+    var headingPublisher: AnyPublisher<CLHeading?, Never> { get }
+    var errorPublisher: AnyPublisher<Error, Never> { get }
+    
+    var currentPermissionStatus: CLAuthorizationStatus { get }
+    var hasWhenInUsePersmission: Bool { get }
+    var hasAlwaysPermission: Bool { get }
+    var hasAnyPermission: Bool { get }
     
     func requestLocationPermission()
     
+    func getOneOffLocation() async -> CLLocation?
     
-    /// request one off location, location will be send through [locationPublisher]
-    func getOneOffLocation()
+    /// request updaing location, location will be send through [locationPublisher]
+    func startUpdatingLocation()
+    func stopUpdatingLocation()
+    
+    /// request updaing heading, location will be send through [headingPublisher]
+    func startUpdatingHeading()
+    func stopUpdatingHeading()
     
 }
 
 public class LocationManager: NSObject, LocationManagerProtocol {
     
-    static let `default` = LocationManager()
+    public static let `default` = LocationManager()
+    
+    private let locationManager: CLLocationManager
     
     private var isRequestingLocation = false
     private var isRequestingLocationPermission = false
+    var isUpdatingLocation = false
+    var isUpdatingHeading = false
+    
+    private var oneOffLocationContinuations = [CheckedContinuation<CLLocation?, Never>]()
+    
     
     private let locationPermissionStatusSubject = PassthroughSubject<LocationPermissionStatusChange, Never>()
     lazy public var locationPermissionStatusPublisher = locationPermissionStatusSubject
@@ -36,29 +56,38 @@ public class LocationManager: NSObject, LocationManagerProtocol {
         .share()
         .eraseToAnyPublisher()
     
-    override init() {
+    private let headingSubject = PassthroughSubject<CLHeading?, Never>()
+    lazy public var headingPublisher = headingSubject
+        .share()
+        .eraseToAnyPublisher()
+    
+    private let errorSubject = PassthroughSubject<Error, Never>()
+    lazy public var errorPublisher = errorSubject
+        .share()
+        .eraseToAnyPublisher()
+    
+    init(
+        locationManager: CLLocationManager = LocationManager.defaultLocationManager
+    ) {
+        self.locationManager = locationManager
         super.init()
-        locationManager.delegate = self
+        
+        self.locationManager.delegate = self
     }
     
-    private let locationManager: CLLocationManager = {
-        func createLocationManager() -> CLLocationManager {
-            let manager = CLLocationManager()
-            manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-            
-            return manager
-        }
-        
-        // make sure locationManager is init on main thread
-        // otherwise, delegate functions will not be called
-        if Thread.isMainThread {
-            return createLocationManager()
-        } else {
-            return DispatchQueue.main.sync {
-                createLocationManager()
-            }
-        }
-    }()
+    public var currentPermissionStatus: CLAuthorizationStatus {
+        locationManager.authorizationStatus
+    }
+    
+    public var hasWhenInUsePersmission: Bool {
+        locationManager.authorizationStatus == .authorizedWhenInUse
+    }
+    
+    public var hasAlwaysPermission: Bool {
+        locationManager.authorizationStatus == .authorizedAlways
+    }
+    
+    public var hasAnyPermission: Bool { hasWhenInUsePersmission ||  hasAlwaysPermission }
     
     public func requestLocationPermission() {
         DispatchQueue.main.async {
@@ -69,11 +98,47 @@ public class LocationManager: NSObject, LocationManagerProtocol {
         }
     }
     
-    public func getOneOffLocation() {
-        let status = self.locationManager.authorizationStatus
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
+    public func getOneOffLocation() async -> CLLocation? {
+        await withCheckedContinuation { [weak self] continuation in
+            guard let self = self else { return }
+            
+            self.oneOffLocationContinuations.append(continuation)
             Task { await self.getLocation() }
         }
+    }
+    
+    public func startUpdatingLocation() {
+        let status = self.locationManager.authorizationStatus
+        guard status == .authorizedAlways || status == .authorizedWhenInUse else {
+            // TODO: throw error
+            return
+        }
+        
+        Task { await self.performStartUpdatingLocation() }
+    }
+    
+    public func stopUpdatingLocation() {
+        Task { await self.performStopUpdatingLocation() }
+    }
+    
+    public func startUpdatingHeading() {
+        let status = self.locationManager.authorizationStatus
+        
+        guard CLLocationManager.headingAvailable() else {
+            // TODO: throw error
+            return
+        }
+        
+        guard status == .authorizedAlways || status == .authorizedWhenInUse else {
+            // TODO: throw error
+            return
+        }
+        
+        Task { await self.performStartUpdatingLocation() }
+    }
+    
+    public func stopUpdatingHeading() {
+        Task { await self.performStopUpdatingHeading() }
     }
     
     @MainActor
@@ -84,8 +149,49 @@ public class LocationManager: NSObject, LocationManagerProtocol {
         }
     }
     
+    @MainActor
+    private func performStartUpdatingLocation() {
+        guard !isUpdatingLocation else { return }
+        
+        isUpdatingLocation = true
+        locationManager.startUpdatingLocation()
+    }
+    
+    @MainActor
+    private func performStopUpdatingLocation() {
+        isUpdatingLocation = false
+        locationManager.stopUpdatingLocation()
+    }
+    
+    @MainActor
+    private func performStartUpdatingHeading() {
+        guard !isUpdatingHeading else { return }
+        
+        isUpdatingHeading = true
+        locationManager.startUpdatingHeading()
+    }
+    
+    @MainActor
+    private func performStopUpdatingHeading() {
+        isUpdatingHeading = false
+        locationManager.stopUpdatingHeading()
+    }
+    
     @MainActor fileprivate func didGetLocation(_ location: CLLocation?) {
         locationSubject.send(location)
+        
+        while !oneOffLocationContinuations.isEmpty {
+            let ontinuations = oneOffLocationContinuations.popLast()
+            ontinuations?.resume(returning: location)
+        }
+    }
+    
+    @MainActor fileprivate func didGetHeading(_ newHeading: CLHeading) {
+        headingSubject.send(newHeading)
+    }
+    
+    @MainActor fileprivate func didFailWithError(_ error: Error) {
+        errorSubject.send(error)
     }
     
 }
@@ -121,8 +227,41 @@ extension LocationManager: CLLocationManagerDelegate {
         didFailWithError error: Error
     ) {
         isRequestingLocation = false
-        Task { await didGetLocation(nil) }
+        Task {
+            await didGetLocation(nil)
+            await didFailWithError(error)
+        }
     }
+    
+    public func locationManager(
+        _ manager: CLLocationManager,
+        didUpdateHeading newHeading: CLHeading
+    ) {
+        Task { await didGetHeading(newHeading) }
+    }
+    
+}
+
+fileprivate extension LocationManager {
+    
+    static let defaultLocationManager: CLLocationManager = {
+        func createLocationManager() -> CLLocationManager {
+            let manager = CLLocationManager()
+            manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            
+            return manager
+        }
+        
+        // make sure locationManager is init on main thread
+        // otherwise, delegate functions will not be called
+        if Thread.isMainThread {
+            return createLocationManager()
+        } else {
+            return DispatchQueue.main.sync {
+                createLocationManager()
+            }
+        }
+    }()
     
 }
 

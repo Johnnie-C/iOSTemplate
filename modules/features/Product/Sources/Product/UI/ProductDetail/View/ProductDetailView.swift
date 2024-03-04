@@ -8,14 +8,14 @@ import SDWebImageSwiftUI
 
 public struct ProductDetailView<VM: ProductDetailViewModel>: View {
     
-    @ObservedObject var viewModel: VM
+    @StateObject var viewModel: VM
     private let productAssembly: ProductAssembly
     
     public init(
         viewModel: VM,
         productAssembly: ProductAssembly = DefaultProductAssembly()
     ) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
         self.productAssembly = productAssembly
     }
     

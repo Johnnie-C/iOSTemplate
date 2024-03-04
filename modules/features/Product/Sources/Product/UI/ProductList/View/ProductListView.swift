@@ -7,7 +7,7 @@ import Common
 
 public struct ProductListView<VM: ProductListViewModel>: View {
 
-    @ObservedObject var viewModel: VM
+    @StateObject var viewModel: VM
     @State private var showDetail = false
     @State private var selectedProduct: Product?
     
@@ -17,7 +17,7 @@ public struct ProductListView<VM: ProductListViewModel>: View {
         viewModel: VM = DefaultProductListViewModel(),
         productAssembly: ProductAssembly = DefaultProductAssembly()
     ) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
         self.productAssembly = productAssembly
     }
 
