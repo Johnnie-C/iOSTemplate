@@ -4,6 +4,7 @@
 
 import SwiftUI
 import Product
+import FeatureDemo
 
 struct FeatureDemoListView: View {
     
@@ -14,7 +15,7 @@ struct FeatureDemoListView: View {
                     NavigationLink(destination: DefaultProductAssembly().assembleProductListView()) {
                         Text("Product list/detail")
                     }
-                    NavigationLink(destination: Text("TODO")) {
+                    NavigationLink(destination: LocationDemoView()) {
                         Text("Location manager")
                     }
                     NavigationLink(destination: Text("TODO")) {

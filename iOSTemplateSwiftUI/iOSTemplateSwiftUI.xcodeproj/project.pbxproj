@@ -33,6 +33,7 @@
 		935FEF3F291F436C002470B8 /* Product in Frameworks */ = {isa = PBXBuildFile; productRef = 935FEF3E291F436C002470B8 /* Product */; };
 		937E6A12291BAB5C00B526F2 /* AppFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */; };
 		937E6A13291BABB400B526F2 /* Stag Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770BE291657CB00C04A1D /* Stag Sans-Bold.otf */; };
+		9387A8E72B95600F00E6B1EC /* FeatureDemo in Frameworks */ = {isa = PBXBuildFile; productRef = 9387A8E62B95600F00E6B1EC /* FeatureDemo */; };
 		939770B0291616C900C04A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939770AF291616C900C04A1D /* AppDelegate.swift */; };
 		939770BF2916676D00C04A1D /* Stag Sans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B9291657CB00C04A1D /* Stag Sans-Book.otf */; };
 		939770C02916676D00C04A1D /* Stag Sans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 939770B6291657CB00C04A1D /* Stag Sans-Medium.otf */; };
@@ -118,6 +119,7 @@
 		934051752927024600524AE0 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		9349F2232949C30E0088B689 /* WidgetDemo */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WidgetDemo; path = ../modules/features/WidgetDemo; sourceTree = "<group>"; };
 		937E6A11291BAB5C00B526F2 /* AppFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontProvider.swift; sourceTree = "<group>"; };
+		9387A8E82B95603800E6B1EC /* FeatureDemo */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeatureDemo; path = ../modules/features/FeatureDemo; sourceTree = "<group>"; };
 		939770AF291616C900C04A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939770B1291657CA00C04A1D /* Stag Sans-Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Light Italic.otf"; sourceTree = "<group>"; };
 		939770B2291657CB00C04A1D /* Stag Sans-Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stag Sans-Medium Italic.otf"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95C997B292DAD4B0030E5E1 /* API in Frameworks */,
+				9387A8E72B95600F00E6B1EC /* FeatureDemo in Frameworks */,
 				9349F2252949C3210088B689 /* WidgetDemo in Frameworks */,
 				935FEF3F291F436C002470B8 /* Product in Frameworks */,
 				59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */,
@@ -323,6 +326,7 @@
 		93FBE70D2924D07F00C03ED2 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				9387A8E82B95603800E6B1EC /* FeatureDemo */,
 				931B5AA1291F35C400CAA679 /* Product */,
 				9349F2232949C30E0088B689 /* WidgetDemo */,
 			);
@@ -357,6 +361,7 @@
 				935FEF3E291F436C002470B8 /* Product */,
 				D95C997A292DAD4B0030E5E1 /* API */,
 				9349F2242949C3210088B689 /* WidgetDemo */,
+				9387A8E62B95600F00E6B1EC /* FeatureDemo */,
 			);
 			productName = iOSTemplateSwiftUI;
 			productReference = 592C05322723A62900970B6D /* iOSTemplateSwiftUI.app */;
@@ -668,6 +673,7 @@
 				DEVELOPMENT_TEAM = 98ZR4W8N62;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want your location for testing";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -698,6 +704,7 @@
 				DEVELOPMENT_TEAM = 98ZR4W8N62;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want your location for testing";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -934,6 +941,10 @@
 		935FEF3E291F436C002470B8 /* Product */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Product;
+		};
+		9387A8E62B95600F00E6B1EC /* FeatureDemo */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureDemo;
 		};
 		D95C997A292DAD4B0030E5E1 /* API */ = {
 			isa = XCSwiftPackageProductDependency;
