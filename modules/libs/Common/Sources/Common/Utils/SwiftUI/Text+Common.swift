@@ -8,8 +8,7 @@ public extension Text {
     init(_ text: String,
          fontStyle: FontStyle,
          color: Colors = .primaryLabel,
-         opacity: Double = 1,
-         staticSize: Bool = false
+         opacity: Double = 1
     ) {
         self.init(
             text,
@@ -20,8 +19,7 @@ public extension Text {
     
     init(_ text: String,
          font: Font,
-         color: Color = Colors.primaryLabel.dynamicColor(),
-         staticSize: Bool = false
+         color: Color = Colors.primaryLabel.dynamicColor()
     ) {
         self.init(text)
         

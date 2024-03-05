@@ -78,7 +78,6 @@ public struct ImageButton: View {
                     successTickView
                 }
             }
-            
         }
         .observeFrame(in: .global) { frame in
             DispatchQueue.main.async {
@@ -92,6 +91,7 @@ public struct ImageButton: View {
         }
         .disabled(buttonDisabled)
         .background(backgroundView())
+        .roundedCorner(cornerRadius)
     }
     
     private var buttonView: some View {
@@ -102,15 +102,14 @@ public struct ImageButton: View {
                     .setColor(buttonTintColor)
                     .frame(size: iconSize)
                     .scaledToFit()
-                    .padding(.trailing, config.iconPadding)
+                    .padding(.trailing, iconPadding)
             }
 
             if let title = title {
                 Text(
                     title,
                     font: config.font.dynamicFont,
-                    color: buttonTintColor,
-                    staticSize: config.staticSize
+                    color: buttonTintColor
                 )
             }
         }
@@ -198,6 +197,24 @@ public struct ImageButton: View {
             return size.height
         }
     }
+    
+    private var iconPadding: CommonSpacing {
+        let isTitleEmpty = title?.isEmpty ?? true
+        
+        return isTitleEmpty ? .zero : config.iconPadding
+    }
+    
+    private var cornerRadius: CGFloat {
+        switch config.shape {
+        case .square:
+            return 0
+        case .rounded:
+            return size.height / 2
+        case .roundedCorner(let radius):
+            return radius
+        }
+        
+    }
 
 }
 
@@ -205,30 +222,36 @@ public extension ImageButton {
     
     struct Config {
         let style: Style
+        let shape: ButtonShape
         let font: FontStyle
         let color: Colors?
         let tintColor: Colors
         let padding: EdgeInsets
         let iconPadding: CommonSpacing
-        let staticSize: Bool
         
         public init(
             style: Style = .default,
+            shape: ButtonShape = .square,
             font: FontStyle = .body(),
-            color: Colors? = nil,
+            color: Colors? = .primaryColor,
             tintColor: Colors = .primaryLabel,
             padding: EdgeInsets = .defaultImageButtonPadding,
-            iconPadding: CommonSpacing = .small,
-            staticSize: Bool = false
+            iconPadding: CommonSpacing = .small
         ) {
             self.style = style
+            self.shape = shape
             self.font = font
             self.color = color
             self.tintColor = tintColor
             self.padding = padding
             self.iconPadding = iconPadding
-            self.staticSize = staticSize
         }
+    }
+    
+    enum ButtonShape {
+        case square
+        case rounded
+        case roundedCorner(CGFloat)
     }
     
 }

@@ -24,15 +24,22 @@ private struct AlertModifier: ViewModifier {
         content.toast(
             isPresenting: $isPresenting,
             duration: 2,
-            tapToDismiss: true
-        ) {
-            return  AlertToast(
-                displayMode: alertMessage?.alertMode.displayMode ?? .alert,
-                type: alertMessage?.alertStyle.alertType ?? .regular,
-                title: alertMessage?.title,
-                subTitle: alertMessage?.message
-            )
-        }
+            tapToDismiss: true,
+            alert: {
+                return  AlertToast(
+                    displayMode: alertMessage?.alertMode.displayMode ?? .alert,
+                    type: alertMessage?.alertStyle.alertType ?? .regular,
+                    title: alertMessage?.title,
+                    subTitle: alertMessage?.message
+                )
+            },
+            onTap: {
+                alertMessage?.onTap?()
+            },
+            completion: {
+                alertMessage?.completion?()
+            }
+        )
         .onChange(of: alertMessage) { alertMessage in
             self.alertMessage = alertMessage
             self.isPresenting = alertMessage != nil
@@ -42,22 +49,33 @@ private struct AlertModifier: ViewModifier {
 }
 
 public struct AlertMessage: Equatable {
-
+    
+    let id = UUID()
     let title: String?
     let message: String?
     let alertMode: AlertMode
     let alertStyle: AlertStyle
+    let onTap: (() -> Void)?
+    let completion: (() -> Void)?
     
     public init(
         title: String? = nil,
         message: String? = nil,
         alertMode: AlertMode = .alert,
-        alertStyle: AlertStyle = .regular
+        alertStyle: AlertStyle = .regular,
+        onTap: (() -> Void)? = nil,
+        completion: (() -> Void)? = nil
     ) {
         self.title = title
         self.message = message
         self.alertMode = alertMode
         self.alertStyle = alertStyle
+        self.onTap = onTap
+        self.completion = completion
+    }
+    
+    public static func == (lhs: AlertMessage, rhs: AlertMessage) -> Bool {
+        lhs.id == rhs.id
     }
     
 }

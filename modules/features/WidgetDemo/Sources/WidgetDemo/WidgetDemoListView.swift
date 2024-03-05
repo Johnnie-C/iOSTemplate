@@ -20,8 +20,8 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: Text("TODO")) {
                         Text("TODO Attributed Text view / Tooltip")
                     }
-                    NavigationLink(destination: Text("TODO")) {
-                        Text("TODO Image button")
+                    NavigationLink(destination: ImageButtonDemoView()) {
+                        Text("Image Button")
                     }
                     NavigationLink(destination: Text("TODO")) {
                         Text("TODO Bottom sheet")
@@ -39,7 +39,7 @@ public struct WidgetDemoListView: View {
                         Text("TODO Carousel")
                     }
                     NavigationLink(destination: SortableListView()) {
-                        Text("Sortable list")
+                        Text("Sortable List")
                     }
                     NavigationLink(destination: ViewTransitionListView()) {
                         Text("View Transition")
