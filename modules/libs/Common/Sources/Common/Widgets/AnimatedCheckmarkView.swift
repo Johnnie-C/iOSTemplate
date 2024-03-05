@@ -129,14 +129,14 @@ struct Checkmark: Shape {
 
 public struct AnyShape: Shape {
     
-    private var path: (CGRect) -> Path
+    private var shape: any Shape
     
-    public init<S>(_ shape: S) where S: Shape {
-        path = shape.path(in:)
+    public init(_ shape: any Shape) {
+        self.shape = shape
     }
     
     public func path(in rect: CGRect) -> Path {
-        return path(rect)
+        return shape.path(in: rect)
     }
     
 }

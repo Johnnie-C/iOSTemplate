@@ -18,8 +18,6 @@
 		59764C9A272CC861000606B4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 59764C99272CC861000606B4 /* Swinject */; };
 		59764CA4272CC9D0000606B4 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CA3272CC9D0000606B4 /* Common */; };
 		59764CA6272CC9D0000606B4 /* Networker in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CA5272CC9D0000606B4 /* Networker */; };
-		59764CC0272CD947000606B4 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CBF272CD947000606B4 /* NVActivityIndicatorView */; };
-		59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CC1272CD947000606B4 /* NVActivityIndicatorViewExtended */; };
 		59764CC7272CE508000606B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59764CC6272CE508000606B4 /* Localizable.strings */; };
 		59764CCA272CEE5C000606B4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 59764CC9272CEE5C000606B4 /* AlertToast */; };
 		932724BA291F4511001534B7 /* Common in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 59764CA3272CC9D0000606B4 /* Common */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -150,9 +148,7 @@
 				9387A8E72B95600F00E6B1EC /* FeatureDemo in Frameworks */,
 				9349F2252949C3210088B689 /* WidgetDemo in Frameworks */,
 				935FEF3F291F436C002470B8 /* Product in Frameworks */,
-				59764CC2272CD947000606B4 /* NVActivityIndicatorViewExtended in Frameworks */,
 				59764CA6272CC9D0000606B4 /* Networker in Frameworks */,
-				59764CC0272CD947000606B4 /* NVActivityIndicatorView in Frameworks */,
 				59764CA4272CC9D0000606B4 /* Common in Frameworks */,
 				59764CCA272CEE5C000606B4 /* AlertToast in Frameworks */,
 				592C05712723A86D00970B6D /* AlamofireImage in Frameworks */,
@@ -355,8 +351,6 @@
 				59764C99272CC861000606B4 /* Swinject */,
 				59764CA3272CC9D0000606B4 /* Common */,
 				59764CA5272CC9D0000606B4 /* Networker */,
-				59764CBF272CD947000606B4 /* NVActivityIndicatorView */,
-				59764CC1272CD947000606B4 /* NVActivityIndicatorViewExtended */,
 				59764CC9272CEE5C000606B4 /* AlertToast */,
 				935FEF3E291F436C002470B8 /* Product */,
 				D95C997A292DAD4B0030E5E1 /* API */,
@@ -442,7 +436,6 @@
 			packageReferences = (
 				592C056F2723A86D00970B6D /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				59764C98272CC861000606B4 /* XCRemoteSwiftPackageReference "Swinject" */,
-				59764CBE272CD947000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				59764CC8272CEE5C000606B4 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 592C05332723A62900970B6D /* Products */;
@@ -878,14 +871,6 @@
 				minimumVersion = 2.8.1;
 			};
 		};
-		59764CBE272CD947000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
 		59764CC8272CEE5C000606B4 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -914,16 +899,6 @@
 		59764CA5272CC9D0000606B4 /* Networker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networker;
-		};
-		59764CBF272CD947000606B4 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 59764CBE272CD947000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		59764CC1272CD947000606B4 /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 59764CBE272CD947000606B4 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
 		};
 		59764CC9272CEE5C000606B4 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
