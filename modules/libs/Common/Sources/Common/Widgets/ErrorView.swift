@@ -23,7 +23,7 @@ public struct ErrorView: View {
     public var body: some View {
             ZStack {
                 VStack(alignment: .center, spacing: 0) {
-                    Image(templateIcon: .warnings)
+                    Image(icon: .warnings)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 60)
@@ -32,7 +32,7 @@ public struct ErrorView: View {
                     Text(title)
                         .font(.dynamicFont(.headline()))
                         .multilineTextAlignment(.center)
-                        .padding(.top, .large)
+                        .padding(.top, .xLarge)
                         .foregroundColor(.titleColor)
                     
                     Text(description)

@@ -6,7 +6,7 @@ import SwiftUI
 
 public extension Image {
     
-    init(templateIcon icon: Icons) {
+    init(icon: Icons) {
         self.init(uiImage: icon.templateImage())
     }
     
@@ -15,7 +15,7 @@ public extension Image {
         case .system(let name):
             self.init(systemName: name)
         default:
-            self.init(uiImage: icon.image())
+            self.init(uiImage: icon.uiImage())
         }
     }
     

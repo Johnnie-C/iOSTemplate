@@ -95,7 +95,7 @@ fileprivate extension ViewTransitionListView {
         var hideImage: Bool
         let onTap: (_ imageFrame: CGRect, _ image: UIImage?) -> Void
         @State var imageFrame: CGRect = .zero
-        @State var image: UIImage = Icons.imagePlaceholder.image()
+        @State var image: UIImage = Icons.imagePlaceholder.uiImage()
         
         var body: some View {
             VStack(commonSpacing: .xSmall) {

@@ -8,7 +8,7 @@ import SDWebImageSwiftUI
 public extension WebImage {
     
     func placeholder(_ icon: Icons) -> WebImage {
-        placeholder(Image(uiImage: icon.image()))
+        placeholder(Image(uiImage: icon.uiImage()))
     }
     
     func setSize(_ size: CommonSize) -> some View {

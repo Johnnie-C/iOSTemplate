@@ -57,7 +57,15 @@ public enum Icons {
         }
     }
     
-    public func image(_ color: Colors? = nil) -> UIImage {
+    
+    /// Get UIImage with color to tint.
+    ///
+    /// For `Image` used in SwiftUI, use `Image(icon: Icons)`
+    /// to tint: `Image(icon: .icon).foregroundColor(.color)`
+    ///
+    /// - Parameter color: color to tint
+    /// - Returns: return tinted uiimage
+    public func uiImage(_ color: Colors? = nil) -> UIImage {
         var image: UIImage
         
         switch self {
@@ -70,11 +78,7 @@ public enum Icons {
         }
         
         if let color = color?.uiColor() {
-            image = image.withRenderingMode(.alwaysTemplate)
-                .withTintColor(color)
-        }
-        else {
-            image = image.withRenderingMode(.alwaysOriginal)
+            image = image.withTintColor(color)
         }
         
         return image
@@ -95,7 +99,7 @@ extension UIImage {
         icon: Icons,
         color: Colors? = nil
     ) -> UIImage? {
-        icon.image(color)
+        icon.uiImage(color)
     }
     
 }
