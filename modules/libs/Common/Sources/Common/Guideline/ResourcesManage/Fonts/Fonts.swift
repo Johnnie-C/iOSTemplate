@@ -24,9 +24,17 @@ public enum FontStyle {
     fileprivate static var limitedMaxSizeEnabled = true
     fileprivate static var fontProvider: FontProvider = DefaultFontProvider()
     
-    // default font style:
+    // default font style reference:
     // https://developer.apple.com/design/human-interface-guidelines/foundations/typography/#specifications
+    //
+    // https://gist.github.com/zacwest/916d31da5d03405809c4
     
+    /// available iOS17, will fallback to `largeTitle` if below iOS17
+    case extraLargeTitle(weight: UIFont.Weight = .bold, italic:  Bool = false)
+    
+    /// available iOS17, will fallback to `largeTitle` if below iOS17
+    case extraLargeTitle2(weight: UIFont.Weight = .bold, italic:  Bool = false)
+
     case largeTitle(weight: UIFont.Weight = .regular, italic:  Bool = false)
     case title1(weight: UIFont.Weight = .regular, italic:  Bool = false)
     case title2(weight: UIFont.Weight = .regular, italic:  Bool = false)
@@ -42,6 +50,18 @@ public enum FontStyle {
     
     var systemStyle: UIFont.TextStyle {
         switch self {
+        case .extraLargeTitle:
+            if #available(iOS 17.0, *) {
+                return .extraLargeTitle
+            } else {
+                return .largeTitle
+            }
+        case .extraLargeTitle2:
+            if #available(iOS 17.0, *) {
+                return .extraLargeTitle2
+            } else {
+                return .largeTitle
+            }
         case .largeTitle: return .largeTitle
         case .title1: return .title1
         case .title2: return .title2
@@ -59,6 +79,8 @@ public enum FontStyle {
     
     var size: CGFloat {
         switch self {
+        case .extraLargeTitle: return 36
+        case .extraLargeTitle2: return 28
         case .largeTitle: return 34
         case .title1: return 28
         case .title2: return 22
@@ -76,6 +98,8 @@ public enum FontStyle {
     
     var maxSize: CGFloat {
         switch self {
+        case .extraLargeTitle: return 40
+        case .extraLargeTitle2: return 32
         case .largeTitle: return 38
         case .title1: return 32
         case .title2: return 26
@@ -93,6 +117,10 @@ public enum FontStyle {
     
     public var weight: UIFont.Weight {
         switch self {
+        case .extraLargeTitle(let weight, _): 
+            return weight
+        case .extraLargeTitle2(let weight, _):
+            return weight
         case .largeTitle(let weight, _):
             return weight
         case .title1(let weight, _):
@@ -121,6 +149,10 @@ public enum FontStyle {
     
     public var italic: Bool {
         switch self {
+        case .extraLargeTitle(_, let italic):
+            return italic
+        case .extraLargeTitle2(_, let italic):
+            return italic
         case .largeTitle(_, let italic):
             return italic
         case .title1(_, let italic):
