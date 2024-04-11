@@ -12,9 +12,9 @@ public protocol ProductsProvider {
 
 public class DefaultProductsProvider: ProductsProvider {
     
-    private let productListAPI: ProductListAPI
+    private let productListAPI: ProductAPI
     
-    public init(productListAPI: ProductListAPI = DefaultProductListAPI()) {
+    public init(productListAPI: ProductAPI = DefaultProductAPI()) {
         self.productListAPI = productListAPI
     }
     

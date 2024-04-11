@@ -1,9 +1,23 @@
 // **********************************************************
-//    Copyright © 2022 Johnnie Cheng. All rights reserved.
+//    Copyright © 2024 Johnnie Cheng. All rights reserved.
 // **********************************************************
 
 import Foundation
 import Common
+
+extension String {
+    
+    static func discountPercentage(
+        percentage: Double,
+        locale: Locale = .NZ
+    ) -> String {
+        let percentageString = percentage.decimalValue.percentString()
+        
+        return "ProductListItem.DiscountPercentage"
+            .localizedWithFormat(percentageString)
+    }
+    
+}
 
 extension String {
     
@@ -16,4 +30,3 @@ extension String {
     }
     
 }
-

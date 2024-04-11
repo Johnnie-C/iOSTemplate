@@ -8,6 +8,7 @@ import UIKit
 public enum Icons {
     
     case info
+    case warnings
     case imagePlaceholder
     
     /// an example for using custom icon in module
@@ -34,6 +35,8 @@ public enum Icons {
         switch self {
         case .info:
             return "icon-info"
+        case .warnings:
+            return "warnings"
         case .imagePlaceholder:
             return "imagePlaceholder"
         case .named(let name, _):

@@ -2,4 +2,6 @@
 //    Copyright © 2022 Johnnie Cheng. All rights reserved.
 // **********************************************************
 
-"Done" = "Done";
+Done = "Done";
+GenericError.Title = "An error has occurred";
+GenericError.Message = "Sorry! Please try again later";

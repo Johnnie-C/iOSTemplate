@@ -80,7 +80,7 @@ struct SortableListView: View {
     }
     
     private var doneButton: Common.NavigationBarItem {
-        .init(title: "Done".localized, style: .done) {
+        .init(title: .done, style: .done) {
             withAnimation { editMode = .inactive }
         }
     }

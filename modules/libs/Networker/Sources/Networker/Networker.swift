@@ -10,21 +10,11 @@ import Common
 public protocol NetworkerProtocol {
     
     func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod,
-        parameters: [String: Any]?,
-        headers: NetworkHeaders,
-        decoder: JSONDecoder,
-        decodeAs: Response.Type
+        _ endpoint: Endpoint<Response>
     ) -> AnyPublisher<Response, Error>
     
     func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod,
-        parameters: [String: Any]?,
-        headers: NetworkHeaders,
-        decoder: JSONDecoder,
-        decodeAs: Response.Type
+        _ endpoint: Endpoint<Response>
     ) async throws -> Response
     
 }
@@ -39,53 +29,45 @@ public class Networker: NetworkerProtocol {
         host: String,
         globalHeaders: NetworkHeaders = [:],
         configuration: URLSessionConfiguration = .default,
-        cachePolicy: NSURLRequest.CachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        cachePolicy: NSURLRequest.CachePolicy = .reloadIgnoringCacheData,
+        urlCache: URLCache? = nil
     ) {
         self.host = host
         self.globalHeaders = globalHeaders
         configuration.requestCachePolicy = cachePolicy
+        configuration.urlCache = urlCache
         session = Session(configuration: configuration)
     }
     
     public func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod,
-        parameters: [String: Any]?,
-        headers: NetworkHeaders,
-        decoder: JSONDecoder = JSONDecoder(),
-        decodeAs: Response.Type
+        _ endpoint: Endpoint<Response>
     ) -> AnyPublisher<Response, Error> {
         return session
             .request(
-                "\(host)\(endpoint)",
-                method: method.httpMethod,
-                parameters: parameters,
-                headers: allHeaders(with: headers)
+                "\(host)\(endpoint.path)",
+                method: endpoint.method.httpMethod,
+                parameters: endpoint.body,
+                headers: allHeaders(with: endpoint.additionalHeaders)
             )
             .validate()
-            .publishDecodable(type: Response.self, decoder: decoder)
+            .publishDecodable(type: Response.self, decoder: endpoint.decoder)
             .value()
             .mapError{ NetworkerError(afError: $0) }
             .eraseToAnyPublisher()
     }
     
     public func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod,
-        parameters: [String: Any]?,
-        headers: NetworkHeaders,
-        decoder: JSONDecoder = JSONDecoder(),
-        decodeAs: Response.Type
+        _ endpoint: Endpoint<Response>
     ) async throws -> Response {
         let response = await session
             .request(
-                "\(host)\(endpoint)",
-                method: method.httpMethod,
-                parameters: parameters,
-                headers: allHeaders(with: headers)
+                "\(host)\(endpoint.path)",
+                method: endpoint.method.httpMethod,
+                parameters: endpoint.body,
+                headers: allHeaders(with: endpoint.additionalHeaders)
             )
             .validate()
-            .serializingDecodable(Response.self, decoder: decoder)
+            .serializingDecodable(Response.self, decoder: endpoint.decoder)
             .response
         
         switch response.result {
@@ -105,51 +87,6 @@ public class Networker: NetworkerProtocol {
     }
     
 }
-
-public extension NetworkerProtocol {
-    
-    /// heck extension to allow using protocol func with default parameter value
-    /// this extension will call the actual [performRequest] func in concrete class
-    func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod = .get,
-        parameters: [String: Any]? = nil,
-        headers: NetworkHeaders = [:],
-        decoder: JSONDecoder = JSONDecoder(),
-        decodeAs: Response.Type = Response.self
-    ) -> AnyPublisher<Response, Error> {
-        performRequest(
-            forEndpoint: endpoint,
-            method: method,
-            parameters: parameters,
-            headers: headers,
-            decoder: decoder,
-            decodeAs: decodeAs
-        )
-    }
-    
-    /// heck extension to allow using protocol func with default parameter value
-    /// this extension will call the actual [performRequest] func in concrete class
-    func performRequest<Response: Decodable>(
-        forEndpoint endpoint: String,
-        method: NetworkMethod = .get,
-        parameters: [String: Any]? = nil,
-        headers: NetworkHeaders = [:],
-        decoder: JSONDecoder = JSONDecoder(),
-        decodeAs: Response.Type = Response.self
-    ) async throws -> Response {
-        return try await performRequest(
-            forEndpoint: endpoint,
-            method: method,
-            parameters: parameters,
-            headers: headers,
-            decoder: decoder,
-            decodeAs: decodeAs
-        )
-    }
-    
-}
-
 
 public extension Networker {
     

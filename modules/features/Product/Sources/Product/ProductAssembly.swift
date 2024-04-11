@@ -19,7 +19,7 @@ public class DefaultProductAssembly: ProductAssembly {
     public func assembleProductListView(
         productProvider: ProductsProvider = DefaultProductsProvider()
     ) -> AnyView {
-        let viewModel = DefaultProductListViewModel(
+        let viewModel = ProductListViewModel(
             productProvider: productProvider
         )
         

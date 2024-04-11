@@ -1,7 +1,2 @@
 
-
-Alert.GeneralError.Title = "An error has occurred";
-Alert.GeneralError.Message = "Sorry! Please try again later";
-
 ProductListItem.DiscountPercentage = "%@ off!";
-

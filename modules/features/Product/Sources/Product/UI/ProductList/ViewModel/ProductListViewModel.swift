@@ -5,20 +5,12 @@
 import Foundation
 import Common
 
-public protocol ProductListViewModel: ObservableObject {
-    
-    var isLoading: Bool { get set }
-    var alertMessage: AlertMessage? { get set }
-    var productList: ProductList? { get }
-    func onAppear()
-
-}
-
-public class DefaultProductListViewModel: ProductListViewModel {
+public class ProductListViewModel: ObservableObject {
     
     @Published public var isLoading = false
     @Published public var alertMessage: AlertMessage? = nil
     @Published public var productList: ProductList?
+    @Published public var error: Error?
     
     private let productProvider: ProductsProvider
     
@@ -32,6 +24,11 @@ public class DefaultProductListViewModel: ProductListViewModel {
         loadProductsInNeeded()
     }
     
+    public func reload() {
+        productList = nil
+        loadProductsInNeeded()
+    }
+    
     private func loadProductsInNeeded() {
         if productList?.products?.isEmpty == false { return }
         
@@ -41,17 +38,22 @@ public class DefaultProductListViewModel: ProductListViewModel {
                 let productList = try await productProvider.productList()
                 await didLoadProductList(productList)
                 await setLoading(false)
+                await setError(nil)
             }
             catch {
-                print(error)
                 await setLoading(false)
-                await setAlertMessage(.init(
-                    title: "Alert.generalError.Title".localized,
-                    message: "Alert.generalError.Message".localized,
-                    alertMode: .hud,
-                    alertStyle: .error(.red)
-                ))
-
+                
+                if productList == nil {
+                    await setError(error)
+                } else {
+                    await setAlertMessage(
+                        AlertMessage(
+                            title: .genericErrorTitle,
+                            message: .genericErrorMessage,
+                            alertStyle: .error(.red)
+                        )
+                    )
+                }
             }
         }
     }
@@ -70,5 +72,14 @@ public class DefaultProductListViewModel: ProductListViewModel {
     private func didLoadProductList(_ productList: ProductList) {
         self.productList = productList
     }
+    
+    @MainActor
+    private func setError(_ error: Error?) {
+        self.error = error
+    }
 
+}
+
+enum TestError: Error {
+    case test
 }

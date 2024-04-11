@@ -15,6 +15,7 @@ public enum Colors {
     case subtitleColor
     case primaryLabel
     case disabledTextColor
+    case actionTitleColor
     
     case backgroundColor
     case shadow
@@ -22,6 +23,7 @@ public enum Colors {
     
     case infoBlue
     case errorRed
+    case warningYellow
     case successGreen
     
     /// an example for using custom color in module
@@ -64,8 +66,12 @@ public enum Colors {
             return "common-info-blue"
         case .errorRed:
             return "common-errorRed"
+        case .warningYellow:
+            return "common-warningYellow"
         case .disabledTextColor:
             return "common-disabledTextColor"
+        case .actionTitleColor:
+            return "common-actionTitleColor"
         case .successGreen:
             return "common-successGreen"
         case .named(let name, _):

@@ -28,9 +28,9 @@ struct ProductListItemView: View {
                         fontStyle: .body()
                     )
                     
-                    if let discount = product.discountPercentage?.decimalValue.percentString() {
+                    if let discount = product.discountPercentage {
                         Text(
-                            "ProductListItem.DiscountPercentage".localizedWithFormat(discount),
+                            .discountPercentage(percentage: discount),
                             fontStyle: .body(italic: true),
                             color: .errorRed
                         )

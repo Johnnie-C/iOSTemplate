@@ -61,7 +61,7 @@ public struct AlertMessage: Equatable {
     public init(
         title: String? = nil,
         message: String? = nil,
-        alertMode: AlertMode = .alert,
+        alertMode: AlertMode = .banner(.pop),
         alertStyle: AlertStyle = .regular,
         onTap: (() -> Void)? = nil,
         completion: (() -> Void)? = nil

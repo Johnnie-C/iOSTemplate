@@ -7,15 +7,15 @@ import SwiftUI
 
 public extension UIFont {
 
-    func font(_ style: FontStyle) -> UIFont { style.staticUIFont }
-    func dynamicFont(_ style: FontStyle) -> UIFont { style.dynamicUIFont }
+    static func font(_ style: FontStyle) -> UIFont { style.staticUIFont }
+    static func dynamicFont(_ style: FontStyle) -> UIFont { style.dynamicUIFont }
 
 }
 
 public extension Font {
 
-    func font(_ style: FontStyle) -> Font { style.staticFont }
-    func dynamicFont(_ style: FontStyle) -> Font { style.dynamicFont }
+    static func font(_ style: FontStyle) -> Font { style.staticFont }
+    static func dynamicFont(_ style: FontStyle) -> Font { style.dynamicFont }
 
 }
 

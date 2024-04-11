@@ -43,9 +43,9 @@ public struct ProductDetailView<VM: ProductDetailViewModel>: View {
                             fontStyle: .body()
                         )
                         
-                        if let discount = viewModel.product.discountPercentage?.decimalValue.percentString() {
+                        if let discount = viewModel.product.discountPercentage {
                             Text(
-                                "ProductListItem.DiscountPercentage".localizedWithFormat(discount),
+                                .discountPercentage(percentage: discount),
                                 fontStyle: .subheadline(italic: true),
                                 color: .errorRed
                             )
