@@ -32,7 +32,8 @@ let package = Package(
             dependencies: [
                 "Common",
                 "SDWebImageSwiftUI"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "WidgetDemoTests",
