@@ -97,11 +97,11 @@ public struct ImageButton: View {
     private var buttonView: some View {
         HStack(alignment: .center, commonSpacing: .zero) {
             if let icon = icon {
-                Image(icon)
+                Image(icon: icon)
                     .resizable()
                     .setColor(buttonTintColor)
-                    .frame(size: iconSize)
                     .scaledToFit()
+                    .frame(size: iconSize)
                     .padding(.trailing, iconPadding)
             }
 

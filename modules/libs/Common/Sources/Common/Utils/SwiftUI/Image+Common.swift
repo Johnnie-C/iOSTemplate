@@ -7,10 +7,6 @@ import SwiftUI
 public extension Image {
     
     init(icon: Icons) {
-        self.init(uiImage: icon.templateImage())
-    }
-    
-    init(_ icon: Icons) {
         switch icon {
         case .system(let name):
             self.init(systemName: name)
