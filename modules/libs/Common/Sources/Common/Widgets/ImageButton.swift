@@ -175,7 +175,7 @@ public struct ImageButton: View {
     
     private var maxHeight: CGFloat? {
         let fontSize = config.font.dynamicUIFont.pointSize
-        let height = fontSize + config.padding.top + config.padding.bottom //CommonSpacing.xSmall.rawValue * 2
+        let height = fontSize + config.padding.top + config.padding.bottom
         switch config.style {
         case .default:
             return height

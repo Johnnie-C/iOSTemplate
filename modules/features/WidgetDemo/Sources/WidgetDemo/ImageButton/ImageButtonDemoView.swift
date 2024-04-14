@@ -8,9 +8,9 @@ import Common
 struct ImageButtonDemoView: View {
     
     @State var alertMessage: AlertMessage? = nil
-    @State var fillWidthSquareButtonStatus = ImageButton.Status.normal
+    @State var fillWidthSquareButtonShakeTrigger = false
     @State var fillWidthRoundedButtonStatus = ImageButton.Status.normal
-
+    
     var body: some View {
         ScrollView {
             VStack(commonSpacing: .medium) {
@@ -38,7 +38,7 @@ struct ImageButtonDemoView: View {
         .fillParent()
         .alertMessage(alertMessage: $alertMessage)
     }
-
+    
     private var squareButton: some View {
         ImageButton(
             title: "Square",
@@ -99,7 +99,7 @@ struct ImageButtonDemoView: View {
     private var fillWidthSquareButton: some View {
         ImageButton(
             title: "Fill Width Square Button",
-            status: fillWidthSquareButtonStatus,
+            status: .normal,
             config: .init(
                 style: .fillWidth,
                 shape: .square,
@@ -107,15 +107,10 @@ struct ImageButtonDemoView: View {
                 tintColor: .secondaryColor
             )
         ) {
-            fillWidthSquareButtonStatus = .loading
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                fillWidthSquareButtonStatus = .success {
-                    fillWidthSquareButtonStatus = .normal
-                }
-            }
+            fillWidthSquareButtonShakeTrigger.toggle()
         }
         .padding(.horizontal, .large)
+        .shake(trigger: fillWidthSquareButtonShakeTrigger)
     }
     
     private var fillWidthRoundedButton: some View {
@@ -129,7 +124,7 @@ struct ImageButtonDemoView: View {
             )
         ) {
             fillWidthRoundedButtonStatus = .loading
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 fillWidthRoundedButtonStatus = .success {
                     fillWidthRoundedButtonStatus = .normal
@@ -147,7 +142,9 @@ struct ImageButtonDemoView: View {
                 style: .fillWidth,
                 shape: .roundedCorner(10)
             )
-        ) { }
+        ) {
+            
+        }
         .padding(.horizontal, .large)
     }
     
