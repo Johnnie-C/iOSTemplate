@@ -14,8 +14,8 @@ public struct WidgetDemoListView: View {
         NavigationView {
             List {
                 Group {
-                    NavigationLink(destination: Text("TODO")) {
-                        Text("TODO Custom fonts")
+                    NavigationLink(destination: CustomFontsDemoView()) {
+                        Text("Custom fonts")
                     }
                     NavigationLink(destination: Text("TODO")) {
                         Text("TODO Attributed Text view / Tooltip")

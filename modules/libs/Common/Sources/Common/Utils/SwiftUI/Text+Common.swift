@@ -35,4 +35,8 @@ public extension Text {
         self.lineSpacing(lineSpacing.rawValue)
     }
     
+    func font(_ fontStyle: FontStyle, dynamicFont: Bool = true) -> Text {
+        self.font(dynamicFont ? fontStyle.dynamicFont : fontStyle.staticFont)
+    }
+    
 }

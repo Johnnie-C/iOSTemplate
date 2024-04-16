@@ -28,12 +28,18 @@ public extension View {
 // MARK: - color
 public extension View {
     
-    func foregroundColor(_ color: Colors) -> some View {
-        foregroundColor(color.dynamicColor())
+    func foregroundColor(
+        _ color: Colors,
+        opacity: Double = 1
+    ) -> some View {
+        foregroundColor(color.dynamicColor(opacity))
     }
     
-    func background(_ color: Colors) -> some View {
-        background(color.dynamicColor())
+    func background(
+        _ color: Colors,
+        opacity: Double = 1
+    ) -> some View {
+        background(color.dynamicColor(opacity))
     }
     
 }
