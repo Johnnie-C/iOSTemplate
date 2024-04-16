@@ -5,85 +5,6 @@
 import SwiftUI
 import UIKit
 
-public enum Icons {
-    
-    case named(name: String, bundle: Bundle = .main)
-    
-    case system(_ name: String)
-    
-    case custom(_ image: UIImage)
-    
-    private var name: String {
-        switch self {
-        case .named(let name, _):
-            return name
-        case .system(let name):
-            return name
-        case .custom(_):
-            return ""
-        }
-    }
-    
-    private var bundle: Bundle {
-        switch self {
-        case .named(_, let bundle):
-            return bundle
-        default:
-            return .commonBundle
-        }
-    }
-    
-    
-    /// Get UIImage with color to tint.
-    ///
-    /// For `Image` used in SwiftUI, use `Image(icon: Icons)`
-    /// to tint: `Image(icon: .icon).foregroundColor(.color)`
-    ///
-    /// - Parameter color: color to tint
-    /// - Returns: return tinted uiimage
-    public func uiImage(_ color: Colors? = nil) -> UIImage {
-        var image: UIImage
-        
-        switch self {
-        case .system(let name):
-            image = UIImage.init(systemName: name) ?? UIImage()
-        case .custom(let customImage):
-            image = customImage
-        default:
-            image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
-        }
-        
-        if let color = color?.uiColor() {
-            image = image.withTintColor(color)
-        }
-        
-        return image
-    }
-    
-    public func templateUIImage() -> UIImage {
-        var image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
-        image = image.withRenderingMode(.alwaysTemplate)
-        
-        return image
-    }
-    
-    public func image() -> Image {
-        return Image(icon: self)
-    }
-    
-}
-
-extension UIImage {
-    
-    static func from(
-        icon: Icons,
-        color: Colors? = nil
-    ) -> UIImage? {
-        icon.uiImage(color)
-    }
-    
-}
-
 /// an example for using custom icon in module
 ///
 /// define icons for convenience use
@@ -99,7 +20,7 @@ extension UIImage {
 ///     Image(icon: .myIconInModule)
 ///
 ///
-/// Note: to overwrite an existing image in Common module, create an image in main app's Assets.xcasstes with the same name
+/// Note: to overwrite an existing image in Common module, create an image in main app's Assets.xcassets with the same name
 ///
 public extension Icons {
     
@@ -128,6 +49,74 @@ public extension Icons {
             bundle = .commonBundle
         }
         
-        return .named(name: name, bundle: bundle)
+        return .named(name, bundle: bundle)
     }
+}
+
+public enum Icons {
+    
+    case named(_ name: String, bundle: Bundle = .main)
+    
+    case system(_ name: String)
+    
+    case custom(_ image: UIImage)
+    
+    private var name: String {
+        switch self {
+        case .named(let name, _):
+            return name
+        case .system(let name):
+            return name
+        case .custom(_):
+            return ""
+        }
+    }
+    
+    /// Get UIImage with color to tint.
+    ///
+    /// For `Image` used in SwiftUI, use `Image(icon: Icons)`
+    /// to tint: `Image(icon: .icon).foregroundColor(.color)`
+    ///
+    /// - Parameter color: color to tint
+    /// - Returns: return tinted uiimage
+    public func uiImage(_ color: Colors? = nil) -> UIImage {
+        var image: UIImage
+        
+        switch self {
+        case .system(let name):
+            image = UIImage.init(systemName: name) ?? UIImage()
+        case .custom(let customImage):
+            image = customImage
+        case .named(let name, let bundle):
+            image = UIImage(named: name, in: bundle, with: nil) ?? UIImage()
+        }
+        
+        if let color = color?.uiColor() {
+            image = image
+                .withRenderingMode(.alwaysTemplate)
+                .withTintColor(color)
+        }
+        
+        return image
+    }
+    
+    public func templateUIImage() -> UIImage {
+        return uiImage().withRenderingMode(.alwaysTemplate)
+    }
+    
+    public func image() -> Image {
+        return Image(icon: self)
+    }
+    
+}
+
+extension UIImage {
+    
+    static func from(
+        icon: Icons,
+        color: Colors? = nil
+    ) -> UIImage? {
+        icon.uiImage(color)
+    }
+    
 }

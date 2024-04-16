@@ -5,75 +5,89 @@
 import SwiftUI
 import UIKit
 
-/// Pre-defined semantic colors. If need to override, create "Colors" assets in main app with same color names
+/// an example for using custom color in module
+///
+/// define colors for convenience use
+///
+///     extension Colors {
+///         static var myColorInModule: Colors {
+///             .named(name: "myColor", bundle: .myModuleBundle)
+///         }
+///     }
+///
+/// use color
+///
+///     "text".styled(font: .body(), color: .myColorInModule)
+///
+/// Note: to overwrite an existing color in Common module, create a color in main app's Colors.xcassets with the same name
+public extension Colors {
+    
+    static var primaryColor: Colors {
+        overwritableColor("common-primaryColor")
+    }
+    static var secondaryColor: Colors {
+        overwritableColor("common-secondaryColor")
+    }
+    
+    static var titleColor: Colors {
+        overwritableColor("common-titleColor")
+    }
+    static var subtitleColor: Colors {
+        overwritableColor("common-subtitleColor")
+    }
+    static var primaryLabel: Colors {
+        overwritableColor("common-primaryLabel")
+    }
+    static var disabledTextColor: Colors {
+        overwritableColor("common-disabledTextColor")
+    }
+    static var actionTitleColor: Colors {
+        overwritableColor("common-actionTitleColor")
+    }
+    
+    static var backgroundColor: Colors {
+        overwritableColor("common-backgroundColor")
+    }
+    static var shadow: Colors {
+        overwritableColor("common-shadow")
+    }
+    static var divider: Colors {
+        overwritableColor("common-divider")
+    }
+    
+    static var infoBlue: Colors {
+        overwritableColor("common-info-blue")
+    }
+    static var errorRed: Colors {
+        overwritableColor("common-errorRed")
+    }
+    static var warningYellow: Colors {
+        overwritableColor("common-warningYellow")
+    }
+    static var successGreen: Colors {
+        overwritableColor("common-successGreen")
+    }
+    
+    private static func overwritableColor(_ name: String) -> Colors {
+        var bundle = Bundle.main
+        
+        if UIColor(named: name, in: bundle, compatibleWith: nil) == nil {
+            bundle = .commonBundle
+        }
+        
+        return .named(name, bundle: bundle)
+    }
+    
+}
+
 public enum Colors {
     
-    case primaryColor
-    case secondaryColor
-    
-    case titleColor
-    case subtitleColor
-    case primaryLabel
-    case disabledTextColor
-    case actionTitleColor
-    
-    case backgroundColor
-    case shadow
-    case divider
-    
-    case infoBlue
-    case errorRed
-    case warningYellow
-    case successGreen
-    
-    /// an example for using custom color in module
-    ///
-    /// define colors for convenience use
-    ///
-    ///     extension Colors {
-    ///         static var myColorInModule: Colors {
-    ///             .named(name: "myColor", bundle: .myModuleBundle)
-    ///         }
-    ///     }
-    ///
-    /// use color
-    ///
-    ///     "text".styled(font: .body(), color: .myColorInModule)
-    ///
-    case named(name: String, bundle: Bundle = .main)
+    case named(_ name: String, bundle: Bundle = .main)
     
     case custom(_ color: UIColor)
     
     private var name: String {
         switch self {
-        case .primaryColor:
-            return "common-primaryColor"
-        case .secondaryColor:
-            return "common-secondaryColor"
-        case .titleColor:
-            return "common-titleColor"
-        case .subtitleColor:
-            return "common-subtitleColor"
-        case .primaryLabel:
-            return "common-primaryLabel"
-        case .backgroundColor:
-            return "common-backgroundColor"
-        case .shadow:
-            return "common-shadow"
-        case .divider:
-            return "common-divider"
-        case .infoBlue:
-            return "common-info-blue"
-        case .errorRed:
-            return "common-errorRed"
-        case .warningYellow:
-            return "common-warningYellow"
-        case .disabledTextColor:
-            return "common-disabledTextColor"
-        case .actionTitleColor:
-            return "common-actionTitleColor"
-        case .successGreen:
-            return "common-successGreen"
         case .named(let name, _):
             return name
         case .custom(_):
@@ -105,19 +119,13 @@ public enum Colors {
             color = Color(name, bundle: bundle)
         case .custom(let customColor):
             color = Color(customColor)
-        default:
-            if let uicolor = UIColor(named: name, in: .main, compatibleWith: nil) {
-                color = Color(uicolor)
-            } else {
-                color = Color(name, bundle: .commonBundle)
-            }
         }
         
         return color.opacity(opacity)
     }
     
     /// get dynamic color depends on the light/dark mode
-    /// f type is .named, c321olor will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
+    /// if type is .named, color will load from provided bundle only. Otherwise, will try to load from main bundle at first, if it is NOT existing, will loan from .commonBundle
     /// - Parameters:
     ///   - opacity: opacity from 0.0-1.0
     ///
@@ -127,7 +135,7 @@ public enum Colors {
     ) -> UIColor {
         UIColor(dynamicColor(opacity))
     }
-
+    
 }
 
 public extension UIColor {
