@@ -6,10 +6,7 @@ import SwiftUI
 
 public extension View {
     
-    func shake(
-        trigger: Bool,
-        shakeTimes: Int = 6
-    ) -> some View {
+    func shake(trigger: Bool) -> some View {
         modifier(Shake(trigger: trigger))
     }
     
