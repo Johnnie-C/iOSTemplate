@@ -179,7 +179,7 @@ public enum FontStyle {
         }
     }
     
-    var font: UIFont { FontStyle.fontProvider.font(forStyle: self) }
+    fileprivate var font: UIFont { FontStyle.fontProvider.font(forStyle: self) }
     
 }
 

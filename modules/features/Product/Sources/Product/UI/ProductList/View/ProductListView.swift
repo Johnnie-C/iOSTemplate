@@ -59,7 +59,7 @@ public struct ProductListView: View {
             hideBackButtonTitleOnNextView: true
         )
         .fillParent()
-        .alertMessage(alertMessage: $viewModel.alertMessage)
+        .toastMessage(toastMessage: $viewModel.toastMessage)
         .onAppear { viewModel.onAppear() }
         .navigate(to: productDetailView, when: $showDetail)
 //            .rightItem(item: .init(title: "title", icon: nil) {

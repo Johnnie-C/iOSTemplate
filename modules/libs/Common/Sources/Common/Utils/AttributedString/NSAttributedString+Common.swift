@@ -11,6 +11,11 @@ public extension String {
         .init(string: self)
     }
     
+    /// Apply font and color to entire string
+    /// - Parameters:
+    ///   - font: font
+    ///   - color: color
+    /// - Returns: modified NSAttributedString
     func styled(
         font: UIFont,
         color: Color
@@ -18,11 +23,17 @@ public extension String {
         attributed().font(font).color(color)
     }
     
+    
+    /// Apply font and color to entire string
+    /// - Parameters:
+    ///   - fontStyle: FontStyle
+    ///   - color: color
+    /// - Returns: modified NSAttributedString
     func styled(
-        font: FontStyle = .body(),
+        fontStyle: FontStyle = .body(),
         color: Colors = .primaryLabel
     ) -> NSAttributedString {
-        styled(font: font.dynamicUIFont, color: color.dynamicColor())
+        styled(font: fontStyle.dynamicUIFont, color: color.dynamicColor())
     }
     
 }
@@ -33,58 +44,26 @@ public extension NSAttributedString {
         return self.mutableCopy() as! NSMutableAttributedString
     }
     
-    func font(_ fontStyle: FontStyle) -> NSAttributedString {
-        let attributedStr = mutable()
-        
-        attributedStr.addAttributes(
-            [.font: fontStyle.font],
-            range: NSRange(location: 0, length: attributedStr.length)
-        )
-        
-        return attributedStr
-    }
-    
-    func font(_ font: UIFont) -> NSAttributedString {
-        let attributedStr = mutable()
-        
-        attributedStr.addAttributes(
-            [.font: font],
-            range: NSRange(location: 0, length: attributedStr.length)
-        )
-        
-        return attributedStr
-    }
-    
-    func color(_ color: Colors) -> NSAttributedString {
-        self.color(color.dynamicColor())
-    }
-    
-    func color(_ color: Color) -> NSAttributedString {
-        self.color(UIColor(color))
-    }
-    
-    func color(_ color: UIColor) -> NSAttributedString {
-        let attributedStr = mutable()
-        
-        attributedStr.addAttributes(
-            [.foregroundColor: color],
-            range: NSRange(location: 0, length: attributedStr.length)
-        )
-        
-        return attributedStr
+    static func + (
+        _ lhs: NSAttributedString,
+        _ rhs: NSAttributedString
+    ) -> NSAttributedString {
+        let result = NSMutableAttributedString()
+        result.append(lhs)
+        result.append(rhs)
+        return result
     }
     
     func frameSize(
-        maxWidth: CGFloat?
-        = nil,
+        maxWidth: CGFloat? = nil,
         maxHeight: CGFloat? = nil
     ) -> CGSize {
         let width = maxWidth != nil
-        ? min(maxWidth!, CGFloat.greatestFiniteMagnitude)
-        : CGFloat.greatestFiniteMagnitude
+            ? min(maxWidth!, CGFloat.greatestFiniteMagnitude)
+            : CGFloat.greatestFiniteMagnitude
         let height = maxHeight != nil
-        ? min(maxHeight!, CGFloat.greatestFiniteMagnitude)
-        : CGFloat.greatestFiniteMagnitude
+            ? min(maxHeight!, CGFloat.greatestFiniteMagnitude)
+            : CGFloat.greatestFiniteMagnitude
         let constraintBox = CGSize(width: width, height: height)
         let rect = boundingRect(
             with: constraintBox,
@@ -133,22 +112,6 @@ public extension NSAttributedString {
         titleWithImage.append(NSAttributedString(attachment: imageAttachment))
         
         return titleWithImage
-    }
-    
-    func link(_ url: String) -> NSAttributedString {
-        guard self.length > 0 else { return self }
-    
-        let mutableString = self.mutable()
-        mutableString.addAttribute(
-            .link,
-            value: url,
-            range: NSRange(
-                location: 0,
-                length: mutableString.length
-            )
-        )
-        
-        return mutableString
     }
     
     func kern(_ kerning: Kerning) -> NSAttributedString {

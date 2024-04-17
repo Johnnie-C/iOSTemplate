@@ -7,7 +7,7 @@ import Common
 
 struct ImageButtonDemoView: View {
     
-    @State var alertMessage: AlertMessage? = nil
+    @State var toastMessage: ToastMessage? = nil
     @State var fillWidthSquareButtonShakeTrigger = false
     @State var fillWidthRoundedButtonStatus = ImageButton.Status.normal
     
@@ -36,7 +36,7 @@ struct ImageButtonDemoView: View {
         }
         .navigationTitle("Image Button Demo")
         .fillParent()
-        .alertMessage(alertMessage: $alertMessage)
+        .toastMessage(toastMessage: $toastMessage)
     }
     
     private var squareButton: some View {
@@ -168,9 +168,9 @@ struct ImageButtonDemoView: View {
     }
     
     private func alert(_ message: String) {
-        alertMessage = AlertMessage(
+        toastMessage = ToastMessage(
             title: message,
-            alertMode: .banner(.pop)
+            toastMode: .banner(.pop)
         )
     }
     

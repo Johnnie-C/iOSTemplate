@@ -131,7 +131,7 @@ private struct AttributedTextViewRepresentable: UIViewRepresentable {
         // MARK: - UITextViewDelegate
         func textView(
             _ textView: UITextView,
-            shouldInteractWithtextAttachment:NSTextAttachment,
+            shouldInteractWith textAttachment: NSTextAttachment,
             in characterRange: NSRange,
             interaction: UITextItemInteraction
         ) -> Bool {
@@ -188,8 +188,16 @@ private struct AttributedTextViewRepresentable: UIViewRepresentable {
 
 public struct TooltipIcon {
     
-    public let icon: UIImage?
+    public let icon: UIImage
     public let padding: CGFloat
+    
+    public init(
+        icon: UIImage,
+        padding: CGFloat
+    ) {
+        self.icon = icon
+        self.padding = padding
+    }
     
     public static var `default`: TooltipIcon {
         .init(icon: Icons.info.uiImage(.infoBlue), padding: 0.0)

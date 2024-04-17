@@ -52,7 +52,7 @@ public struct ProductDetailView<VM: ProductDetailViewModel>: View {
                         }
                     }
                     Text(viewModel.product.description, fontStyle: .body())
-                        .commonLineSpacing(.expanded)
+                        .lineSpacing(.expanded)
                         .padding(.top, .xSmall)
                 }
                 .fillWidth(alignment: .topLeading)

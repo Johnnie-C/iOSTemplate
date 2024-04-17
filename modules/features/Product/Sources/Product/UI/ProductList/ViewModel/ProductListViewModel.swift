@@ -8,7 +8,7 @@ import Common
 public class ProductListViewModel: ObservableObject {
     
     @Published public var isLoading = false
-    @Published public var alertMessage: AlertMessage? = nil
+    @Published public var toastMessage: ToastMessage? = nil
     @Published public var productList: ProductList?
     @Published public var error: Error?
     
@@ -46,11 +46,11 @@ public class ProductListViewModel: ObservableObject {
                 if productList == nil {
                     await setError(error)
                 } else {
-                    await setAlertMessage(
-                        AlertMessage(
+                    await setToastMessage(
+                        ToastMessage(
                             title: .genericErrorTitle,
                             message: .genericErrorMessage,
-                            alertStyle: .error(.red)
+                            toastStyle: .error(.red)
                         )
                     )
                 }
@@ -64,8 +64,8 @@ public class ProductListViewModel: ObservableObject {
     }
     
     @MainActor
-    private func setAlertMessage(_ alertMessage: AlertMessage) {
-        self.alertMessage = alertMessage
+    private func setToastMessage(_ toastMessage: ToastMessage) {
+        self.toastMessage = toastMessage
     }
     
     @MainActor

@@ -5,7 +5,7 @@
 import SwiftUI
 import Common
 
-struct SortableListView: View {
+struct SortableListDemoView: View {
     
     @State var editMode = EditMode.inactive
     @State private var draggedColor: Color?

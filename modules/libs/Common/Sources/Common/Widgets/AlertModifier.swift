@@ -7,80 +7,83 @@ import AlertToast
 
 public extension View {
 
-    func alertMessage(
-        alertMessage: Binding<AlertMessage?>
+    func toastMessage(
+        toastMessage: Binding<ToastMessage?>
     ) -> some View {
-        modifier(AlertModifier(alertMessage: alertMessage))
+        modifier(ToastModifier(toastMessage: toastMessage))
     }
 
 }
 
-private struct AlertModifier: ViewModifier {
+private struct ToastModifier: ViewModifier {
 
-    @Binding var alertMessage: AlertMessage?
+    @Binding var toastMessage: ToastMessage?
     @State private var isPresenting = false
     
     func body(content: Content) -> some View {
         content.toast(
             isPresenting: $isPresenting,
-            duration: 2,
+            duration: toastMessage?.duration ?? 2,
             tapToDismiss: true,
             alert: {
-                return  AlertToast(
-                    displayMode: alertMessage?.alertMode.displayMode ?? .alert,
-                    type: alertMessage?.alertStyle.alertType ?? .regular,
-                    title: alertMessage?.title,
-                    subTitle: alertMessage?.message
+                return AlertToast(
+                    displayMode: toastMessage?.toastMode.displayMode ?? .banner(.pop),
+                    type: toastMessage?.toastStyle.toastType ?? .regular,
+                    title: toastMessage?.title,
+                    subTitle: toastMessage?.message
                 )
             },
             onTap: {
-                alertMessage?.onTap?()
+                toastMessage?.onTap?()
             },
             completion: {
-                alertMessage?.completion?()
+                toastMessage?.completion?()
             }
         )
-        .onChange(of: alertMessage) { alertMessage in
-            self.alertMessage = alertMessage
-            self.isPresenting = alertMessage != nil
+        .onChange(of: toastMessage) { toastMessage in
+            self.toastMessage = toastMessage
+            self.isPresenting = toastMessage != nil
         }
     }
 
 }
 
-public struct AlertMessage: Equatable {
+public struct ToastMessage: Equatable {
     
     let id = UUID()
     let title: String?
     let message: String?
-    let alertMode: AlertMode
-    let alertStyle: AlertStyle
+    let toastMode: ToastMode
+    let toastStyle: ToastStyle
+    let duration: Double
     let onTap: (() -> Void)?
     let completion: (() -> Void)?
     
     public init(
         title: String? = nil,
         message: String? = nil,
-        alertMode: AlertMode = .banner(.pop),
-        alertStyle: AlertStyle = .regular,
+        toastMode: ToastMode = .banner(.pop),
+        toastStyle: ToastStyle = .regular,
+        duration: Double = 2,
         onTap: (() -> Void)? = nil,
         completion: (() -> Void)? = nil
     ) {
         self.title = title
         self.message = message
-        self.alertMode = alertMode
-        self.alertStyle = alertStyle
+        self.toastMode = toastMode
+        self.toastStyle = toastStyle
+        self.duration = duration
         self.onTap = onTap
         self.completion = completion
     }
     
-    public static func == (lhs: AlertMessage, rhs: AlertMessage) -> Bool {
+    public static func == (lhs: ToastMessage, rhs: ToastMessage) -> Bool {
         lhs.id == rhs.id
     }
     
 }
 
-public enum AlertMode: Equatable {
+public enum ToastMode: Equatable {
     ///Present at the center of the screen
     case alert
     ///Drop from the top of the screen
@@ -107,8 +110,8 @@ public enum AlertMode: Equatable {
     }
 }
 
-/// Determine what the alert will display
-public enum AlertStyle: Equatable {
+/// Determine what the toast will display
+public enum ToastStyle: Equatable {
     ///Animated checkmark
     case complete(_ color: Color)
     ///Animated xmark
@@ -119,10 +122,10 @@ public enum AlertStyle: Equatable {
     case image(_ name: String, _ color: Color)
     ///Loading indicator (Circular)
     case loading
-    ///Only text alert
+    ///Only text toast
     case regular
     
-    var alertType: AlertToast.AlertType {
+    var toastType: AlertToast.AlertType {
         switch self {
         case .complete(let color): return .complete(color)
         case .error(let color): return .error(color)

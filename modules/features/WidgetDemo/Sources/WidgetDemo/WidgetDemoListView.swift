@@ -17,8 +17,8 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: CustomFontsDemoView()) {
                         Text("Custom fonts")
                     }
-                    NavigationLink(destination: Text("TODO")) {
-                        Text("TODO Attributed Text view / Tooltip")
+                    NavigationLink(destination: TooltipsDemoView()) {
+                        Text("Attributed Text view / Tooltip")
                     }
                     NavigationLink(destination: ImageButtonDemoView()) {
                         Text("Image Button")
@@ -38,7 +38,7 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: Text("TODO")) {
                         Text("TODO Carousel")
                     }
-                    NavigationLink(destination: SortableListView()) {
+                    NavigationLink(destination: SortableListDemoView()) {
                         Text("Sortable List")
                     }
                     NavigationLink(destination: ViewTransitionListView()) {
