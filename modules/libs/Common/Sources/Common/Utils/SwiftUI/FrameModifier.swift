@@ -7,7 +7,7 @@ import SwiftUI
 public extension View {
     
     func observeFrame(
-        in space: CoordinateSpace,
+        in space: CoordinateSpace = .global,
         onChange: @escaping (CGRect) -> Void
     ) -> some View {
         modifier(FrameModifier(space: space, onChange: onChange))
@@ -21,7 +21,7 @@ public struct FrameModifier: ViewModifier {
     var onChange: (CGRect) -> Void
     
     public func body(content: Content) -> some View {
-        content.background(GeometryReader { geometry -> Color in
+        content.background(GeometryReader { geometry in
             DispatchQueue.main.async {
                 onChange(geometry.frame(in: space))
             }

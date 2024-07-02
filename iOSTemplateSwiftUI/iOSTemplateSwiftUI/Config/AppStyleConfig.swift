@@ -36,7 +36,7 @@ class AppStyleConfig {
     }
     
     private static func configNavigationBar() {
-        let tintColor = Colors.secondaryColor.uiColor()
+        let tintColor = UIColor.white
         let buttonAttributes = UINavigationBar.TitleTextAttributes(
             font: FontStyle.body().staticUIFont,
             color: tintColor
@@ -46,7 +46,7 @@ class AppStyleConfig {
             color: tintColor
         )
         let backgroundColor = Colors.primaryColor.uiColor()
-        UINavigationBar.configTabBar(
+        UINavigationBar.configNavigationBar(
             backgroundColor: backgroundColor,
             tintColor: tintColor,
             titleAttributes: .init(

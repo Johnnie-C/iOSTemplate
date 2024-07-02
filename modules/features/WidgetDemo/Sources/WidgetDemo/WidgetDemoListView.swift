@@ -17,6 +17,12 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: CustomFontsDemoView()) {
                         Text("Custom fonts")
                     }
+                    NavigationLink(destination: Text("TODO")) {
+                        Text("TODO Colors Demo")
+                    }
+                    NavigationLink(destination: Text("TODO")) {
+                        Text("TODO Icons Demo")
+                    }
                     NavigationLink(destination: TooltipsDemoView()) {
                         Text("Attributed Text view / Tooltip")
                     }
@@ -41,13 +47,18 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: SortableListDemoView()) {
                         Text("Sortable List")
                     }
-                    NavigationLink(destination: ViewTransitionListView()) {
-                        Text("View Transition")
+                    
+                    if #available(iOS 16.0, *) {
+                        NavigationLink(destination: ViewTransitionListView()) {
+                            Text("View Transition")
+                        }
                     }
                 }
                 .standardHeight()
                 
-                NavigationStackDemoItem  
+                if #available(iOS 16.0, *) {
+                    NavigationStackDemoItem
+                }
             }
             .listStyle(PlainListStyle())
             .background(.backgroundColor)
@@ -56,6 +67,7 @@ public struct WidgetDemoListView: View {
         }
     }
     
+    @available(iOS 16.0, *)
     private var NavigationStackDemoItem: some View {
         Button {
             showNavigationStackDemo = true

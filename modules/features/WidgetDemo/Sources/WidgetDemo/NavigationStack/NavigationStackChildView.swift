@@ -5,6 +5,7 @@
 import SwiftUI
 import Common
 
+@available(iOS 16.0, *)
 struct NavigationStackChildView: View {
     
     let item: Int

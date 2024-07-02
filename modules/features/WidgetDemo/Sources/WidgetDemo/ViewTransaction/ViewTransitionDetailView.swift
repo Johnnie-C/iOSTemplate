@@ -6,6 +6,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 import Common
 
+@available(iOS 16.0, *)
 struct ViewTransitionDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode

@@ -44,7 +44,7 @@ public extension UINavigationBar {
     ///   - backButtonAttributes: back bar button style
     ///   - shadowColor: shadow color, pass same color as backgroundColor to hide shadow
     ///   - shadowImage: shadow image
-    static func configTabBar(
+    static func configNavigationBar(
         backgroundColor: UIColor? = nil,
         backgroundStyle: BackgroundStyle = .default,
         tintColor: UIColor? = nil,

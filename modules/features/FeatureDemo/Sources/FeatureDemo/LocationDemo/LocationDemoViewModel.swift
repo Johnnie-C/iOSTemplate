@@ -25,9 +25,11 @@ public class LocationDemoViewModel: ObservableObject {
     }
     
     private func startObservingLocationPermission() {
-        locationManager.locationPermissionStatusPublisher.sink { [weak self] permissionChange in
-            self?.authString = permissionChange.status.description
-        }.store(in: &subscriptions)
+        locationManager.locationPermissionStatusPublisher
+            .sink { [weak self] permissionChange in
+                self?.authString = permissionChange.status.description
+            }
+            .store(in: &subscriptions)
     }
     
     func requestLocationPermission() {

@@ -6,6 +6,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 import Common
 
+@available(iOS 16.0, *)
 struct ViewTransitionListView: View {
     
     @State var selectedItem: ViewTransitionItem?
@@ -87,6 +88,7 @@ struct ViewTransitionListView: View {
     
 }
 
+@available(iOS 16.0, *)
 fileprivate extension ViewTransitionListView {
     
     struct ItemView: View {
@@ -129,6 +131,7 @@ fileprivate extension ViewTransitionListView {
     
 }
 
+@available(iOS 16.0, *)
 fileprivate extension ViewTransitionListView {
     
     static func createItems() -> [ViewTransitionItem] {
