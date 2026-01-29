@@ -7,10 +7,21 @@ import SwiftUI
 public extension View {
     
     func observeFrame(
-        in space: CoordinateSpace,
+        in space: CoordinateSpace = .global,
         onChange: @escaping (CGRect) -> Void
     ) -> some View {
         modifier(FrameModifier(space: space, onChange: onChange))
+    }
+    
+    @ViewBuilder
+    func measureSize(
+        onChange: @escaping (CGSize) -> Void
+    ) -> some View {
+        onGeometryChange(for: CGSize.self) { proxy in
+            proxy.size
+        } action: { size in
+            onChange(size)
+        }
     }
     
 }

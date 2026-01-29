@@ -39,7 +39,7 @@ class AppStyleConfig {
         let tintColor = Colors.secondaryColor.uiColor()
         let buttonAttributes = UINavigationBar.TitleTextAttributes(
             font: FontStyle.body().staticUIFont,
-            color: tintColor
+            color: .black
         )
         let doneButtonAttributes = UINavigationBar.TitleTextAttributes(
             font: FontStyle.body(weight: .semibold).staticUIFont,

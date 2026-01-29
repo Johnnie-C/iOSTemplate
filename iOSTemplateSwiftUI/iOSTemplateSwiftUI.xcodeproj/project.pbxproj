@@ -663,7 +663,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSTemplateSwiftUI/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 98ZR4W8N62;
+				DEVELOPMENT_TEAM = 393S93PUYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want your location for testing";
@@ -694,7 +694,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSTemplateSwiftUI/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 98ZR4W8N62;
+				DEVELOPMENT_TEAM = 393S93PUYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want your location for testing";

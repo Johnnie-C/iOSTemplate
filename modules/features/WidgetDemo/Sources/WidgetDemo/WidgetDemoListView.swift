@@ -44,6 +44,11 @@ public struct WidgetDemoListView: View {
                     NavigationLink(destination: ViewTransitionListView()) {
                         Text("View Transition")
                     }
+                    if #available(iOS 26.0, *) {
+                        NavigationLink(destination: GlassEffectsDemoView()) {
+                            Text("Glass Effects")
+                        }
+                    }
                 }
                 .standardHeight()
                 

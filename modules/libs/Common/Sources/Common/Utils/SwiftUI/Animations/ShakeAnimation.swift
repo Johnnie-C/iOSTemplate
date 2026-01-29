@@ -58,11 +58,13 @@ struct Shake: ViewModifier {
                 .onChange(of: trigger) { newValue in
                     animationStatus = .pending
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + duration / 10) {
+                    var delay: Double = duration / 10
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                         animationStatus = .animating
                     }
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + duration * 8 / 10) {
+                    delay = duration * 8 / 10
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                         animationStatus = .idle
                     }
                 }
